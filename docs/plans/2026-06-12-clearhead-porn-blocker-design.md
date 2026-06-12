@@ -56,22 +56,42 @@ Manifest V3 Chrome extension, loaded unpacked, running entirely locally.
 Blocking is done **100% through Chrome's `declarativeNetRequest` API**. The extension
 declares rules ("these domains → redirect to my intervention page") and **Chrome itself**
 performs the match and redirect. The extension's own code is never invoked on a blocked
-navigation — it literally cannot see the user's browsing.
+navigation.
 
 Approaches considered and rejected:
 - **`webRequest` blocking listener** — deprecated in MV3 for regular extensions. Not viable.
 - **`tabs` / `webNavigation` redirect in JS** — would require broad host + `tabs`
-  permissions (i.e. visibility into every URL visited), the exact thing we're avoiding.
-  Only advantage was keyword matching, which is a non-goal.
+  permissions (i.e. visibility into every URL visited). Only advantage was keyword
+  matching, which is a non-goal.
 
 ### Permissions (the privacy story)
 ```
-permissions: ["declarativeNetRequest", "storage"]
+permissions:               ["declarativeNetRequest", "storage"]
+host_permissions:          <generated from the blocklist only>   e.g. *://*.pornhub.com/*
+optional_host_permissions: ["*://*/*"]   (requested per-domain when the user adds one)
 ```
-**No `tabs`, no host permissions, no network access.** With this profile the extension
-has nothing to steal and nowhere to send it — even in a hypothetical compromise. This
-minimal footprint is the whole reason for building it ourselves, and is documented in the
-README.
+
+**Important implementation finding (resolved):** a DNR `redirect` action only fires for
+request URLs the extension has **host permission** for. A plain `block` action needs none —
+but it can't show our custom intervention page (only Chrome's generic error). Since the
+intervention page *is* the product, we must use `redirect`, which means we need host
+access to the blocked sites.
+
+We resolve the tension by **narrowing host access to exactly the blocklist** rather than
+taking `<all_urls>`:
+- **Curated domains** → host patterns generated from `data/curated-domains.js` into the
+  manifest's static `host_permissions` (apex + subdomains). Works out of the box.
+- **User-added domains** → granted at runtime via `optional_host_permissions`; Chrome
+  prompts once per domain at add-time (from the Settings "Add" gesture).
+
+So ClearHead can only ever touch the sites on its blocklist — **not general browsing** —
+and with **no network access and no remote code**, nothing leaves the machine regardless.
+The honest claim is "access scoped to the blocklist; auditably exfiltrates nothing,"
+not "structurally cannot see any URL." No `tabs`, no network, no auto-update, no telemetry.
+
+> Note: the architecture infographic (`docs/assets/architecture.png`) predates this finding
+> and still shows a "no host access" badge; the narrow-host-permission model above
+> supersedes it.
 
 ![Architecture](../assets/architecture.png)
 
@@ -262,10 +282,16 @@ clearhead/
   - `domains.js` — normalization/validation edge cases.
   - `friction.js` — cooldown / `unlockAt` logic.
   - `build-rules.mjs` — output is valid DNR rule JSON.
+- **Automated e2e (`npm run e2e`, Playwright + real unpacked extension):** loads the
+  extension in headless Chromium, resolves the ext ID from the live service worker, and
+  asserts: `load` (loads + curated ruleset enabled), `redirect` (curated domain redirects
+  via `testMatchOutcome`, off-list domain does not — never navigates to a real site),
+  `blockpage` (timer ticks, why renders, chip records a trigger), `settings` (add lists a
+  domain), `friction` (remove shows the cooldown gate, confirm disabled).
 - **Manual checklist (load unpacked):**
   - Visit a curated domain → redirected to `blocked.html`.
-  - Add a custom domain → it redirects.
-  - Urge-surf timer cannot be skipped.
+  - Add a custom domain → permission prompt, then it redirects.
+  - Urge-surf timer cannot be skipped; no bypass button exists.
   - Removing a domain enforces the cooldown + type-to-confirm.
   - Stats increment correctly.
 
@@ -273,11 +299,14 @@ clearhead/
 
 ## 11. Security & privacy summary
 
-- Minimal permissions (`declarativeNetRequest`, `storage`) — no tabs, no host, no network.
-- No auto-update (unpacked), no third-party code, no hosted services, no telemetry.
+- API permissions: `declarativeNetRequest`, `storage` — no `tabs`, no network.
+- **Host access scoped to the blocklist only** (generated curated patterns +
+  per-domain optional grants), never `<all_urls>`. Required because DNR `redirect`
+  needs host permission (see §3).
+- No auto-update (unpacked), no third-party/remote code, no hosted services, no telemetry.
 - All data is local. The curated list ships in the repo; user data lives in
-  `chrome.storage.local`.
-- The README documents *why* the permission set is intentionally tiny.
+  `chrome.storage.local`. With no network code, nothing leaves the machine regardless.
+- The README documents the permission model honestly.
 
 ---
 
