@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornhub.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xvideos.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xnxx.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "redtube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "youporn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xhamster.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "onlyfans.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "chaturbate.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "spankbang.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "brazzers.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  }
+]
