@@ -554,8 +554,8 @@ body {
 }
 /* Grow + halo the thumb while grabbing, so the drag clearly registers. */
 .range:active::-webkit-slider-thumb {
-  transform: scale(1.35);
-  box-shadow: 0 0 0 6px rgba(15, 143, 134, 0.16), 0 1px 3px rgba(16, 24, 40, 0.25);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(15, 143, 134, 0.14), 0 1px 3px rgba(16, 24, 40, 0.25);
 }
 .range::-moz-range-thumb {
   width: 18px;
@@ -567,8 +567,8 @@ body {
   transition: transform 120ms ease, box-shadow 120ms ease;
 }
 .range:active::-moz-range-thumb {
-  transform: scale(1.35);
-  box-shadow: 0 0 0 6px rgba(15, 143, 134, 0.16), 0 1px 3px rgba(16, 24, 40, 0.25);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(15, 143, 134, 0.14), 0 1px 3px rgba(16, 24, 40, 0.25);
 }
 .range:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
 
@@ -594,7 +594,8 @@ body {
   cursor: pointer;
   transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
 }
-.seg:hover { color: var(--ink); }
+.seg:hover { color: var(--ink); background: rgba(15, 143, 134, 0.06); }
+.seg.active:hover { background: #fff; }
 .seg.active {
   background: #fff;
   color: var(--ink);

@@ -173,15 +173,13 @@ async function onAdd() {
 }
 
 // ---------- Friction modal ----------
-// Two modes share one overlay:
-//   • cooldown mode — turning protection OFF (remove a domain, disable the
-//     extended tier): a 5-minute wait + type-to-confirm. Deliberately hard.
-//   • confirm mode — turning the extended tier ON: a single deliberate yes/no.
+// One overlay, used to turn protection OFF (remove a domain, or disable the
+// extended tier): a 5-minute cooldown + type-to-confirm. Deliberately hard.
 
 const FRICTION_BODY =
   "Removing protection has a 5 minute cooldown. This pause is on purpose. It gives your future self a chance to weigh in.";
 
-let modal = { pending: null, timer: null, confirmType: null, onDone: null, cooldown: true };
+let modal = { pending: null, timer: null, confirmType: null, onDone: null };
 
 function updateConfirmEnabled() {
   const unlocked = isUnlocked(modal.pending, Date.now());
@@ -197,16 +195,10 @@ function tickModal() {
   updateConfirmEnabled();
 }
 
-function setCooldownUiVisible(visible) {
-  els.fCountdown.hidden = !visible;
-  els.fPhraseHint.hidden = !visible;
-  els.fConfirm.hidden = !visible;
-}
-
 async function openCooldownModal({ title, requestType, requestPayload = {}, confirmType, confirmLabel = "Remove", onDone }) {
   const res = await send({ type: requestType, ...requestPayload });
   const unlockAt = res && res.ok ? res.unlockAt : Date.now() + 5 * 60 * 1000;
-  modal = { pending: { unlockAt }, timer: null, confirmType, onDone, cooldown: true };
+  modal = { pending: { unlockAt }, timer: null, confirmType, onDone };
 
   els.fTitle.textContent = title;
   els.fBody.textContent = FRICTION_BODY;
@@ -216,36 +208,22 @@ async function openCooldownModal({ title, requestType, requestPayload = {}, conf
   els.fConfirm.value = "";
   els.fConfirm.disabled = true;
   els.fConfirmBtn.disabled = true;
-  setCooldownUiVisible(true);
   els.overlay.hidden = false;
   tickModal();
   modal.timer = setInterval(tickModal, 1000);
 }
 
-function openConfirmModal({ title, body, confirmLabel, onDone }) {
-  modal = { pending: null, timer: null, confirmType: null, onDone, cooldown: false };
-  els.fTitle.textContent = title;
-  els.fBody.textContent = body;
-  els.fConfirmBtn.textContent = confirmLabel;
-  setCooldownUiVisible(false);
-  els.fConfirmBtn.disabled = false;
-  els.overlay.hidden = false;
-}
-
 function closeModal() {
   if (modal.timer) clearInterval(modal.timer);
-  modal = { pending: null, timer: null, confirmType: null, onDone: null, cooldown: true };
-  els.fBody.textContent = FRICTION_BODY;
+  modal = { pending: null, timer: null, confirmType: null, onDone: null };
   els.overlay.hidden = true;
 }
 
 async function onConfirm() {
-  if (modal.cooldown) {
-    const res = await send({ type: modal.confirmType, phrase: els.fConfirm.value });
-    if (!(res && res.ok)) {
-      updateConfirmEnabled(); // cooldown not elapsed or phrase mismatch — keep the gate up
-      return;
-    }
+  const res = await send({ type: modal.confirmType, phrase: els.fConfirm.value });
+  if (!(res && res.ok)) {
+    updateConfirmEnabled(); // cooldown not elapsed or phrase mismatch — keep the gate up
+    return;
   }
   const done = modal.onDone;
   closeModal();
@@ -363,19 +341,16 @@ async function onToggleExtended() {
       onDone: renderExtended,
     });
   } else {
-    // Turning ON is a deliberate yes/no, then the host-permission grant.
-    openConfirmModal({
-      title: "Turn on the extended blocklist?",
-      body: "This blocks 313 more sites and asks Chrome for access to them. Once on, it takes a 5 minute cooldown to turn back off.",
-      confirmLabel: "Turn it on",
-      onDone: enableExtended,
-    });
+    // Turning ON goes straight to Chrome's permission prompt for the extended
+    // domains — that prompt (access to 300+ sites) IS the deliberate gate, and
+    // it's the same flow as adding a custom domain. No extra modal in between.
+    await enableExtended();
   }
 }
 
 async function enableExtended() {
-  // Called from the confirm-button gesture, so chrome.permissions.request is allowed.
-  const domains = await loadExtendedDomains();
+  // Runs inside the toggle-click gesture, so chrome.permissions.request is allowed.
+  const domains = extendedDomains || (await loadExtendedDomains());
   const origins = domains.flatMap(originsFor);
   let granted = true;
   try {
