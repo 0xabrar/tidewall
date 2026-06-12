@@ -26,16 +26,21 @@ const els = {
 };
 
 // Count a number up from 0 to `to` (easeOutCubic) — the done-screen reward.
-function animateCount(el, to, ms = 800) {
+// Starts after the stage has eased in, so the count reads cleanly on its own
+// instead of running underneath the entrance animation.
+function animateCount(el, to, ms = 900) {
   if (!el) return;
-  const start = performance.now();
-  const step = (now) => {
-    const t = Math.min(1, (now - start) / ms);
-    const eased = 1 - Math.pow(1 - t, 3);
-    el.textContent = String(Math.round(to * eased));
-    if (t < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
+  el.textContent = "0";
+  setTimeout(() => {
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / ms);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = String(Math.round(to * eased));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, 450);
 }
 
 // Breath phases per pattern: [label, seconds, expanded].
@@ -188,7 +193,7 @@ async function init() {
   let chosenAction = "";
   const toDone = () => {
     if (chosenAction && els.doneAction) {
-      els.doneAction.textContent = `Now, ${chosenAction.toLowerCase()}.`;
+      els.doneAction.textContent = `When you're ready, ${chosenAction.toLowerCase()}.`;
     }
     animateCount(els.doneStatNum, surfed); // count up the total as the reward
     goState("done");

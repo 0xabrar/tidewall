@@ -367,14 +367,14 @@ body {
 
 /* The closing reward: the running count, animated up. */
 .done-stat {
-  margin: 44px 0 0;
+  margin: 46px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 12px;
 }
 .done-stat-num {
-  font-size: 44px;
+  font-size: 46px;
   font-weight: 600;
   line-height: 1;
   color: var(--hero);
@@ -382,9 +382,9 @@ body {
   text-shadow: 0 0 28px rgba(var(--teal), 0.35);
 }
 .done-stat-label {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   color: var(--ink-3);
   text-transform: uppercase;
 }
