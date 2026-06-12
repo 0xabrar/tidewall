@@ -23,26 +23,41 @@ async function reconcile() {
   await chrome.declarativeNetRequest.updateDynamicRules({ removeRuleIds, addRules });
 }
 
+// Serialize reconciles for this service-worker lifetime. Two near-simultaneous
+// triggers (onStartup racing a split-incognito sibling, or back-to-back
+// add-domain messages) would otherwise interleave getDynamicRules/updateDynamicRules
+// and collide on rule IDs. Chaining also gives one place to swallow + log a
+// failure instead of leaking an unhandled rejection.
+let reconcileChain = Promise.resolve();
+function queueReconcile() {
+  reconcileChain = reconcileChain
+    .catch(() => {})
+    .then(reconcile)
+    .catch((e) => console.error("Tidewall: reconcile failed", e));
+  return reconcileChain;
+}
+
 chrome.runtime.onInstalled.addListener((details) => {
-  reconcile();
+  queueReconcile();
   // First install → show the calm onboarding / privacy welcome page.
   if (details?.reason === "install") {
     chrome.tabs?.create({ url: chrome.runtime.getURL("pages/welcome.html") });
   }
 });
-chrome.runtime.onStartup.addListener(reconcile);
+chrome.runtime.onStartup.addListener(queueReconcile);
 
 // Toolbar icon opens the settings page.
 chrome.action?.onClicked.addListener(() => chrome.runtime.openOptionsPage());
 
 // Enable/disable the opt-in "extended" static ruleset. Host permission for the
 // extended domains is requested from the options page (a user gesture) BEFORE
-// this is called; here we just flip the ruleset and remember the choice.
+// this is called; here we just flip the ruleset.
 async function setExtended(enabled) {
   await chrome.declarativeNetRequest.updateEnabledRulesets(
     enabled ? { enableRulesetIds: ["extended"] } : { disableRulesetIds: ["extended"] }
   );
-  await store.setSettings({ extendedEnabled: !!enabled });
+  // No need to persist the choice: DNR remembers enabled rulesets across restarts,
+  // and isExtendedEnabled() reads that back as the single source of truth.
 }
 
 async function isExtendedEnabled() {
@@ -53,20 +68,26 @@ async function isExtendedEnabled() {
 // Handles a runtime message from an extension page (block page / options) and
 // returns the response object. Pages run in their own realm, so their
 // chrome.runtime.sendMessage reaches this onMessage listener natively.
-async function handleMessage(msg) {
+async function handleMessage(msg, sender) {
+  // blocked.html is web-accessible (the DNR redirect target), so any page can
+  // iframe it and fire stat messages. Real stat senders are top-level extension
+  // pages (frameId 0); ignore stat writes coming from a sub-frame.
+  const subFrame = !!sender && sender.frameId > 0;
   switch (msg?.type) {
     case "encounter":
-      await store.recordEncounter();
+      if (!subFrame) await store.recordEncounter();
       return { ok: true };
     case "surf-complete":
-      await store.recordSurf();
+      if (!subFrame) await store.recordSurf();
       return { ok: true };
-    case "trigger":
-      await store.recordTrigger(msg.name);
+    case "trigger": {
+      const name = typeof msg.name === "string" ? msg.name.trim().slice(0, 64) : "";
+      if (!subFrame && name) await store.recordTrigger(name);
       return { ok: true };
+    }
     case "add-domain": {
       const res = await store.addDomain(msg.domain);
-      if (res.ok) await reconcile();
+      if (res.ok) await queueReconcile();
       return res;
     }
     case "request-remove": {
@@ -81,7 +102,7 @@ async function handleMessage(msg) {
       }
       await store.removeDomain(pending.payload);
       await store.setPendingUnlock(null);
-      await reconcile();
+      await queueReconcile();
       return { ok: true };
     }
     // Disabling the extended tier is gated behind the same friction as removing
@@ -112,7 +133,10 @@ async function handleMessage(msg) {
   }
 }
 
-chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
-  handleMessage(msg).then(sendResponse, () => sendResponse({ ok: false, error: "exception" }));
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  handleMessage(msg, sender).then(sendResponse, (e) => {
+    console.error("Tidewall: message handler failed", msg?.type, e);
+    sendResponse({ ok: false, error: "exception" });
+  });
   return true; // keep the message channel open for async sendResponse
 });

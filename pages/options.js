@@ -197,7 +197,14 @@ function tickModal() {
 
 async function openCooldownModal({ title, requestType, requestPayload = {}, confirmType, confirmLabel = "Remove", onDone }) {
   const res = await send({ type: requestType, ...requestPayload });
-  const unlockAt = res && res.ok ? res.unlockAt : Date.now() + 5 * 60 * 1000;
+  if (!res || !res.ok) {
+    // The worker never stored a pending unlock, so a countdown here could never
+    // be confirmed. Don't open a dead-end modal that strands the user for five
+    // minutes on a button that can't work — report it and let them retry.
+    if (els.extendedHelp) els.extendedHelp.textContent = "Couldn't start the cooldown. Please try again.";
+    return;
+  }
+  const unlockAt = res.unlockAt;
   modal = { pending: { unlockAt }, timer: null, confirmType, onDone };
 
   els.fTitle.textContent = title;
