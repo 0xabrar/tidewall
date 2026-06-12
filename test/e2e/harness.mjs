@@ -123,6 +123,9 @@ const checks = {
     const page = await context.newPage();
     await page.goto(`chrome-extension://${extId}/pages/blocked.html`);
 
+    // Intro stage: the person taps Begin to start the breathing (no auto-start).
+    await page.locator("#beginBtn").click();
+
     // Breathing stage is shown and the phase word advances over time.
     const word = page.locator("#breathWord");
     await word.waitFor({ timeout: 5000 });

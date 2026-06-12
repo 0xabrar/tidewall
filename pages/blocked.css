@@ -1,6 +1,6 @@
 /* ClearHead — block / intervention page.
    Progressive disclosure: breathe -> what's going on -> do one thing -> done.
-   Calm dark indigo->teal aesthetic, self-hosted Geist, no italics anywhere.
+   Calm dark indigo->teal aesthetic, self-hosted Hanken Grotesk, no italics anywhere.
 
    Breathing motion notes:
    - The inner circle scales up on inhale and back down on exhale; the cue word
@@ -10,9 +10,10 @@
    - Easing is easeInOutSine — the gentlest symmetric curve, closest to how
      breath actually accelerates and settles. */
 
-@font-face { font-family: "Geist"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/geist-400.woff2") format("woff2"); }
-@font-face { font-family: "Geist"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/geist-500.woff2") format("woff2"); }
-@font-face { font-family: "Geist"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/geist-600.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/hanken-400.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/hanken-500.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/hanken-600.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/hanken-700.woff2") format("woff2"); }
 
 :root {
   --hero: #dcf7f3;
@@ -29,7 +30,7 @@
 html, body { margin: 0; height: 100%; }
 
 body {
-  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-style: normal;
   color: var(--ink-1);
   background:
@@ -64,6 +65,61 @@ body {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: none; }
 }
+
+/* ---------- Intro / ease-in ---------- */
+
+.intro-orb {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  margin-bottom: 40px;
+  background: radial-gradient(closest-side, rgba(var(--teal), 0.28), rgba(var(--teal), 0.04));
+  border: 1.5px solid rgba(var(--teal), 0.45);
+  box-shadow: 0 0 50px rgba(var(--teal), 0.22);
+  animation: orb-pulse 4.5s var(--ease-breath) infinite;
+}
+@keyframes orb-pulse {
+  0%, 100% { transform: scale(0.94); box-shadow: 0 0 36px rgba(var(--teal), 0.16); }
+  50%      { transform: scale(1.06); box-shadow: 0 0 64px rgba(var(--teal), 0.3); }
+}
+
+.intro-title {
+  margin: 0 0 12px;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink-1);
+  max-width: 420px;
+}
+.intro-sub {
+  margin: 0 0 40px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 380px;
+}
+
+.begin-btn {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--hero);
+  background: rgba(127, 227, 223, 0.1);
+  border: 1.5px solid rgba(var(--teal), 0.55);
+  border-radius: 999px;
+  padding: 14px 38px;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(var(--teal), 0.12);
+  transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+.begin-btn:hover {
+  background: rgba(127, 227, 223, 0.18);
+  border-color: rgba(var(--teal), 0.8);
+  box-shadow: 0 0 44px rgba(var(--teal), 0.24);
+}
+.begin-btn:active { transform: scale(0.97); }
+.begin-btn:focus-visible { outline: 2px solid rgba(var(--teal), 0.8); outline-offset: 3px; }
 
 /* ---------- Breathing ---------- */
 
@@ -317,6 +373,7 @@ body {
   .breath.expanded .breath-core { transform: scale(1.18); }
   .breath.expanded .breath-glow { transform: scale(1.05); }
   .ripple { animation: none; opacity: 0; }
+  .intro-orb { animation: none; }
   .stage, .done-glyph { animation: none; }
   .done-glyph svg { animation: none; stroke-dashoffset: 0; }
 }

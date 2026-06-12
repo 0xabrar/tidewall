@@ -10,7 +10,7 @@
     "e2e": "node test/e2e/harness.mjs"
   },
   "devDependencies": {
-    "@fontsource/geist-sans": "^5.2.5",
+    "@fontsource/hanken-grotesk": "^5.2.8",
     "playwright": "^1.60.0"
   }
 }

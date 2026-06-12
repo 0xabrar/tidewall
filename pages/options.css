@@ -1,36 +1,36 @@
 /* ClearHead — settings / options page.
    Light theme, near-white background, white cards with hairline borders + soft
    shadow, ONE teal accent reserved for primary actions only. Muted slate-gray
-   for everything else. Self-hosted Geist (same woff2 as the block page). No
+   for everything else. Self-hosted Hanken Grotesk (same woff2 as the block page). No
    italics anywhere — emphasis via weight and color only. */
 
 @font-face {
-  font-family: "Geist";
+  font-family: "Hanken Grotesk";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../assets/fonts/geist-400.woff2") format("woff2");
+  src: url("../assets/fonts/hanken-400.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Geist";
+  font-family: "Hanken Grotesk";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("../assets/fonts/geist-500.woff2") format("woff2");
+  src: url("../assets/fonts/hanken-500.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Geist";
+  font-family: "Hanken Grotesk";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("../assets/fonts/geist-600.woff2") format("woff2");
+  src: url("../assets/fonts/hanken-600.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Geist";
+  font-family: "Hanken Grotesk";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../assets/fonts/geist-700.woff2") format("woff2");
+  src: url("../assets/fonts/hanken-700.woff2") format("woff2");
 }
 
 :root {
@@ -64,7 +64,7 @@ html, body {
 }
 
 body {
-  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-style: normal;
   color: var(--ink);
   background: var(--bg);
