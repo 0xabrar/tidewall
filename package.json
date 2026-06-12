@@ -1,0 +1,11 @@
+{
+  "name": "clearhead",
+  "version": "0.1.0",
+  "description": "Local-only Chrome extension: blocks porn sites and redirects to a calm CBT intervention page.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build:rules": "node scripts/build-rules.mjs",
+    "test": "node --test"
+  }
+}
