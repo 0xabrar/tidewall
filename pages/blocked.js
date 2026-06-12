@@ -21,8 +21,22 @@ const els = {
   actions: document.getElementById("actions"),
   next: document.getElementById("next"),
   why: document.getElementById("why"),
-  foot: document.getElementById("foot"),
+  doneAction: document.getElementById("doneAction"),
+  doneStatNum: document.getElementById("doneStatNum"),
 };
+
+// Count a number up from 0 to `to` (easeOutCubic) — the done-screen reward.
+function animateCount(el, to, ms = 800) {
+  if (!el) return;
+  const start = performance.now();
+  const step = (now) => {
+    const t = Math.min(1, (now - start) / ms);
+    const eased = 1 - Math.pow(1 - t, 3);
+    el.textContent = String(Math.round(to * eased));
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
 
 // Breath phases per pattern: [label, seconds, expanded].
 // "expanded" drives the circle + glow via the .expanded class; each phase's
@@ -169,19 +183,28 @@ async function init() {
     setTimeout(() => goState("action"), 240);
   });
 
-  // Stage 3: do one thing instead — NOT stored (acknowledge only).
+  // Stage 3: do one thing instead — NOT stored (acknowledge only). We keep the
+  // chosen action only in memory, to close the loop on the done screen.
+  let chosenAction = "";
   const toDone = () => {
-    els.foot.textContent = `${surfed} urges surfed`;
+    if (chosenAction && els.doneAction) {
+      els.doneAction.textContent = `Now, ${chosenAction.toLowerCase()}.`;
+    }
+    animateCount(els.doneStatNum, surfed); // count up the total as the reward
     goState("done");
   };
   els.actions.addEventListener("click", (e) => {
     const btn = e.target.closest("button");
     if (!btn || !els.actions.contains(btn)) return;
     btn.classList.add("selected");
+    chosenAction = btn.textContent.trim();
     setTimeout(toDone, 240);
   });
   els.next.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && els.next.value.trim()) toDone();
+    if (e.key === "Enter" && els.next.value.trim()) {
+      chosenAction = els.next.value.trim();
+      toDone();
+    }
   });
 
   // Minimal namespaced handle so the e2e harness can drive states without

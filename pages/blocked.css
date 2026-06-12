@@ -351,29 +351,49 @@ body {
 }
 
 .done-title {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-size: 30px;
   font-weight: 600;
   letter-spacing: -0.015em;
   color: var(--ink-1);
 }
-.done-sub {
+/* The chosen next action, restated so "go do it" actually has a referent. */
+.done-action {
   margin: 0;
   font-size: 17px;
   color: var(--ink-2);
 }
-.done-note {
-  margin: 40px 0 0;
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--ink-2);
+.done-action:empty { display: none; }
+
+/* The closing reward: the running count, animated up. */
+.done-stat {
+  margin: 44px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
 }
-.foot {
-  margin: 14px 0 0;
-  font-size: 14px;
+.done-stat-num {
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--hero);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 28px rgba(var(--teal), 0.35);
+}
+.done-stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+.done-reflect {
+  margin: 40px 0 0;
+  font-size: 14.5px;
   color: var(--ink-3);
 }
-.foot:empty { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .breath-core, .breath-glow { transition: none; }
