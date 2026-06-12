@@ -110,32 +110,47 @@ const checks = {
     return `${target} matches a curated redirect; off-list example.com does not`;
   },
 
-  // The block page renders its hero ring + countdown, the timer actually ticks
-  // down, and clicking a trigger chip records it. Requires Task 7.
+  // Progressive block page: the breathing animation runs (phase word changes),
+  // then the trigger stage records an anonymous tally and advances to the
+  // action stage (which shows the "why"), and an action advances to "done".
+  // We drive the breathe->trigger transition via the namespaced test handle to
+  // avoid waiting out a full real-time breathing session.
   async blockpage({ context, sw, extId }) {
     await seedStorage(sw, {
-      settings: { surfSeconds: 5, breathPattern: "box", whyStatement: "test why" },
+      settings: { surfSeconds: 8, breathPattern: "box", whyStatement: "test why" },
       stats: { encounters: 0, surfsCompleted: 0, triggers: {} },
     });
     const page = await context.newPage();
     await page.goto(`chrome-extension://${extId}/pages/blocked.html`);
-    const timeEl = page.locator("#time");
-    await timeEl.waitFor({ timeout: 5000 });
-    const t1 = await timeEl.textContent();
-    await page.waitForTimeout(2200);
-    const t2 = await timeEl.textContent();
-    if (t1 === t2) throw new Error(`timer did not tick: ${t1} == ${t2}`);
-    // why statement shown
-    const why = await page.locator("#why").textContent();
-    if (!why?.includes("test why")) throw new Error(`why not rendered: "${why}"`);
-    // click a chip, expect a trigger recorded
-    await page.locator("#chips button").first().click();
-    await page.waitForTimeout(300);
+
+    // Breathing stage is shown and the phase word advances over time.
+    const word = page.locator("#breathWord");
+    await word.waitFor({ timeout: 5000 });
+    const w1 = await word.textContent();
+    await page.waitForTimeout(4600); // box inhale is 4s -> word should change
+    const w2 = await word.textContent();
+    if (w1 === w2) throw new Error(`breath phase did not advance: ${w1} == ${w2}`);
+
+    // Skip to the trigger stage; record a trigger; expect it to advance + tally.
+    await page.evaluate(() => window.__clearhead.go("trigger"));
+    await page.locator('[data-stage="trigger"] .chips button').first().click();
+    await page.waitForTimeout(400);
     const { stats } = await getStorage(sw, ["stats"]);
     const total = Object.values(stats?.triggers || {}).reduce((a, b) => a + b, 0);
-    if (total < 1) throw new Error("chip click did not record a trigger");
+    if (total < 1) throw new Error("trigger chip did not record an anonymous tally");
+
+    // Now on the action stage, which shows the "why".
+    const why = await page.locator('[data-stage="action"] #why').textContent();
+    if (!why?.includes("test why")) throw new Error(`why not rendered: "${why}"`);
+
+    // Choosing an action advances to the done stage.
+    await page.locator('[data-stage="action"] #actions button').first().click();
+    await page.waitForTimeout(400);
+    const doneVisible = await page.locator('[data-stage="done"]').isVisible();
+    if (!doneVisible) throw new Error("action did not advance to the done stage");
+
     await page.close();
-    return `timer ${t1}->${t2}, trigger recorded`;
+    return `breathing ${w1}->${w2}, trigger tallied, action->done`;
   },
 
   // The settings page lists domains and can add one through the UI. Requires Task 8.

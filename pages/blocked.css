@@ -1,62 +1,33 @@
-/* ClearHead — calm intervention / block page.
-   Self-hosted Geist (woff2 under assets/fonts/, copied from @fontsource/geist-sans).
-   No remote font hot-linking (extension CSP + offline goal). No italics anywhere. */
+/* ClearHead — block / intervention page.
+   Progressive disclosure: breathe -> what's going on -> do one thing -> done.
+   Calm dark indigo->teal aesthetic, self-hosted Geist, no italics anywhere.
+   Breathing is an Ansel-style scaling + glowing circle (scale driven by JS per
+   phase; the soft outer glow pulses continuously). */
 
-@font-face {
-  font-family: "Geist";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../assets/fonts/geist-400.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Geist";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("../assets/fonts/geist-500.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Geist";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("../assets/fonts/geist-600.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Geist";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("../assets/fonts/geist-700.woff2") format("woff2");
-}
+@font-face { font-family: "Geist"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/geist-400.woff2") format("woff2"); }
+@font-face { font-family: "Geist"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/geist-500.woff2") format("woff2"); }
+@font-face { font-family: "Geist"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/geist-600.woff2") format("woff2"); }
 
 :root {
-  --bg-top: #131a36;       /* deep indigo */
-  --bg-bottom: #16323a;    /* muted teal */
-  --glow: #7fe3df;         /* teal-white ring glow */
-  --hero: #f3fbfb;         /* brightest text (timer) */
-  --secondary: #aab6cc;    /* legible secondary */
-  --tertiary: #7c879d;     /* faint labels / footer */
-  --chip-border: rgba(170, 182, 204, 0.22);
-  --col: 440px;
+  --hero: #dcf7f3;
+  --teal: 127, 227, 223;        /* rgb of the glow accent */
+  --ink-1: rgba(233, 240, 255, 0.92);
+  --ink-2: rgba(200, 212, 234, 0.62);
+  --ink-3: rgba(180, 194, 220, 0.42);
+  --line: rgba(127, 227, 223, 0.22);
 }
 
 * { box-sizing: border-box; }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
+html, body { margin: 0; height: 100%; }
 
 body {
-  min-height: 100vh;
   font-family: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-style: normal; /* never italic — emphasis via weight/color only */
-  color: var(--secondary);
+  font-style: normal;
+  color: var(--ink-1);
   background:
-    radial-gradient(120% 90% at 50% 18%, rgba(127, 227, 223, 0.08) 0%, rgba(127, 227, 223, 0) 55%),
-    linear-gradient(165deg, var(--bg-top) 0%, #142540 45%, var(--bg-bottom) 100%);
+    radial-gradient(1100px 700px at 50% 18%, rgba(18, 74, 78, 0.55), rgba(0, 0, 0, 0)) ,
+    linear-gradient(168deg, #0b1024 0%, #0c1a2e 48%, #0c2a31 100%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -64,198 +35,225 @@ body {
 
 .wrap {
   min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 24px;
+}
+
+/* ---------- Stages (progressive disclosure) ---------- */
+
+.stage {
+  width: 100%;
+  max-width: 460px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 32px;
-  width: 100%;
-  max-width: var(--col);
-  margin: 0 auto;
-  padding: 48px 24px 40px;
   text-align: center;
+  animation: stage-in 600ms ease both;
+}
+.stage[hidden] { display: none; }
+
+@keyframes stage-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
 }
 
-/* ---------- Hero: glowing breathing ring + countdown ---------- */
+/* ---------- Breathing ---------- */
 
-.ring {
+.breath {
   position: relative;
-  width: 232px;
-  height: 232px;
+  width: 280px;
+  height: 280px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 36px;
+}
+
+/* soft outer glow — pulses continuously for ambiance */
+.breath-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(var(--teal), 0.18), rgba(var(--teal), 0));
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.92); }
+  50%      { opacity: 0.7;  transform: scale(1.04); }
+}
+
+/* inner circle — JS sets transform: scale() per breath phase, with the
+   transition-duration set to that phase's length so it eases in/out. */
+.breath-core {
+  position: relative;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  /* the ring itself: a soft conic/solid glow border */
-  background:
-    radial-gradient(closest-side, rgba(19, 26, 54, 0.0) 78%, rgba(127, 227, 223, 0.0) 100%);
+  background: radial-gradient(closest-side, rgba(var(--teal), 0.16), rgba(var(--teal), 0.05));
+  border: 1.5px solid rgba(var(--teal), 0.55);
   box-shadow:
-    0 0 0 1px rgba(127, 227, 223, 0.35) inset,
-    0 0 60px rgba(127, 227, 223, 0.22),
-    0 0 120px rgba(127, 227, 223, 0.12);
-  animation: breathe var(--breath-duration, 16s) ease-in-out infinite;
+    0 0 0 1px rgba(var(--teal), 0.18) inset,
+    0 0 34px rgba(var(--teal), 0.22),
+    0 0 80px rgba(var(--teal), 0.12);
+  transform: scale(1);
+  transition: transform 4s ease-in-out, box-shadow 4s ease-in-out;
+  will-change: transform;
 }
 
-/* the bright ring line */
-.ring::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(127, 227, 223, 0.85);
+/* brighter glow while expanded (inhale / hold-full) */
+.breath-core.expanded {
   box-shadow:
-    0 0 18px rgba(127, 227, 223, 0.6),
-    0 0 42px rgba(127, 227, 223, 0.35);
+    0 0 0 1px rgba(var(--teal), 0.32) inset,
+    0 0 54px rgba(var(--teal), 0.4),
+    0 0 130px rgba(var(--teal), 0.2);
 }
 
-.ring-core {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.breath {
-  font-size: 13px;
+.breath-word {
+  font-size: 17px;
   font-weight: 500;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(170, 182, 204, 0.72);
-}
-
-.time {
-  font-size: 44px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.04em;
   color: var(--hero);
-  font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 24px rgba(127, 227, 223, 0.35);
+  opacity: 1;
+  transition: opacity 220ms ease;
+  text-shadow: 0 0 20px rgba(var(--teal), 0.4);
 }
-
-@keyframes breathe {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow:
-      0 0 0 1px rgba(127, 227, 223, 0.30) inset,
-      0 0 48px rgba(127, 227, 223, 0.18),
-      0 0 100px rgba(127, 227, 223, 0.10);
-  }
-  50% {
-    transform: scale(1.045);
-    box-shadow:
-      0 0 0 1px rgba(127, 227, 223, 0.45) inset,
-      0 0 72px rgba(127, 227, 223, 0.30),
-      0 0 140px rgba(127, 227, 223, 0.16);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ring { animation: none; }
-}
-
-/* ---------- Secondary content ---------- */
 
 .reframe {
   margin: 0;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.5;
-  color: var(--secondary);
-  max-width: 34ch;
+  color: var(--ink-2);
+  letter-spacing: 0.01em;
 }
 
-.reflect {
+/* breath progress dots — soft, no numbers (no anxiety-inducing clock) */
+.dots {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  width: 100%;
+  gap: 9px;
+  margin-top: 28px;
+  min-height: 8px;
 }
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(var(--teal), 0.22);
+  transition: background-color 400ms ease, width 400ms ease;
+}
+.dot.done { background: rgba(var(--teal), 0.7); }
+.dot.active { width: 18px; border-radius: 4px; background: rgba(var(--teal), 0.45); }
 
-.label {
-  margin: 0;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  text-transform: lowercase;
-  color: var(--tertiary);
+/* ---------- Questioning / action stages ---------- */
+
+.prompt {
+  margin: 0 0 26px;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-1);
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .chips button {
   font-family: inherit;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--secondary);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--chip-border);
-  border-radius: 999px;
-  padding: 7px 15px;
-  cursor: pointer;
-  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
-}
-
-.chips button:hover {
-  background: rgba(127, 227, 223, 0.08);
-  border-color: rgba(127, 227, 223, 0.35);
-}
-
-.chips button:focus-visible {
-  outline: 2px solid rgba(127, 227, 223, 0.6);
-  outline-offset: 2px;
-}
-
-.chips button.selected {
-  color: var(--hero);
-  background: rgba(127, 227, 223, 0.14);
-  border-color: rgba(127, 227, 223, 0.55);
-}
-
-.why {
-  margin: 0;
   font-size: 15px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--secondary);
-  max-width: 36ch;
-  min-height: 1.2em;
+  font-weight: 500;
+  color: var(--ink-1);
+  background: rgba(127, 227, 223, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 11px 20px;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+.chips button:hover {
+  background: rgba(127, 227, 223, 0.12);
+  border-color: rgba(var(--teal), 0.45);
+}
+.chips button:active { transform: scale(0.97); }
+.chips button.selected {
+  background: rgba(127, 227, 223, 0.2);
+  border-color: rgba(var(--teal), 0.7);
 }
 
 .next {
   width: 100%;
-  max-width: 360px;
+  max-width: 340px;
+  margin-top: 22px;
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--hero);
+  font-size: 15px;
+  color: var(--ink-1);
   text-align: center;
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--chip-border);
-  padding: 9px 4px;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 4px;
   transition: border-color 160ms ease;
 }
+.next::placeholder { color: var(--ink-3); }
+.next:focus { outline: none; border-bottom-color: rgba(var(--teal), 0.6); }
 
-.next::placeholder {
-  color: var(--tertiary);
-}
-
-.next:focus {
-  outline: none;
-  border-bottom-color: rgba(127, 227, 223, 0.6);
-}
-
-.foot {
-  margin: 0;
-  font-size: 12px;
+.why {
+  margin: 26px 0 0;
+  font-size: 14px;
   font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--tertiary);
+  color: var(--ink-3);
+  max-width: 360px;
+}
+.why:empty { display: none; }
+
+/* ---------- Done ---------- */
+
+.done-glyph {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-bottom: 24px;
+  background: radial-gradient(closest-side, rgba(var(--teal), 0.22), rgba(var(--teal), 0.04));
+  border: 1.5px solid rgba(var(--teal), 0.5);
+  box-shadow: 0 0 40px rgba(var(--teal), 0.28);
+  position: relative;
+}
+.done-glyph::after {
+  content: "";
+  position: absolute;
+  left: 20px; top: 26px;
+  width: 8px; height: 15px;
+  border: solid var(--hero);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.done-title {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ink-1);
+}
+.done-sub {
+  margin: 0;
+  font-size: 16px;
+  color: var(--ink-2);
+}
+.foot {
+  margin: 26px 0 0;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.foot:empty { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .breath-glow { animation: none; }
+  .breath-core { transition: none; }
+  .stage { animation: none; }
 }

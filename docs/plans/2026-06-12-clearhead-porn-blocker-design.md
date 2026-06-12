@@ -152,7 +152,7 @@ just don't wall it off.)
 ```js
 userDomains:   ["example.com", ...]
 settings:      { surfSeconds: 90, breathPattern: "box", whyStatement: "" }
-stats:         { encounters, surfsCompleted, proceeds, triggers: { anxious: n, ... } }
+stats:         { encounters, surfsCompleted, triggers: { anxious: n, ... } }
 pendingUnlock: { type, payload, unlockAt } | null
 ```
 
@@ -162,39 +162,44 @@ pendingUnlock: { type, payload, unlockAt } | null
 
 ### 5.1 Block / intervention page (`blocked.html`)
 
-A local, full-screen, **single-focal-point** page. Calm, premium, never shaming.
-Design driven by the `refactoring-ui` principles: one hero element, generous whitespace,
-everything else de-emphasized, smooth gradient background (no photographic noise).
+A local, full-screen, calm, never-shaming page built as a **progressive-disclosure state
+machine** — one thing on screen at a time, the questioning revealed only *after* the
+breathing. Calm dark indigo→teal gradient, Geist, no italics. (Inspired by the Ansel app's
+emergency-mode breathing UX.)
 
-![Block page](../assets/block-page.png)
+**States (one at a time):**
+1. **Breathe** — an **Ansel-style breathing circle**: a soft outer glow that pulses
+   continuously, and an inner circle that **scales up on inhale, holds, then shrinks on
+   exhale** (driven per-phase from the chosen pattern), with the cue word fading between
+   "Breathe in / Hold / Breathe out". Subtle progress dots, **no visible countdown** — the
+   urge-surf timer runs *implicitly* (it just paces how long the breathing lasts) so there's
+   no clock to create finish-line anxiety. Subtext: "The urge is a wave. Let it pass."
+2. **What's going on?** — trigger chips (anxious / bored / stressed / lonely / tired / just
+   habit). Selecting one records an **anonymous tally only** and advances.
+3. **Do one thing instead** — a short checklist of healthy replacement actions (step
+   outside / water / 10 push-ups / text a friend / start your next task) plus an optional
+   free-text "…or name your own". **Nothing here is stored.** Shows the user's "why".
+4. **Done** — a gentle acknowledgement ("The wave passed. Go do it.") + the urges-surfed
+   count. No bypass control anywhere — advancing only ever goes deeper into the flow.
 
-**Layout (top → bottom):**
-- **Hero (the only high-contrast element):** a glowing circular **breathing ring that
-  doubles as the urge-surf countdown** — breath cue inside it ("Breathe"), time remaining
-  ("1:14"). Merging breath + timer into one element keeps the screen quiet.
-- **Reframe line** (muted, secondary): "The urge is a wave. Let it pass."
-- **Trigger check** (small, de-emphasized): "what's going on?" + a compact row of chips
-  — anxious / bored / stressed / lonely / tired. Tapping logs the trigger locally.
-- **Your why** (muted, secondary): the user's values statement.
-- **Next action** (minimal thin-underline input): "What were you about to do instead?"
-- **Footer** (tertiary, tiny): "12 urges surfed."
-- **No button.** The user closes the tab or navigates away themselves. There is no bypass
-  and no exit control — the page simply *is* the calm screen.
-
-**Evidence-based mapping (each element is a validated component, not decoration):**
-| Element | CBT/ACT component |
+**Evidence-based mapping (each state is a validated component, not decoration):**
+| State | CBT/ACT component |
 |---|---|
-| Breathing ring | mindfulness / emotion regulation |
-| Trigger chips | affect labeling / cognitive |
-| Urge-surf countdown | cue/urge management (urges crest and fall) |
+| Breathing | mindfulness / emotion regulation; cue/urge management (urges crest and fall) |
+| What's going on? | affect labeling / cognitive (the one thing worth tracking) |
+| Do one thing instead | replacement routine (habit-loop substitution) |
 | Your why | ACT values / commitment |
-| Next action | goal-setting |
-| "A slip isn't a relapse" footer | relapse prevention |
+| Done acknowledgement | relapse-prevention framing |
+
+**Storage policy (deliberately minimal):** only **anonymous, local, aggregate** counters
+are stored — trigger tallies, urges surfed, encounters. Self-monitoring of *triggers* is
+the one component relapse-prevention research strongly supports, so it's kept; everything
+else (the chosen action, the free text, any per-event log) is **not** stored.
 
 ### 5.2 Settings / options page (`options.html`)
 
-Clean, light, lots of whitespace, one teal accent reserved for primary actions; same
-quieted treatment as the block page.
+Clean, light, **single centered column** (no sidebar), lots of whitespace, one teal accent
+reserved for primary actions.
 
 ![Settings page](../assets/settings-page.png)
 

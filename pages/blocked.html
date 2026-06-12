@@ -7,29 +7,56 @@
   <link rel="stylesheet" href="blocked.css" />
 </head>
 <body>
-  <main class="wrap" data-clearhead="blocked">
-    <div class="ring" id="ring" aria-hidden="true">
-      <div class="ring-core">
-        <span class="breath" id="breath">Breathe</span>
-        <span class="time" id="time">1:30</span>
+  <main class="wrap" data-clearhead="blocked" data-state="breathe">
+
+    <!-- STATE 1: Breathe -->
+    <section class="stage" data-stage="breathe">
+      <div class="breath" id="breath">
+        <div class="breath-glow"></div>
+        <div class="breath-core" id="breathCore">
+          <span class="breath-word" id="breathWord">Breathe in</span>
+        </div>
       </div>
-    </div>
-
-    <p class="reframe">The urge is a wave. Let it pass.</p>
-
-    <section class="reflect">
-      <p class="label">what's going on?</p>
-      <div class="chips" id="chips">
-        <button type="button">anxious</button><button type="button">bored</button><button type="button">stressed</button><button type="button">lonely</button><button type="button">tired</button>
-      </div>
-
-      <p class="why" id="why"></p>
-
-      <input class="next" id="next" type="text" autocomplete="off"
-             placeholder="What were you about to do instead?" />
+      <p class="reframe">The urge is a wave. Let it pass.</p>
+      <div class="dots" id="dots" aria-hidden="true"></div>
     </section>
 
-    <p class="foot" id="foot"></p>
+    <!-- STATE 2: What's going on? (trigger / affect labeling) -->
+    <section class="stage" data-stage="trigger" hidden>
+      <p class="prompt">What's going on?</p>
+      <div class="chips" id="chips">
+        <button type="button">Anxious</button>
+        <button type="button">Bored</button>
+        <button type="button">Stressed</button>
+        <button type="button">Lonely</button>
+        <button type="button">Tired</button>
+        <button type="button">Just habit</button>
+      </div>
+    </section>
+
+    <!-- STATE 3: Do one thing instead (replacement routine) -->
+    <section class="stage" data-stage="action" hidden>
+      <p class="prompt">Do one thing instead.</p>
+      <div class="chips" id="actions">
+        <button type="button">Step outside</button>
+        <button type="button">Drink some water</button>
+        <button type="button">10 push-ups</button>
+        <button type="button">Text a friend</button>
+        <button type="button">Start your next task</button>
+      </div>
+      <input class="next" id="next" type="text" autocomplete="off"
+             placeholder="…or name your own" />
+      <p class="why" id="why"></p>
+    </section>
+
+    <!-- STATE 4: Acknowledge -->
+    <section class="stage" data-stage="done" hidden>
+      <div class="done-glyph" aria-hidden="true"></div>
+      <p class="done-title">The wave passed.</p>
+      <p class="done-sub">Go do it.</p>
+      <p class="foot" id="foot"></p>
+    </section>
+
   </main>
 
   <script type="module" src="blocked.js"></script>

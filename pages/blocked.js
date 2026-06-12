@@ -1,45 +1,43 @@
-// ClearHead — block / intervention page behavior.
-// Runs in a normal extension-page realm, so chrome.runtime.sendMessage to the
-// background service worker fires onMessage natively (cross-realm).
+// ClearHead — block / intervention page.
+// Progressive disclosure state machine: breathe -> trigger -> action -> done.
+// Only anonymous trigger tallies are stored (CBT self-monitoring); the chosen
+// action and free text are NOT stored. Runs in an extension-page realm, so
+// chrome.runtime.sendMessage reaches the worker natively.
 
 import { makeStore } from "../src/lib/storage.js";
 
 const FALLBACK_SECONDS = 90;
 
 const els = {
-  ring: document.getElementById("ring"),
-  time: document.getElementById("time"),
-  breath: document.getElementById("breath"),
-  why: document.getElementById("why"),
+  wrap: document.querySelector(".wrap"),
+  stages: [...document.querySelectorAll(".stage")],
+  core: document.getElementById("breathCore"),
+  word: document.getElementById("breathWord"),
+  dots: document.getElementById("dots"),
   chips: document.getElementById("chips"),
+  actions: document.getElementById("actions"),
   next: document.getElementById("next"),
+  why: document.getElementById("why"),
   foot: document.getElementById("foot"),
 };
 
-// Breathing patterns: [phase label, seconds]. The block-page ring pulse is timed
-// to one full cycle, and the cue word walks the phases so the page actually
-// guides the chosen pattern (the toggle in Settings drives this).
-const BREATH_PATTERNS = {
-  box: [["Breathe in", 4], ["Hold", 4], ["Breathe out", 4], ["Hold", 4]],
-  "478": [["Breathe in", 4], ["Hold", 7], ["Breathe out", 8]],
+// Breath phases per pattern: [label, seconds, scale, expanded-glow].
+const PATTERNS = {
+  box: [
+    ["Breathe in", 4, 1.45, true],
+    ["Hold", 4, 1.45, true],
+    ["Breathe out", 4, 1.0, false],
+    ["Hold", 4, 1.0, false],
+  ],
+  478: [
+    ["Breathe in", 4, 1.45, true],
+    ["Hold", 7, 1.45, true],
+    ["Breathe out", 8, 1.0, false],
+  ],
 };
 
-function startBreathing(pattern) {
-  const phases = BREATH_PATTERNS[pattern] || BREATH_PATTERNS.box;
-  const total = phases.reduce((sum, [, secs]) => sum + secs, 0);
-  els.ring?.style.setProperty("--breath-duration", `${total}s`);
-  let i = 0;
-  const step = () => {
-    const [label, secs] = phases[i % phases.length];
-    els.breath.textContent = label;
-    i += 1;
-    setTimeout(step, secs * 1000);
-  };
-  step();
-}
+const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
 
-// Best-effort message send; the page must never crash if the worker is asleep
-// or messaging rejects.
 function send(msg) {
   try {
     return Promise.resolve(chrome.runtime.sendMessage(msg)).catch(() => {});
@@ -48,66 +46,121 @@ function send(msg) {
   }
 }
 
-function formatTime(totalSeconds) {
-  const s = Math.max(0, Math.floor(totalSeconds));
-  const m = Math.floor(s / 60);
-  const rem = s % 60;
-  return `${m}:${String(rem).padStart(2, "0")}`;
+function goState(name) {
+  els.wrap.dataset.state = name;
+  for (const stage of els.stages) stage.hidden = stage.dataset.stage !== name;
 }
 
+// ---- Breathing ----------------------------------------------------------
+
+function startBreathing(pattern, surfSeconds, onComplete) {
+  const phases = PATTERNS[pattern] || PATTERNS.box;
+  const cycleSeconds = phases.reduce((sum, p) => sum + p[1], 0);
+  const totalCycles = clamp(Math.round(surfSeconds / cycleSeconds), 2, 8);
+
+  // progress dots (soft, no numbers — no anxiety-inducing clock)
+  els.dots.replaceChildren(
+    ...Array.from({ length: totalCycles }, () => {
+      const d = document.createElement("span");
+      d.className = "dot";
+      return d;
+    })
+  );
+  const paintDots = (active) => {
+    [...els.dots.children].forEach((d, i) => {
+      d.classList.toggle("done", i < active);
+      d.classList.toggle("active", i === active);
+    });
+  };
+
+  const setWord = (text) => {
+    els.word.style.opacity = "0.3";
+    setTimeout(() => {
+      els.word.textContent = text;
+      els.word.style.opacity = "1";
+    }, 200);
+  };
+
+  let cycle = 0;
+  let phaseIdx = 0;
+  paintDots(0);
+
+  const step = () => {
+    if (phaseIdx >= phases.length) {
+      phaseIdx = 0;
+      cycle += 1;
+      paintDots(cycle);
+      if (cycle >= totalCycles) {
+        onComplete();
+        return;
+      }
+    }
+    const [label, secs, scale, expanded] = phases[phaseIdx++];
+    setWord(label);
+    els.core.style.transitionDuration = `${secs}s`;
+    els.core.style.transform = `scale(${scale})`;
+    els.core.classList.toggle("expanded", expanded);
+    setTimeout(step, secs * 1000);
+  };
+  step();
+}
+
+// ---- Flow ---------------------------------------------------------------
+
 async function init() {
-  // 1. Record the encounter (our only signal that a block happened).
   send({ type: "encounter" });
 
   const store = makeStore();
-
-  // 2. Settings: why statement + countdown length + breathing pattern (safe fallbacks).
   let surfSeconds = FALLBACK_SECONDS;
   let breathPattern = "box";
+  let whyStatement = "";
+  let surfed = 0;
   try {
     const settings = await store.getSettings();
-    els.why.textContent = settings?.whyStatement || "";
     const n = Number(settings?.surfSeconds);
     if (Number.isFinite(n) && n > 0) surfSeconds = n;
     if (settings?.breathPattern) breathPattern = settings.breathPattern;
-  } catch {
-    els.why.textContent = "";
-  }
-
-  startBreathing(breathPattern);
-
-  // 3. Footer stat line.
+    whyStatement = settings?.whyStatement || "";
+  } catch {}
   try {
-    const stats = await store.getStats();
-    const surfed = Number(stats?.surfsCompleted) || 0;
-    els.foot.textContent = `${surfed} urges surfed`;
-  } catch {
-    els.foot.textContent = "0 urges surfed";
-  }
+    surfed = Number((await store.getStats())?.surfsCompleted) || 0;
+  } catch {}
 
-  // 4. Countdown — tick once per second; on reaching 0, stop + record surf.
-  let remaining = surfSeconds;
-  els.time.textContent = formatTime(remaining);
+  if (whyStatement) els.why.textContent = `Remember: ${whyStatement}`;
 
-  const interval = setInterval(() => {
-    remaining -= 1;
-    if (remaining <= 0) {
-      remaining = 0;
-      els.time.textContent = formatTime(0);
-      clearInterval(interval);
-      send({ type: "surf-complete" });
-      return;
-    }
-    els.time.textContent = formatTime(remaining);
-  }, 1000);
+  // Stage 1: breathe, then reveal the questioning (only after breathing).
+  startBreathing(breathPattern, surfSeconds, () => {
+    send({ type: "surf-complete" });
+    goState("trigger");
+  });
 
-  // 5. Trigger chips — select + record the trigger by its text.
+  // Stage 2: what's going on? — record the trigger (anonymous tally only).
   els.chips.addEventListener("click", (e) => {
     const btn = e.target.closest("button");
     if (!btn || !els.chips.contains(btn)) return;
     btn.classList.add("selected");
     send({ type: "trigger", name: btn.textContent.trim() });
+    setTimeout(() => goState("action"), 240);
   });
+
+  // Stage 3: do one thing instead — NOT stored (acknowledge only).
+  const toDone = () => {
+    els.foot.textContent = `${surfed} urges surfed`;
+    goState("done");
+  };
+  els.actions.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn || !els.actions.contains(btn)) return;
+    btn.classList.add("selected");
+    setTimeout(toDone, 240);
+  });
+  els.next.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && els.next.value.trim()) toDone();
+  });
+
+  // Minimal namespaced handle so the e2e harness can drive states without
+  // waiting out a full real-time breathing session. Inert in normal use.
+  window.__clearhead = { go: goState };
 }
 
 init();
