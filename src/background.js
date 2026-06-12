@@ -23,7 +23,13 @@ async function reconcile() {
   await chrome.declarativeNetRequest.updateDynamicRules({ removeRuleIds, addRules });
 }
 
-chrome.runtime.onInstalled.addListener(reconcile);
+chrome.runtime.onInstalled.addListener((details) => {
+  reconcile();
+  // First install → show the calm onboarding / privacy welcome page.
+  if (details?.reason === "install") {
+    chrome.tabs?.create({ url: chrome.runtime.getURL("pages/welcome.html") });
+  }
+});
 chrome.runtime.onStartup.addListener(reconcile);
 
 // Toolbar icon opens the settings page.

@@ -1,0 +1,135 @@
+/* ClearHead — first-run welcome / onboarding. Calm dark aesthetic, matches the
+   intervention page. Hanken Grotesk, no italics. Reassures about privacy. */
+
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/hanken-400.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/hanken-500.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/hanken-600.woff2") format("woff2"); }
+
+:root {
+  --hero: #dcf7f3;
+  --teal: 127, 227, 223;
+  --ink-1: rgba(233, 240, 255, 0.94);
+  --ink-2: rgba(200, 212, 234, 0.66);
+  --ink-3: rgba(180, 194, 220, 0.46);
+  --line: rgba(127, 227, 223, 0.18);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink-1);
+  background:
+    radial-gradient(1100px 700px at 50% 12%, rgba(18, 74, 78, 0.5), rgba(0, 0, 0, 0)),
+    linear-gradient(168deg, #0b1024 0%, #0c1a2e 48%, #0c2a31 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.welcome {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 72px 28px 80px;
+  text-align: center;
+}
+
+.logo-wrap {
+  display: inline-grid;
+  place-items: center;
+  margin-bottom: 28px;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 40px rgba(127, 227, 223, 0.4));
+}
+.logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+}
+
+.title {
+  margin: 0 0 14px;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink-1);
+}
+.lede {
+  margin: 0 auto 40px;
+  max-width: 440px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.points {
+  list-style: none;
+  margin: 0 0 40px;
+  padding: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.points li {
+  position: relative;
+  padding: 16px 18px 16px 46px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(127, 227, 223, 0.04);
+}
+/* check glyph */
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 21px;
+  width: 7px;
+  height: 12px;
+  border: solid rgba(var(--teal), 0.85);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.pt-title {
+  display: block;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--ink-1);
+  margin-bottom: 4px;
+}
+.pt-sub {
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.cta {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--hero);
+  background: rgba(127, 227, 223, 0.1);
+  border: 1.5px solid rgba(var(--teal), 0.55);
+  border-radius: 999px;
+  padding: 14px 40px;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(var(--teal), 0.12);
+  transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+.cta:hover {
+  background: rgba(127, 227, 223, 0.18);
+  border-color: rgba(var(--teal), 0.8);
+  box-shadow: 0 0 44px rgba(var(--teal), 0.24);
+}
+.cta:active { transform: scale(0.97); }
+.cta:focus-visible { outline: 2px solid rgba(var(--teal), 0.8); outline-offset: 3px; }
+
+.foot-note {
+  margin: 26px auto 0;
+  max-width: 380px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}

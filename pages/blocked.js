@@ -11,6 +11,7 @@ const FALLBACK_SECONDS = 90;
 const els = {
   wrap: document.querySelector(".wrap"),
   stages: [...document.querySelectorAll(".stage")],
+  beginBtn: document.getElementById("beginBtn"),
   breath: document.getElementById("breathWrap"),
   core: document.getElementById("breathCore"),
   glow: document.getElementById("breathGlow"),
@@ -114,7 +115,17 @@ function startBreathing(pattern, surfSeconds, onComplete) {
 // ---- Flow ---------------------------------------------------------------
 
 async function init() {
-  send({ type: "encounter" });
+  // "self" mode = a breathing session the user started themselves from Settings
+  // (not a blocked-site redirect). Don't count it as an encounter, and use
+  // gentler, non-relapse intro copy.
+  const selfMode = new URLSearchParams(location.search).get("mode") === "self";
+  if (!selfMode) send({ type: "encounter" });
+  if (selfMode) {
+    const title = document.querySelector(".intro-title");
+    const sub = document.querySelector(".intro-sub");
+    if (title) title.textContent = "Let's take a few breaths.";
+    if (sub) sub.textContent = "A moment to slow down and clear your head.";
+  }
 
   const store = makeStore();
   let surfSeconds = FALLBACK_SECONDS;
@@ -134,12 +145,20 @@ async function init() {
 
   if (whyStatement) els.why.textContent = `Remember: ${whyStatement}`;
 
-  // Stage 1: breathe, then reveal the questioning (only after breathing).
-  startBreathing(breathPattern, surfSeconds, () => {
-    send({ type: "surf-complete" });
-    surfed += 1;
-    goState("trigger");
-  });
+  // Stage 0 -> 1: the person eases in and taps Begin to start the breathing.
+  // (Breathing never auto-starts — starting it is their first small choice.)
+  let begun = false;
+  const begin = () => {
+    if (begun) return;
+    begun = true;
+    goState("breathe");
+    startBreathing(breathPattern, surfSeconds, () => {
+      send({ type: "surf-complete" });
+      surfed += 1;
+      goState("trigger");
+    });
+  };
+  els.beginBtn.addEventListener("click", begin);
 
   // Stage 2: what's going on? — record the trigger (anonymous tally only).
   els.chips.addEventListener("click", (e) => {
@@ -167,7 +186,7 @@ async function init() {
 
   // Minimal namespaced handle so the e2e harness can drive states without
   // waiting out a full real-time breathing session. Inert in normal use.
-  window.__clearhead = { go: goState };
+  window.__clearhead = { go: goState, begin };
 }
 
 init();
