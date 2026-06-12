@@ -29,80 +29,67 @@ body {
 }
 
 .welcome {
-  max-width: 520px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 72px 28px 80px;
+  padding: 84px 28px 88px;
   text-align: center;
 }
 
-.logo-wrap {
-  display: inline-grid;
-  place-items: center;
-  margin-bottom: 28px;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 40px rgba(127, 227, 223, 0.4));
-}
 .logo {
-  width: 96px;
-  height: 96px;
-  border-radius: 24px;
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 38px rgba(127, 227, 223, 0.35));
 }
 
 .title {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   font-size: 32px;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--ink-1);
 }
 .lede {
-  margin: 0 auto 40px;
-  max-width: 440px;
-  font-size: 16px;
-  line-height: 1.55;
+  margin: 0 auto 44px;
+  max-width: 420px;
+  font-size: 16.5px;
+  line-height: 1.6;
   color: var(--ink-2);
+  text-wrap: pretty;
 }
 
+/* Plain, quiet reassurances — no boxes. Bold lead-in, soft remainder. */
 .points {
-  list-style: none;
-  margin: 0 0 40px;
-  padding: 0;
+  margin: 0 0 44px;
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 22px;
 }
-.points li {
+.point {
+  margin: 0;
+  padding-left: 26px;
   position: relative;
-  padding: 16px 18px 16px 46px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(127, 227, 223, 0.04);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
 }
-/* check glyph */
-.points li::before {
+.point strong {
+  color: var(--ink-1);
+  font-weight: 600;
+}
+/* subtle teal check, no container */
+.point::before {
   content: "";
   position: absolute;
-  left: 18px;
-  top: 21px;
-  width: 7px;
-  height: 12px;
-  border: solid rgba(var(--teal), 0.85);
+  left: 2px;
+  top: 7px;
+  width: 6px;
+  height: 11px;
+  border: solid rgba(var(--teal), 0.8);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
-}
-.pt-title {
-  display: block;
-  font-size: 15.5px;
-  font-weight: 600;
-  color: var(--ink-1);
-  margin-bottom: 4px;
-}
-.pt-sub {
-  display: block;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--ink-3);
 }
 
 .cta {

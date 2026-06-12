@@ -18,6 +18,7 @@
 :root {
   --hero: #dcf7f3;
   --teal: 127, 227, 223;        /* rgb of the glow accent */
+  --violet: 150, 158, 245;      /* soft periwinkle, a second hue for variety */
   --ink-1: rgba(233, 240, 255, 0.92);
   --ink-2: rgba(200, 212, 234, 0.64);
   --ink-3: rgba(180, 194, 220, 0.44);
@@ -66,60 +67,68 @@ body {
   to   { opacity: 1; transform: none; }
 }
 
-/* ---------- Intro / ease-in ---------- */
+/* ---------- Intro / ease-in ----------
+   A touch of colour variety: the orb blends teal into a soft periwinkle so the
+   screen isn't entirely one hue, and the warm-white title lifts off the cool
+   field. The Begin button is a clean soft-filled CTA (no glow-bloom on hover). */
 
 .intro-orb {
-  width: 84px;
-  height: 84px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
-  margin-bottom: 40px;
-  background: radial-gradient(closest-side, rgba(var(--teal), 0.28), rgba(var(--teal), 0.04));
-  border: 1.5px solid rgba(var(--teal), 0.45);
-  box-shadow: 0 0 50px rgba(var(--teal), 0.22);
-  animation: orb-pulse 4.5s var(--ease-breath) infinite;
+  margin-bottom: 48px;
+  background:
+    radial-gradient(closest-side at 38% 34%, rgba(var(--violet), 0.34), rgba(var(--violet), 0) 70%),
+    radial-gradient(closest-side, rgba(var(--teal), 0.26), rgba(var(--teal), 0.05));
+  border: 1.5px solid rgba(var(--teal), 0.4);
+  box-shadow:
+    0 0 46px rgba(var(--teal), 0.18),
+    0 0 70px rgba(var(--violet), 0.12);
+  animation: orb-pulse 5s var(--ease-breath) infinite;
 }
 @keyframes orb-pulse {
-  0%, 100% { transform: scale(0.94); box-shadow: 0 0 36px rgba(var(--teal), 0.16); }
-  50%      { transform: scale(1.06); box-shadow: 0 0 64px rgba(var(--teal), 0.3); }
+  0%, 100% { transform: scale(0.95); opacity: 0.86; }
+  50%      { transform: scale(1.06); opacity: 1; }
 }
 
 .intro-title {
-  margin: 0 0 12px;
-  font-size: 27px;
+  margin: 0 0 14px;
+  font-size: 30px;
   font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  color: var(--ink-1);
-  max-width: 420px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #f3f7ff;
+  text-wrap: balance;
 }
 .intro-sub {
-  margin: 0 0 40px;
+  margin: 0 0 44px;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--ink-2);
-  max-width: 380px;
+  max-width: 360px;
+  text-wrap: balance;
 }
 
 .begin-btn {
   font-family: inherit;
   font-size: 16px;
   font-weight: 600;
-  color: var(--hero);
-  background: rgba(127, 227, 223, 0.1);
-  border: 1.5px solid rgba(var(--teal), 0.55);
+  color: #05221f;
+  background: linear-gradient(180deg, #8fe9e3, #66d7cf);
+  border: none;
   border-radius: 999px;
-  padding: 14px 38px;
+  padding: 15px 42px;
   cursor: pointer;
-  box-shadow: 0 0 30px rgba(var(--teal), 0.12);
-  transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 6px 20px rgba(var(--teal), 0.22);
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
 }
 .begin-btn:hover {
-  background: rgba(127, 227, 223, 0.18);
-  border-color: rgba(var(--teal), 0.8);
-  box-shadow: 0 0 44px rgba(var(--teal), 0.24);
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 10px 26px rgba(var(--teal), 0.3);
 }
-.begin-btn:active { transform: scale(0.97); }
-.begin-btn:focus-visible { outline: 2px solid rgba(var(--teal), 0.8); outline-offset: 3px; }
+.begin-btn:active { transform: translateY(0) scale(0.98); }
+.begin-btn:focus-visible { outline: 2px solid rgba(var(--teal), 0.9); outline-offset: 3px; }
 
 /* ---------- Breathing ---------- */
 
