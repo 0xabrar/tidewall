@@ -14,11 +14,13 @@ const els = {
   customCard: document.getElementById("custom-card"),
   customList: document.getElementById("custom-list"),
   builtinList: document.getElementById("builtin-list"),
+  extendedList: document.getElementById("extended-list"),
+  extendedState: document.getElementById("extended-state"),
 };
 
-async function loadCurated() {
+async function loadRuleset(path) {
   try {
-    const res = await fetch(chrome.runtime.getURL("rules/curated.json"));
+    const res = await fetch(chrome.runtime.getURL(path));
     const rules = await res.json();
     return rules
       .map((rule) => rule?.condition?.requestDomains?.[0])
@@ -26,6 +28,15 @@ async function loadCurated() {
       .sort((a, b) => a.localeCompare(b));
   } catch {
     return [];
+  }
+}
+
+async function extendedEnabled() {
+  try {
+    const ids = await chrome.declarativeNetRequest.getEnabledRulesets();
+    return ids.includes("extended");
+  } catch {
+    return false;
   }
 }
 
@@ -45,7 +56,12 @@ function subtitleText(builtinCount, customCount) {
 }
 
 async function init() {
-  const [curated, custom] = await Promise.all([loadCurated(), store.getDomains()]);
+  const [curated, extended, custom, extOn] = await Promise.all([
+    loadRuleset("rules/curated.json"),
+    loadRuleset("rules/extended.json"),
+    store.getDomains(),
+    extendedEnabled(),
+  ]);
 
   els.subtitle.textContent = subtitleText(curated.length, custom.length);
 
@@ -55,6 +71,8 @@ async function init() {
   }
 
   renderList(els.builtinList, curated);
+  renderList(els.extendedList, extended);
+  els.extendedState.textContent = extOn ? `— on (${extended.length})` : `— off (${extended.length})`;
 }
 
 init();

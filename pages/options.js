@@ -33,6 +33,8 @@ const els = {
 
   breathHelp: document.getElementById("breath-help"),
   builtinCount: document.getElementById("builtin-count"),
+  extendedToggle: document.getElementById("extended-toggle"),
+  extendedHelp: document.getElementById("extended-help"),
 
   statSurfs: document.getElementById("stat-surfs"),
   statEncounters: document.getElementById("stat-encounters"),
@@ -284,6 +286,60 @@ async function renderBuiltinCount() {
   }
 }
 
+// ---------- Extended blocklist tier ----------
+
+let extendedDomains = null; // cached list for the permission request
+
+async function loadExtendedDomains() {
+  if (extendedDomains) return extendedDomains;
+  try {
+    const res = await fetch(chrome.runtime.getURL("rules/extended.json"));
+    const rules = await res.json();
+    extendedDomains = rules.map((r) => r.condition.requestDomains[0]);
+  } catch {
+    extendedDomains = [];
+  }
+  return extendedDomains;
+}
+
+function paintExtended(enabled) {
+  els.extendedToggle.classList.toggle("on", enabled);
+  els.extendedToggle.setAttribute("aria-checked", enabled ? "true" : "false");
+}
+
+async function renderExtended() {
+  const res = await send({ type: "get-extended" });
+  paintExtended(!!res?.enabled);
+}
+
+async function onToggleExtended() {
+  const res = await send({ type: "get-extended" });
+  const currentlyOn = !!res?.enabled;
+
+  if (currentlyOn) {
+    await send({ type: "set-extended", enabled: false });
+    paintExtended(false);
+    return;
+  }
+
+  // Turning ON: needs host access to the extended domains (one prompt).
+  const domains = await loadExtendedDomains();
+  const origins = domains.flatMap(originsFor);
+  let granted = true;
+  try {
+    granted = await chrome.permissions.request({ origins });
+  } catch {
+    granted = false;
+  }
+  if (!granted) {
+    els.extendedHelp.textContent = "Permission is needed to block these sites. Not enabled.";
+    paintExtended(false);
+    return;
+  }
+  const out = await send({ type: "set-extended", enabled: true });
+  paintExtended(!!out?.enabled);
+}
+
 // ---------- Stats ----------
 
 function renderStats(stats) {
@@ -338,6 +394,7 @@ async function init() {
   // Domains
   await renderDomains();
   renderBuiltinCount();
+  renderExtended();
 
   // ----- Wiring -----
   els.addBtn.addEventListener("click", onAdd);
@@ -367,6 +424,8 @@ async function init() {
     reflectBreath(pattern);
     await store.setSettings({ breathPattern: pattern });
   });
+
+  els.extendedToggle.addEventListener("click", onToggleExtended);
 
   els.fConfirm.addEventListener("input", updateConfirmEnabled);
   els.fConfirmBtn.addEventListener("click", onConfirmRemove);

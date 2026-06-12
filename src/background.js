@@ -26,6 +26,24 @@ async function reconcile() {
 chrome.runtime.onInstalled.addListener(reconcile);
 chrome.runtime.onStartup.addListener(reconcile);
 
+// Toolbar icon opens the settings page.
+chrome.action?.onClicked.addListener(() => chrome.runtime.openOptionsPage());
+
+// Enable/disable the opt-in "extended" static ruleset. Host permission for the
+// extended domains is requested from the options page (a user gesture) BEFORE
+// this is called; here we just flip the ruleset and remember the choice.
+async function setExtended(enabled) {
+  await chrome.declarativeNetRequest.updateEnabledRulesets(
+    enabled ? { enableRulesetIds: ["extended"] } : { disableRulesetIds: ["extended"] }
+  );
+  await store.setSettings({ extendedEnabled: !!enabled });
+}
+
+async function isExtendedEnabled() {
+  const ids = await chrome.declarativeNetRequest.getEnabledRulesets();
+  return ids.includes("extended");
+}
+
 // Handles a runtime message from an extension page (block page / options) and
 // returns the response object. Pages run in their own realm, so their
 // chrome.runtime.sendMessage reaches this onMessage listener natively.
@@ -60,6 +78,12 @@ async function handleMessage(msg) {
       await reconcile();
       return { ok: true };
     }
+    case "set-extended": {
+      await setExtended(msg.enabled);
+      return { ok: true, enabled: await isExtendedEnabled() };
+    }
+    case "get-extended":
+      return { ok: true, enabled: await isExtendedEnabled() };
     default:
       return { ok: false, error: "unknown" };
   }

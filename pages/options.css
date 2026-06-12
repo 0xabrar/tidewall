@@ -317,6 +317,59 @@ body {
 .builtin-link:hover { color: var(--teal-strong); text-decoration: underline; }
 .builtin-link:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
 
+/* Extended tier row + switch */
+.extended-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline);
+}
+.extended-text { min-width: 0; }
+.extended-title {
+  margin: 0 0 4px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.extended-row .help-line { margin: 0; }
+
+.switch {
+  flex: none;
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: #d2d6df;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 180ms ease;
+}
+.switch.on { background: var(--teal); }
+.switch:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.switch-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.25);
+  transition: transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.switch.on .switch-knob { transform: translateX(18px); }
+
+.ext-state {
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+
 /* ---------- Your Why (display <-> edit) ---------- */
 
 /* Display mode: saved statement as readable text + a quiet Edit button. */

@@ -1,0 +1,5636 @@
+[
+  {
+    "id": 200001,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "porndig.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200002,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexvid.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200003,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fapster.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200004,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hardsextube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200005,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornoxo.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200006,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "wetplace.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200007,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornhat.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200008,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexu.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200009,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "videosection.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200010,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sleazyneasy.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200011,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "porndoe.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200012,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fuq.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200013,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "porn7.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200014,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "txxxporn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200015,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "analdin.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200016,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "anyporn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200017,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "vivatube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200018,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fullporner.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200019,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "tubepornclassic.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200020,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "tubeon.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200021,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "tjoob.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200022,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornlib.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200023,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pinkrod.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200024,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fux.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200025,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "perfectgirls.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200026,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "wowtube.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200027,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "netfapx.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200028,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "porntube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200029,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornerbros.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200030,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xcafe.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200031,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "yobt.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200032,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "yeptube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200033,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "ah-me.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200034,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "alphaporno.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200035,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "empflix.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200036,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "tporn.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200037,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "alohatube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200038,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornid.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200039,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "faphouse.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200040,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "onlychicas.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200041,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sextubespot.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200042,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "anysex.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200043,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornwhite.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200044,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "watchmygf.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200045,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "homemoviestube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200046,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "privatesextapes.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200047,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "nudecelebforum.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200048,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "submityourflicks.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200049,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "cfake.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200050,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "amateurporn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200051,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornyub.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200052,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "imlive.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200053,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "jasmin.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200054,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camplace.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200055,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "cams.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200056,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexier.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200057,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camfuze.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200058,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camrabbit.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200059,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "jerkmate.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200060,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "dirtyroulette.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200061,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "shagle.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200062,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camgo.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200063,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camsurf.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200064,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camcontacts.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200065,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "nakedcams.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200066,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "slutroulette.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200067,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornvibe.org"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200068,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "livewebcam69.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200069,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camdudes.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200070,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "gaycams.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200071,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camster.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200072,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "adultcamlover.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200073,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camarads.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200074,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "camhub.cc"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200075,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "royalcams.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200076,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "peekshows.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200077,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "nude.live"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200078,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "babestation.tv"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200079,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexchat.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200080,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "swag.live"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200081,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "tgirlcams.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200082,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javfree.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200083,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "jav.land"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200084,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javmost.cx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200085,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "r18.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200086,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "caribbeancom.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200087,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "caribbeancompr.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200088,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "1pondo.tv"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200089,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "heyzo.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200090,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javlibrary.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200091,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javtube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200092,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javbus.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200093,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "avgle.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200094,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javgg.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200095,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "jablive.tv"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200096,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javcl.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200097,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javdoe.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200098,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javhihi.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200099,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javmama.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200100,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javout.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200101,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "jav321.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200102,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "nudecelebvideo.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200103,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "tokyo-hot.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200104,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "carib-tv.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200105,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "mywife.cc"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200106,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "ten-musume.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200107,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javhd.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200108,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javnow.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200109,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "avpocket.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200110,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hentaigasm.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200111,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hentaistream.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200112,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hentaisea.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200113,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "animeidhentai.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200114,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hentaifox.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200115,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hentaiplay.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200116,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hentairead.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200117,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "tsumino.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200118,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "8muses.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200119,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "imhentai.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200120,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "luscious.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200121,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "doujins.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200122,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "doujinshi.org"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200123,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "mangarocks.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200124,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hentaipulse.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200125,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hentai-foundry.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200126,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "gelbooru.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200127,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "danbooru.donmai.us"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200128,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "chan.sankakucomplex.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200129,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "lolibooru.moe"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200130,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "tbib.org"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200131,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xbooru.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200132,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "rule34.paheal.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200133,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "porncomix.online"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200134,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "toonporn.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200135,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "cartoon-porn.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200136,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "shadbase.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200137,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hentaihere.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200138,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "animehentaiporns.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200139,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "dmm.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200140,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "gyutto.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200141,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fanza.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200142,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pb.dmm.co.jp"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200143,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "avkoreansk.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200144,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "koreanfap.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200145,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "koreadult.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200146,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "bj.afreecatv.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200147,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "koreanporn.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200148,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "koreanxxx.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200149,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornhd8k.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200150,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xvideos.red"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200151,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "91porn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200152,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sextb.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200153,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "avmoo.cyou"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200154,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "jable.tv"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200155,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornhubchinese.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200156,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "taiwaneseporns.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200157,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xchineseporn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200158,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "russkoe-porno.pro"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200159,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "trahkino.cc"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200160,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "starsru.ru"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200161,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "ebalka.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200162,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hd-sex.org"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200163,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "porno-video.tv"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200164,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "russkoepornovideo.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200165,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "porno.cz"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200166,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "czechsex.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200167,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexvideos.cz"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200168,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornoespanol.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200169,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xvideos.es"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200170,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornogratisdiario.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200171,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexmex.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200172,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornoargento.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200173,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornoenvivo.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200174,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornotube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200175,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornolatino.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200176,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "chochox.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200177,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "mextube.xyz"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200178,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "colombianasporno.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200179,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "youporn.de"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200180,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornofilme.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200181,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "deutschsex.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200182,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornofilme.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200183,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hausfrauenporno.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200184,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "germansex.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200185,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "porno.de"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200186,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xhamster.de"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200187,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornde.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200188,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "porno.fr"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200189,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "tukif.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200190,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "baise.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200191,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xhamster.fr"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200192,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornotubefrancais.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200193,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornoitaliano.it"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200194,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sextgem.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200195,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornobrasileiro.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200196,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xvideos.com.br"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200197,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornbr.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200198,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornolandia.uno"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200199,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "travestis.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200200,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "badoinkvr.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200201,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "desixnxx.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200202,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "indianpornvideos.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200203,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "indiansex.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200204,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "desimms.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200205,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "desixxxtube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200206,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hindisexstories.mobi"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200207,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "indianxnxx.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200208,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "desipapa.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200209,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "desi49.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200210,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "indianporn.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200211,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "desiporn.biz"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200212,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "thefappening.so"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200213,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "nonktube.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200214,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "celeb.gate.cc"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200215,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fapfappy.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200216,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "nakedpics.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200217,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "mrskin.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200218,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "badgirlsclub.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200219,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "nakedblondes.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200220,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexypics.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200221,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "thenipslip.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200222,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fapvid.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200223,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "adultgifs.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200224,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexhd.pics"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200225,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "bravotube.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200226,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornpictures.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200227,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pichunter.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200228,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "babesinporn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200229,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "girlsofdesire.org"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200230,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "bravoteens.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200231,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "luxuretv.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200232,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "mofos.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200233,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "teenfidelity.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200234,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "wicked.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200235,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "evilangel.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200236,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "manwin.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200237,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "girlfriendsfilms.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200238,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "legalporno.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200239,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "burningangel.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200240,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "kellymadison.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200241,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "devilsfilm.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200242,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sweetheartvideo.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200243,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "transsensual.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200244,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "teamskeet.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200245,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fuckingawesome.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200246,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pervmom.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200247,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "mofosnetwork.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200248,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "joymii.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200249,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "hegre.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200250,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "met-art.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200251,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexart.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200252,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "21sextury.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200253,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "vivathomas.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200254,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "femjoy.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200255,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "anilos.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200256,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "babesnetwork.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200257,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "elegantangel.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200258,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "zsex.xxx"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200259,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "analvids.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200260,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "blacksonblondes.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200261,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "whiteghetto.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200262,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "darkx.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200263,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "blackedraw.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200264,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "vixenplus.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200265,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "mofosex.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200266,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "rawbangers.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200267,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "eros.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200268,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "slixa.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200269,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "skipthegames.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200270,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "escortalligator.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200271,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "listcrawler.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200272,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "adultsearch.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200273,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "erotic.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200274,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "bedpage.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200275,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexhookups.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200276,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "secretbenefits.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200277,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xmeets.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200278,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fuckbook.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200279,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "benaughty.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200280,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "instabang.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200281,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "nostringsattached.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200282,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "iamnaughty.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200283,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xdating.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200284,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xpickup.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200285,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "affairs.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200286,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornve.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200287,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "alotporn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200288,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornky.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200289,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexsearch.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200290,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornidx.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200291,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "fapfind.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200292,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "freeones.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200293,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "babepedia.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200294,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "starpornstars.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200295,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "boobpedia.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200296,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "iafd.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200297,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornstarbyface.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200298,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "adultfilmdatabase.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200299,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "xossip.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200300,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "forumophilia.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200301,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "voyeurweb.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200302,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "voyeurflash.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200303,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "sexforum.org"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200304,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "adultsexforum.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200305,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "empornium.me"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200306,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "metarthunter.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200307,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "aftg.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200308,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornolab.net"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200309,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "adulthitz.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200310,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "freaks-of-cock.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200311,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornoforces.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200312,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornbb.org"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200313,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "pornolovers.ws"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  }
+]

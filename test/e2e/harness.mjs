@@ -184,6 +184,29 @@ const checks = {
     await page.close();
     return "cooldown gate shown, confirm disabled";
   },
+
+  // The opt-in "extended" static ruleset can be toggled on and off via the
+  // worker (host-permission grant happens in the options UI; here we drive the
+  // ruleset flip directly). Verifies it starts off, enables, and disables.
+  async extended({ context, sw, extId }) {
+    const before = await sw.evaluate(() =>
+      chrome.declarativeNetRequest.getEnabledRulesets()
+    );
+    if (before.includes("extended"))
+      throw new Error("extended ruleset should be OFF by default");
+
+    const on = await sendMessageFromPage(context, extId, { type: "set-extended", enabled: true });
+    if (!on?.enabled) throw new Error(`enable failed: ${JSON.stringify(on)}`);
+    const mid = await sw.evaluate(() => chrome.declarativeNetRequest.getEnabledRulesets());
+    if (!mid.includes("extended")) throw new Error("extended ruleset not enabled after toggle");
+
+    const off = await sendMessageFromPage(context, extId, { type: "set-extended", enabled: false });
+    if (off?.enabled) throw new Error("disable failed");
+    const after = await sw.evaluate(() => chrome.declarativeNetRequest.getEnabledRulesets());
+    if (after.includes("extended")) throw new Error("extended ruleset still enabled after off");
+
+    return "extended off -> on -> off";
+  },
 };
 
 const requested = process.argv.slice(2);
