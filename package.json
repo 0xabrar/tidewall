@@ -7,7 +7,8 @@
   "scripts": {
     "build:rules": "node scripts/build-rules.mjs",
     "test": "node --test test/*.test.js",
-    "e2e": "node test/e2e/harness.mjs"
+    "e2e": "node test/e2e/harness.mjs",
+    "e2e:incognito": "node test/e2e/incognito.mjs"
   },
   "devDependencies": {
     "@fontsource/hanken-grotesk": "^5.2.8",

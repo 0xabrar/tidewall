@@ -5632,5 +5632,257 @@
         "main_frame"
       ]
     }
+  },
+  {
+    "id": 200314,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javme.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200315,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "missav.to"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200316,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "rule34.xyz"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200317,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "rule34.porn"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200318,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javrave.club"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200319,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javynow.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200320,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javhdporn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200321,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "vjav.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200322,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javguru.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200323,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javmost.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200324,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "kissjav.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200325,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "7mmtv.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200326,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "bestjavporn.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 200327,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/pages/blocked.html"
+      }
+    },
+    "condition": {
+      "requestDomains": [
+        "javgiga.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
   }
 ]
