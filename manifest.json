@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "Blocks porn sites and redirects to a calm intervention page. Local-only.",
   "permissions": ["declarativeNetRequest", "storage"],
+  "host_permissions": ["<all_urls>"],
   "background": { "service_worker": "src/background.js", "type": "module" },
   "options_page": "pages/options.html",
   "declarative_net_request": {
