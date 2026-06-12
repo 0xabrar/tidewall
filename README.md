@@ -68,4 +68,19 @@ Requires Node 18+ (uses the built-in `node:test` runner) and Playwright's Chromi
 1. `chrome://extensions`
 2. Enable **Developer mode**
 3. **Load unpacked** → select this folder
-4. Accept the host-permission prompt for the built-in blocklist (one time).
+4. For the built-in list, Chrome grants host access **silently** on an unpacked load (you can
+   see exactly what it can touch under the extension's **Details**). A Web Store install would
+   show that as a prompt instead.
+
+### Incognito (important)
+
+People often use Incognito for this, but **Chrome keeps every extension off in Incognito until
+you explicitly allow it** — there is no manifest setting that can turn this on automatically
+(it's a deliberate Chrome security rule). To stay protected in Incognito:
+
+- `chrome://extensions` → **Details** on ClearHead → enable **Allow in Incognito**.
+
+If a blocked site shows `ERR_BLOCKED_BY_CLIENT` instead of the calm page, another content
+blocker (e.g. Adblock Plus) is cancelling the redirected page. With ClearHead alone the redirect
+renders correctly (covered by the `liveredirect` e2e check); disable other blockers in Incognito
+to confirm.

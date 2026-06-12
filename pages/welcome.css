@@ -130,3 +130,28 @@ body {
   line-height: 1.5;
   color: var(--ink-3);
 }
+
+/* Incognito is a primary use case for this kind of tool, so call out the
+   one manual step Chrome requires (it can't be enabled automatically). */
+.incognito-note {
+  margin: 40px auto 0;
+  max-width: 400px;
+  text-align: left;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(127, 227, 223, 0.05);
+}
+.incognito-title {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-1);
+}
+.incognito-note p:last-child {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.incognito-note strong { color: var(--ink-1); font-weight: 600; }
