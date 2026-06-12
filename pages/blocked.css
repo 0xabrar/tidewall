@@ -96,9 +96,33 @@ body {
   transform: scale(1.32);
 }
 
+/* Concentric ripples emanating from the center — gentle interior life, like
+   rings spreading on still water. Continuous and very subtle so they read as
+   ambient texture, not a second beat competing with the breath. */
+.ripple {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--teal), 0.3);
+  opacity: 0;
+  transform: scale(0.85);
+  animation: ripple-out 7.5s ease-out infinite;
+}
+.ripple:nth-of-type(2) { animation-delay: 2.5s; }
+.ripple:nth-of-type(3) { animation-delay: 5s; }
+
+@keyframes ripple-out {
+  0%   { transform: scale(0.85); opacity: 0; }
+  18%  { opacity: 0.42; }
+  100% { transform: scale(1.85); opacity: 0; }
+}
+
 /* Inner circle. Scale + shadow are driven by the .expanded class on the
    wrapper; each phase's duration is set inline by JS. */
 .breath-core {
+  position: relative;
+  z-index: 1;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -264,25 +288,26 @@ body {
 }
 
 .done-title {
-  margin: 0 0 10px;
-  font-size: 25px;
+  margin: 0 0 12px;
+  font-size: 30px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--ink-1);
 }
 .done-sub {
   margin: 0;
-  font-size: 16px;
+  font-size: 17px;
   color: var(--ink-2);
 }
 .done-note {
-  margin: 34px 0 0;
-  font-size: 13.5px;
-  color: var(--ink-3);
+  margin: 40px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
 }
 .foot {
-  margin: 8px 0 0;
-  font-size: 12.5px;
+  margin: 14px 0 0;
+  font-size: 14px;
   color: var(--ink-3);
 }
 .foot:empty { display: none; }
@@ -291,6 +316,7 @@ body {
   .breath-core, .breath-glow { transition: none; }
   .breath.expanded .breath-core { transform: scale(1.18); }
   .breath.expanded .breath-glow { transform: scale(1.05); }
+  .ripple { animation: none; opacity: 0; }
   .stage, .done-glyph { animation: none; }
   .done-glyph svg { animation: none; stroke-dashoffset: 0; }
 }
