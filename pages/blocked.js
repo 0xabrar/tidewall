@@ -11,7 +11,9 @@ const FALLBACK_SECONDS = 90;
 const els = {
   wrap: document.querySelector(".wrap"),
   stages: [...document.querySelectorAll(".stage")],
+  breath: document.getElementById("breathWrap"),
   core: document.getElementById("breathCore"),
+  glow: document.getElementById("breathGlow"),
   word: document.getElementById("breathWord"),
   dots: document.getElementById("dots"),
   chips: document.getElementById("chips"),
@@ -21,18 +23,21 @@ const els = {
   foot: document.getElementById("foot"),
 };
 
-// Breath phases per pattern: [label, seconds, scale, expanded-glow].
+// Breath phases per pattern: [label, seconds, expanded].
+// "expanded" drives the circle + glow via the .expanded class; each phase's
+// transition duration is set inline so inhale/exhale ease over their full
+// length — one rhythm shared by every animated element on screen.
 const PATTERNS = {
   box: [
-    ["Breathe in", 4, 1.45, true],
-    ["Hold", 4, 1.45, true],
-    ["Breathe out", 4, 1.0, false],
-    ["Hold", 4, 1.0, false],
+    ["Breathe in", 4, true],
+    ["Hold", 4, true],
+    ["Breathe out", 4, false],
+    ["Hold", 4, false],
   ],
   478: [
-    ["Breathe in", 4, 1.45, true],
-    ["Hold", 7, 1.45, true],
-    ["Breathe out", 8, 1.0, false],
+    ["Breathe in", 4, true],
+    ["Hold", 7, true],
+    ["Breathe out", 8, false],
   ],
 };
 
@@ -58,7 +63,7 @@ function startBreathing(pattern, surfSeconds, onComplete) {
   const cycleSeconds = phases.reduce((sum, p) => sum + p[1], 0);
   const totalCycles = clamp(Math.round(surfSeconds / cycleSeconds), 2, 8);
 
-  // progress dots (soft, no numbers — no anxiety-inducing clock)
+  // progress dots (soft, no numbers — no clock anxiety)
   els.dots.replaceChildren(
     ...Array.from({ length: totalCycles }, () => {
       const d = document.createElement("span");
@@ -74,11 +79,11 @@ function startBreathing(pattern, surfSeconds, onComplete) {
   };
 
   const setWord = (text) => {
-    els.word.style.opacity = "0.3";
+    els.word.style.opacity = "0.25";
     setTimeout(() => {
       els.word.textContent = text;
       els.word.style.opacity = "1";
-    }, 200);
+    }, 220);
   };
 
   let cycle = 0;
@@ -95,11 +100,12 @@ function startBreathing(pattern, surfSeconds, onComplete) {
         return;
       }
     }
-    const [label, secs, scale, expanded] = phases[phaseIdx++];
+    const [label, secs, expanded] = phases[phaseIdx++];
     setWord(label);
-    els.core.style.transitionDuration = `${secs}s`;
-    els.core.style.transform = `scale(${scale})`;
-    els.core.classList.toggle("expanded", expanded);
+    const duration = `${secs}s`;
+    els.core.style.transitionDuration = duration;
+    els.glow.style.transitionDuration = duration;
+    els.breath.classList.toggle("expanded", expanded);
     setTimeout(step, secs * 1000);
   };
   step();
@@ -131,6 +137,7 @@ async function init() {
   // Stage 1: breathe, then reveal the questioning (only after breathing).
   startBreathing(breathPattern, surfSeconds, () => {
     send({ type: "surf-complete" });
+    surfed += 1;
     goState("trigger");
   });
 

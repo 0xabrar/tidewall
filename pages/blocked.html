@@ -11,14 +11,15 @@
 
     <!-- STATE 1: Breathe -->
     <section class="stage" data-stage="breathe">
-      <div class="breath" id="breath">
-        <div class="breath-glow"></div>
-        <div class="breath-core" id="breathCore">
-          <span class="breath-word" id="breathWord">Breathe in</span>
-        </div>
+      <div class="breath" id="breathWrap" aria-hidden="true">
+        <div class="breath-glow" id="breathGlow"></div>
+        <div class="breath-core" id="breathCore"></div>
       </div>
-      <p class="reframe">The urge is a wave. Let it pass.</p>
+      <!-- The cue word sits OUTSIDE the scaling circle, at fixed size, so the
+           type never stretches or blurs while the circle breathes. -->
+      <p class="breath-word" id="breathWord">Breathe in</p>
       <div class="dots" id="dots" aria-hidden="true"></div>
+      <p class="reframe">The urge is a wave. Let it pass.</p>
     </section>
 
     <!-- STATE 2: What's going on? (trigger / affect labeling) -->
@@ -32,6 +33,7 @@
         <button type="button">Tired</button>
         <button type="button">Just habit</button>
       </div>
+      <p class="stage-hint">Naming it takes some of its power away.</p>
     </section>
 
     <!-- STATE 3: Do one thing instead (replacement routine) -->
@@ -51,9 +53,15 @@
 
     <!-- STATE 4: Acknowledge -->
     <section class="stage" data-stage="done" hidden>
-      <div class="done-glyph" aria-hidden="true"></div>
+      <div class="done-glyph" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6.5 9.5 17 4 11.5" />
+        </svg>
+      </div>
       <p class="done-title">The wave passed.</p>
       <p class="done-sub">Go do it.</p>
+      <p class="done-note">Every urge you surf weakens the loop.</p>
       <p class="foot" id="foot"></p>
     </section>
 

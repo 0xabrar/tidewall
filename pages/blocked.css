@@ -1,8 +1,14 @@
 /* ClearHead — block / intervention page.
    Progressive disclosure: breathe -> what's going on -> do one thing -> done.
    Calm dark indigo->teal aesthetic, self-hosted Geist, no italics anywhere.
-   Breathing is an Ansel-style scaling + glowing circle (scale driven by JS per
-   phase; the soft outer glow pulses continuously). */
+
+   Breathing motion notes:
+   - The inner circle scales up on inhale and back down on exhale; the cue word
+     is OUTSIDE the circle at fixed size so type never stretches or blurs.
+   - The outer glow is driven by the SAME phase transitions as the circle (no
+     independent keyframe loop), so there is exactly one rhythm on screen.
+   - Easing is easeInOutSine — the gentlest symmetric curve, closest to how
+     breath actually accelerates and settles. */
 
 @font-face { font-family: "Geist"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/geist-400.woff2") format("woff2"); }
 @font-face { font-family: "Geist"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/geist-500.woff2") format("woff2"); }
@@ -12,9 +18,10 @@
   --hero: #dcf7f3;
   --teal: 127, 227, 223;        /* rgb of the glow accent */
   --ink-1: rgba(233, 240, 255, 0.92);
-  --ink-2: rgba(200, 212, 234, 0.62);
-  --ink-3: rgba(180, 194, 220, 0.42);
+  --ink-2: rgba(200, 212, 234, 0.64);
+  --ink-3: rgba(180, 194, 220, 0.44);
   --line: rgba(127, 227, 223, 0.22);
+  --ease-breath: cubic-bezier(0.445, 0.05, 0.55, 0.95); /* easeInOutSine */
 }
 
 * { box-sizing: border-box; }
@@ -26,7 +33,7 @@ body {
   font-style: normal;
   color: var(--ink-1);
   background:
-    radial-gradient(1100px 700px at 50% 18%, rgba(18, 74, 78, 0.55), rgba(0, 0, 0, 0)) ,
+    radial-gradient(1100px 700px at 50% 18%, rgba(18, 74, 78, 0.55), rgba(0, 0, 0, 0)),
     linear-gradient(168deg, #0b1024 0%, #0c1a2e 48%, #0c2a31 100%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
@@ -44,7 +51,7 @@ body {
 
 .stage {
   width: 100%;
-  max-width: 460px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,79 +69,76 @@ body {
 
 .breath {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 300px;
+  height: 300px;
   display: grid;
   place-items: center;
-  margin-bottom: 36px;
 }
 
-/* soft outer glow — pulses continuously for ambiance */
+/* Soft halo. Same phase-driven rhythm as the core (durations set inline by JS),
+   so the whole composition breathes as one. */
 .breath-glow {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(var(--teal), 0.18), rgba(var(--teal), 0));
-  animation: glow-pulse 6s ease-in-out infinite;
+  background: radial-gradient(closest-side, rgba(var(--teal), 0.2), rgba(var(--teal), 0));
+  opacity: 0.4;
+  transform: scale(0.92);
+  transition-property: transform, opacity;
+  transition-duration: 4s;
+  transition-timing-function: var(--ease-breath);
+  will-change: transform, opacity;
 }
 
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.35; transform: scale(0.92); }
-  50%      { opacity: 0.7;  transform: scale(1.04); }
+.breath.expanded .breath-glow {
+  opacity: 0.85;
+  transform: scale(1.32);
 }
 
-/* inner circle — JS sets transform: scale() per breath phase, with the
-   transition-duration set to that phase's length so it eases in/out. */
+/* Inner circle. Scale + shadow are driven by the .expanded class on the
+   wrapper; each phase's duration is set inline by JS. */
 .breath-core {
-  position: relative;
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(closest-side, rgba(var(--teal), 0.16), rgba(var(--teal), 0.05));
+  background: radial-gradient(closest-side, rgba(var(--teal), 0.15), rgba(var(--teal), 0.05));
   border: 1.5px solid rgba(var(--teal), 0.55);
   box-shadow:
-    0 0 0 1px rgba(var(--teal), 0.18) inset,
-    0 0 34px rgba(var(--teal), 0.22),
-    0 0 80px rgba(var(--teal), 0.12);
+    0 0 0 1px rgba(var(--teal), 0.16) inset,
+    0 0 30px rgba(var(--teal), 0.2),
+    0 0 70px rgba(var(--teal), 0.1);
   transform: scale(1);
-  transition: transform 4s ease-in-out, box-shadow 4s ease-in-out;
+  transition-property: transform, box-shadow;
+  transition-duration: 4s;
+  transition-timing-function: var(--ease-breath);
   will-change: transform;
 }
 
-/* brighter glow while expanded (inhale / hold-full) */
-.breath-core.expanded {
+.breath.expanded .breath-core {
+  transform: scale(1.45);
   box-shadow:
-    0 0 0 1px rgba(var(--teal), 0.32) inset,
-    0 0 54px rgba(var(--teal), 0.4),
-    0 0 130px rgba(var(--teal), 0.2);
+    0 0 0 1px rgba(var(--teal), 0.3) inset,
+    0 0 50px rgba(var(--teal), 0.36),
+    0 0 120px rgba(var(--teal), 0.18);
 }
 
+/* Fixed-size cue word below the circle — never scales, never blurs. */
 .breath-word {
-  font-size: 17px;
+  margin: 6px 0 0;
+  font-size: 19px;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.015em;
   color: var(--hero);
-  opacity: 1;
-  transition: opacity 220ms ease;
-  text-shadow: 0 0 20px rgba(var(--teal), 0.4);
+  transition: opacity 240ms ease;
+  min-height: 1.4em;
 }
 
-.reframe {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--ink-2);
-  letter-spacing: 0.01em;
-}
-
-/* breath progress dots — soft, no numbers (no anxiety-inducing clock) */
+/* Breath progress dots — soft, no numbers (no clock anxiety). */
 .dots {
   display: flex;
   gap: 9px;
-  margin-top: 28px;
+  margin-top: 22px;
   min-height: 8px;
 }
 .dot {
@@ -147,11 +151,19 @@ body {
 .dot.done { background: rgba(var(--teal), 0.7); }
 .dot.active { width: 18px; border-radius: 4px; background: rgba(var(--teal), 0.45); }
 
+.reframe {
+  margin: 40px 0 0;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink-2);
+  letter-spacing: 0.01em;
+}
+
 /* ---------- Questioning / action stages ---------- */
 
 .prompt {
-  margin: 0 0 26px;
-  font-size: 26px;
+  margin: 0 0 28px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--ink-1);
@@ -186,10 +198,16 @@ body {
   border-color: rgba(var(--teal), 0.7);
 }
 
+.stage-hint {
+  margin: 30px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-3);
+}
+
 .next {
   width: 100%;
   max-width: 340px;
-  margin-top: 22px;
+  margin-top: 24px;
   font-family: inherit;
   font-size: 15px;
   color: var(--ink-1);
@@ -204,9 +222,10 @@ body {
 .next:focus { outline: none; border-bottom-color: rgba(var(--teal), 0.6); }
 
 .why {
-  margin: 26px 0 0;
+  margin: 30px 0 0;
   font-size: 14px;
   font-weight: 400;
+  line-height: 1.55;
   color: var(--ink-3);
   max-width: 360px;
 }
@@ -215,29 +234,40 @@ body {
 /* ---------- Done ---------- */
 
 .done-glyph {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  margin-bottom: 24px;
-  background: radial-gradient(closest-side, rgba(var(--teal), 0.22), rgba(var(--teal), 0.04));
+  margin-bottom: 30px;
+  display: grid;
+  place-items: center;
+  color: var(--hero);
+  background: radial-gradient(closest-side, rgba(var(--teal), 0.2), rgba(var(--teal), 0.04));
   border: 1.5px solid rgba(var(--teal), 0.5);
-  box-shadow: 0 0 40px rgba(var(--teal), 0.28);
-  position: relative;
+  box-shadow: 0 0 44px rgba(var(--teal), 0.26);
+  animation: glyph-in 500ms var(--ease-breath) both;
 }
-.done-glyph::after {
-  content: "";
-  position: absolute;
-  left: 20px; top: 26px;
-  width: 8px; height: 15px;
-  border: solid var(--hero);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+
+.done-glyph svg {
+  width: 26px;
+  height: 26px;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: check-draw 600ms ease 250ms forwards;
+}
+
+@keyframes glyph-in {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes check-draw {
+  to { stroke-dashoffset: 0; }
 }
 
 .done-title {
-  margin: 0 0 8px;
-  font-size: 24px;
+  margin: 0 0 10px;
+  font-size: 25px;
   font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--ink-1);
 }
 .done-sub {
@@ -245,15 +275,22 @@ body {
   font-size: 16px;
   color: var(--ink-2);
 }
+.done-note {
+  margin: 34px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-3);
+}
 .foot {
-  margin: 26px 0 0;
-  font-size: 13px;
+  margin: 8px 0 0;
+  font-size: 12.5px;
   color: var(--ink-3);
 }
 .foot:empty { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .breath-glow { animation: none; }
-  .breath-core { transition: none; }
-  .stage { animation: none; }
+  .breath-core, .breath-glow { transition: none; }
+  .breath.expanded .breath-core { transform: scale(1.18); }
+  .breath.expanded .breath-glow { transform: scale(1.05); }
+  .stage, .done-glyph { animation: none; }
+  .done-glyph svg { animation: none; stroke-dashoffset: 0; }
 }

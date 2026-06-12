@@ -168,19 +168,24 @@ breathing. Calm dark indigo→teal gradient, Geist, no italics. (Inspired by the
 emergency-mode breathing UX.)
 
 **States (one at a time):**
-1. **Breathe** — an **Ansel-style breathing circle**: a soft outer glow that pulses
-   continuously, and an inner circle that **scales up on inhale, holds, then shrinks on
-   exhale** (driven per-phase from the chosen pattern), with the cue word fading between
-   "Breathe in / Hold / Breathe out". Subtle progress dots, **no visible countdown** — the
-   urge-surf timer runs *implicitly* (it just paces how long the breathing lasts) so there's
-   no clock to create finish-line anxiety. Subtext: "The urge is a wave. Let it pass."
+1. **Breathe** — an **Ansel-style breathing circle**: an inner circle that **scales up on
+   inhale, holds, then shrinks on exhale** (driven per-phase from the chosen pattern), with
+   a soft outer glow driven by the **same phase transitions** (one rhythm — no independent
+   pulse loop competing with the breath). The cue word ("Breathe in / Hold / Breathe out")
+   sits **outside the circle at fixed size** so type never stretches or blurs while the
+   circle moves; easing is easeInOutSine. Subtle progress dots, **no visible countdown** —
+   the session timer runs *implicitly* (it just paces how long the breathing lasts) so
+   there's no clock to create finish-line anxiety. Subtext: "The urge is a wave. Let it
+   pass."
 2. **What's going on?** — trigger chips (anxious / bored / stressed / lonely / tired / just
    habit). Selecting one records an **anonymous tally only** and advances.
 3. **Do one thing instead** — a short checklist of healthy replacement actions (step
    outside / water / 10 push-ups / text a friend / start your next task) plus an optional
    free-text "…or name your own". **Nothing here is stored.** Shows the user's "why".
-4. **Done** — a gentle acknowledgement ("The wave passed. Go do it.") + the urges-surfed
-   count. No bypass control anywhere — advancing only ever goes deeper into the flow.
+4. **Done** — a gentle acknowledgement ("The wave passed. Go do it.") with a drawn-in
+   check glyph, a relapse-prevention line ("Every urge you surf weakens the loop") and the
+   urges-surfed count. No bypass control anywhere — advancing only ever goes deeper into
+   the flow.
 
 **Evidence-based mapping (each state is a validated component, not decoration):**
 | State | CBT/ACT component |
@@ -208,10 +213,20 @@ reserved for primary actions.
   **Removing** (or disabling blocking) triggers the **friction lockout**: a cooldown
   (default 5 min) + a type-to-confirm sentence. The change is stored as `pendingUnlock`
   with an `unlockAt` timestamp and only applied after the cooldown elapses.
-- **Your Why** — editable values statement (shown on the block page).
-- **Intervention** — urge-surf timer length (slider, default 90s) and breathing pattern
-  (Box 4-4-4-4 vs 4-7-8).
-- **Stats** — urges surfed, encounters, and a small bar chart of trigger types.
+- **Your Why** — editable values statement (shown on the block page), with a help line.
+- **Intervention** — breathing-session length (slider, default 90s) and breathing pattern
+  (Box 4-4-4-4 vs 4-7-8), each with **plain-language, always-visible help text** (what the
+  session is for, what each pattern does) rather than hover tooltips.
+- **Stats** — urges surfed, encounters, and a small bar chart of trigger types, with a
+  privacy note ("tallies are anonymous and never leave this device").
+
+### 5.3 Blocklist review page (`blocklist.html`)
+
+A read-only page (linked from the Blocklist card) where the user can review **everything**
+that's blocked: their custom additions plus the full built-in curated list, alphabetized
+in a compact multi-column layout. **Built-in domains are deliberately not removable** —
+a blocker you can talk your way past isn't a blocker. Custom domains are managed (with
+friction) in Settings only.
 
 ---
 
