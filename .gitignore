@@ -5,5 +5,5 @@ output/
 _metadata/
 
 # local dev scratch
-_*.mjs
-_*.png
+dev-*.mjs
+*-shot.png
