@@ -9,11 +9,23 @@
 <body>
   <main class="page" data-clearhead="options">
     <header class="page-header">
-      <div class="wordmark">ClearHead</div>
+      <div class="brand">
+        <img class="brand-logo" src="../icons/icon-128.png" alt="" width="28" height="28" />
+        <div class="wordmark">ClearHead</div>
+      </div>
       <p class="page-subtitle">Settings</p>
     </header>
 
     <div class="column">
+      <!-- Take a breath -->
+      <section class="card breathe-card" id="breathe">
+        <div class="breathe-text">
+          <p class="breathe-title">Feeling the pull? Take a breath.</p>
+          <p class="help-line">Start a guided breathing session any time — no blocked site needed.</p>
+        </div>
+        <button id="breathe-now" class="btn btn-primary" type="button">Breathe now</button>
+      </section>
+
       <!-- Stats -->
       <section class="card" id="stats">
         <p class="section-label">Stats</p>
@@ -43,6 +55,7 @@
           <button id="add-btn" class="btn btn-primary" type="button">Add</button>
         </div>
         <p id="add-error" class="field-error" hidden>That doesn't look like a valid domain.</p>
+        <p class="help-line">When you add a site, Chrome asks permission for just that site. ClearHead only ever reads the sites on your blocklist — nothing else you browse.</p>
         <p class="list-label">Your additions</p>
         <ul id="domain-list" class="domain-list"></ul>
         <div class="builtin-row">

@@ -36,6 +36,8 @@ const els = {
   extendedToggle: document.getElementById("extended-toggle"),
   extendedHelp: document.getElementById("extended-help"),
 
+  breatheNow: document.getElementById("breathe-now"),
+
   statSurfs: document.getElementById("stat-surfs"),
   statEncounters: document.getElementById("stat-encounters"),
   triggerChart: document.getElementById("trigger-chart"),
@@ -375,6 +377,24 @@ function renderStats(stats) {
   }
 }
 
+// ---------- Take a breath (on demand) ----------
+
+// Open the intervention page in a new tab so the user can run the breathing
+// exercise any time. chrome.tabs.create needs no extra permission; fall back to
+// window.open when chrome.tabs is unavailable (e.g. a plain page realm).
+function openBreathing() {
+  const url = chrome.runtime.getURL("pages/blocked.html?mode=self");
+  try {
+    if (chrome.tabs && chrome.tabs.create) {
+      chrome.tabs.create({ url });
+      return;
+    }
+  } catch {
+    // fall through to window.open
+  }
+  window.open(url, "_blank");
+}
+
 // ---------- Init ----------
 
 async function init() {
@@ -397,6 +417,8 @@ async function init() {
   renderExtended();
 
   // ----- Wiring -----
+  els.breatheNow.addEventListener("click", openBreathing);
+
   els.addBtn.addEventListener("click", onAdd);
   els.domainInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") { e.preventDefault(); onAdd(); }
