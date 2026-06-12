@@ -14,6 +14,26 @@
     </header>
 
     <div class="column">
+      <!-- Stats -->
+      <section class="card" id="stats">
+        <p class="section-label">Stats</p>
+        <div class="stats-numbers">
+          <div class="stat">
+            <div id="stat-surfs" class="stat-number">0</div>
+            <div class="stat-caption">urges surfed</div>
+          </div>
+          <div class="stat">
+            <div id="stat-encounters" class="stat-number">0</div>
+            <div class="stat-caption">encounters</div>
+          </div>
+        </div>
+        <div class="stats-chart">
+          <p class="stat-chart-label">by trigger</p>
+          <div id="trigger-chart" class="chart"></div>
+          <p class="help-line">Anonymous. Never leaves this device.</p>
+        </div>
+      </section>
+
       <!-- Blocklist -->
       <section class="card" id="blocklist">
         <p class="section-label">Blocklist</p>
@@ -31,14 +51,6 @@
         </div>
       </section>
 
-      <!-- Your Why -->
-      <section class="card" id="why">
-        <p class="section-label">Your Why</p>
-        <textarea id="why-input" class="textarea" rows="3"
-                  placeholder="I choose focus so I can be present, finish meaningful work, and protect my energy for people I care about."></textarea>
-        <p class="help-line">You'll see this mid-intervention. Make it personal.</p>
-      </section>
-
       <!-- Intervention -->
       <section class="card" id="intervention">
         <p class="section-label">Intervention</p>
@@ -48,9 +60,7 @@
             Breathing session — <span id="surf-value" class="control-value">90s</span>
           </label>
           <input id="surf-range" class="range" type="range" min="30" max="180" step="5" value="90" />
-          <p class="help-line">How long the guided breathing lasts before the check-in.
-            Urges crest and pass like a wave — usually within a few minutes.
-            The session keeps you riding it instead of acting on it.</p>
+          <p class="help-line">How long the guided breathing runs before the check-in.</p>
         </div>
 
         <div class="control-row">
@@ -63,24 +73,28 @@
         </div>
       </section>
 
-      <!-- Stats -->
-      <section class="card" id="stats">
-        <p class="section-label">Stats</p>
-        <div class="stats-numbers">
-          <div class="stat">
-            <div id="stat-surfs" class="stat-number">0</div>
-            <div class="stat-caption">urges surfed</div>
-          </div>
-          <div class="stat">
-            <div id="stat-encounters" class="stat-number">0</div>
-            <div class="stat-caption">encounters</div>
+      <!-- Your Why -->
+      <section class="card" id="why">
+        <p class="section-label">Your Why</p>
+
+        <!-- Display mode (default) -->
+        <div id="why-display" class="why-display">
+          <p id="why-text" class="why-text"></p>
+          <button id="why-edit-btn" class="link-btn" type="button">Edit</button>
+        </div>
+
+        <!-- Edit mode (hidden by default) -->
+        <div id="why-edit" class="why-edit" hidden>
+          <textarea id="why-input" class="textarea" rows="3"
+                    placeholder="I choose focus so I can be present, finish meaningful work, and protect my energy for people I care about."></textarea>
+          <div class="why-actions">
+            <button id="why-save-btn" class="btn btn-primary" type="button">Save</button>
+            <button id="why-cancel-btn" class="btn btn-ghost" type="button">Cancel</button>
+            <span id="why-saved" class="why-saved" hidden>✓ Saved</span>
           </div>
         </div>
-        <div class="stats-chart">
-          <p class="stat-chart-label">by trigger</p>
-          <div id="trigger-chart" class="chart"></div>
-          <p class="help-line">Tallies are anonymous and never leave this device.</p>
-        </div>
+
+        <p class="help-line">You'll see this mid-intervention.</p>
       </section>
     </div>
   </main>

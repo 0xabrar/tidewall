@@ -19,6 +19,13 @@ const els = {
   domainList: document.getElementById("domain-list"),
 
   whyInput: document.getElementById("why-input"),
+  whyDisplay: document.getElementById("why-display"),
+  whyEdit: document.getElementById("why-edit"),
+  whyText: document.getElementById("why-text"),
+  whyEditBtn: document.getElementById("why-edit-btn"),
+  whySaveBtn: document.getElementById("why-save-btn"),
+  whyCancelBtn: document.getElementById("why-cancel-btn"),
+  whySaved: document.getElementById("why-saved"),
 
   surfRange: document.getElementById("surf-range"),
   surfValue: document.getElementById("surf-value"),
@@ -209,8 +216,42 @@ async function onConfirmRemove() {
 
 // ---------- Your Why ----------
 
+const WHY_PLACEHOLDER = "Add a personal reason you'll see mid-intervention.";
+let whyValue = ""; // canonical saved value, drives display mode
+let whySavedTimer = null;
+
+function renderWhyDisplay() {
+  if (whyValue) {
+    els.whyText.textContent = whyValue;
+    els.whyText.classList.remove("why-text-empty");
+  } else {
+    els.whyText.textContent = WHY_PLACEHOLDER;
+    els.whyText.classList.add("why-text-empty");
+  }
+  els.whyDisplay.hidden = false;
+  els.whyEdit.hidden = true;
+}
+
+function enterWhyEdit() {
+  els.whyInput.value = whyValue;
+  els.whySaved.hidden = true;
+  els.whyDisplay.hidden = true;
+  els.whyEdit.hidden = false;
+  els.whyInput.focus();
+}
+
 async function saveWhy() {
-  await store.setSettings({ whyStatement: els.whyInput.value });
+  const value = els.whyInput.value.trim();
+  await store.setSettings({ whyStatement: value });
+  whyValue = value;
+  renderWhyDisplay();
+  els.whySaved.hidden = false;
+  if (whySavedTimer) clearTimeout(whySavedTimer);
+  whySavedTimer = setTimeout(() => { els.whySaved.hidden = true; }, 1500);
+}
+
+function cancelWhy() {
+  renderWhyDisplay();
 }
 
 // ---------- Intervention ----------
@@ -220,8 +261,8 @@ function reflectSurf(seconds) {
 }
 
 const BREATH_HELP = {
-  box: "Four equal 4-second phases. Steady and grounding — good anytime.",
-  478: "In for 4, hold for 7, out for 8. The long exhale slows your heart rate — the strongest calming effect.",
+  box: "Equal 4-4-4-4. Steady and grounding.",
+  478: "In 4, hold 7, out 8 — the long exhale calms fastest.",
 };
 
 function reflectBreath(pattern) {
@@ -283,7 +324,8 @@ function renderStats(stats) {
 async function init() {
   // Settings
   const settings = await store.getSettings();
-  els.whyInput.value = settings.whyStatement || "";
+  whyValue = settings.whyStatement || "";
+  renderWhyDisplay();
 
   const surf = Number(settings.surfSeconds) || 90;
   els.surfRange.value = String(surf);
@@ -304,8 +346,12 @@ async function init() {
   });
   els.domainInput.addEventListener("input", () => { els.addError.hidden = true; });
 
-  els.whyInput.addEventListener("change", saveWhy);
-  els.whyInput.addEventListener("blur", saveWhy);
+  els.whyEditBtn.addEventListener("click", enterWhyEdit);
+  els.whyText.addEventListener("click", () => {
+    if (!whyValue) enterWhyEdit(); // clicking the placeholder starts editing
+  });
+  els.whySaveBtn.addEventListener("click", saveWhy);
+  els.whyCancelBtn.addEventListener("click", cancelWhy);
 
   els.surfRange.addEventListener("input", () => {
     reflectSurf(Number(els.surfRange.value));

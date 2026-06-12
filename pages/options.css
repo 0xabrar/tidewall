@@ -266,9 +266,15 @@ body {
   padding: 4px 6px;
   border-radius: 7px;
   cursor: pointer;
-  transition: background-color 140ms ease, color 140ms ease;
+  text-decoration: none;
+  transition: color 140ms ease;
 }
-.remove-btn:hover { background: #faf0ef; color: var(--danger); }
+.remove-btn:hover {
+  background: transparent;
+  color: var(--danger);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
 .empty-note {
   margin: 2px 2px 0;
@@ -311,12 +317,71 @@ body {
 .builtin-link:hover { color: var(--teal-strong); text-decoration: underline; }
 .builtin-link:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
 
+/* ---------- Your Why (display <-> edit) ---------- */
+
+/* Display mode: saved statement as readable text + a quiet Edit button. */
+.why-display {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.why-text {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Empty state: muted placeholder line that doubles as a click target. */
+.why-text-empty {
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* Plain text button (Edit) — no fill, teal label, underline on hover. */
+.link-btn {
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--teal);
+  background: transparent;
+  border: none;
+  padding: 2px 2px;
+  cursor: pointer;
+  transition: color 140ms ease;
+}
+.link-btn:hover { color: var(--teal-strong); text-decoration: underline; text-underline-offset: 2px; }
+.link-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
+
+.why-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.why-saved {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--teal);
+  transition: opacity 200ms ease;
+}
+.why-saved[hidden] { display: none; }
+
 /* ---------- Help lines ---------- */
 
 /* Always-visible muted guidance under a control. Shared rhythm: label ->
    control -> help line, with the help line slightly smaller and quieter. */
 .help-line {
-  margin: 8px 2px 0;
+  margin: 6px 2px 0;
   font-size: 12.5px;
   font-weight: 400;
   line-height: 1.5;
@@ -570,4 +635,16 @@ body {
 @media (max-width: 760px) {
   .page { padding: 40px 20px 64px; }
   .stats-numbers { gap: 32px; }
+}
+
+@media (max-width: 440px) {
+  .page { padding: 32px 16px 56px; }
+  .card { padding: 20px 18px 22px; }
+  .stats-numbers { gap: 24px; }
+  .stat-number { font-size: 30px; }
+  .add-row { flex-wrap: wrap; }
+  .add-row .text-input { flex: 1 1 100%; }
+  /* Keep the built-in summary + review link from overlapping when tight. */
+  .builtin-row { gap: 6px; }
+  .chart { gap: 8px; }
 }
