@@ -200,6 +200,12 @@
     "type": "module"
   },
   "options_page": "pages/options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["pages/blocked.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "declarative_net_request": {
     "rule_resources": [
       {

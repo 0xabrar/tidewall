@@ -110,6 +110,27 @@ const checks = {
     return `${target} matches a curated redirect; off-list example.com does not`;
   },
 
+  // End-to-end render check: an actual navigation to a curated domain must
+  // redirect AND the block page must actually LOAD (not ERR_BLOCKED_BY_CLIENT).
+  // This catches the web_accessible_resources requirement for DNR redirects to
+  // extension pages — testMatchOutcome can't see that. The DNR redirect fires
+  // before the network request, so no adult content is ever fetched.
+  async liveredirect({ context, sw, extId }) {
+    const domains = await sw.evaluate(async () => {
+      const r = await fetch(chrome.runtime.getURL("rules/curated.json"));
+      return (await r.json()).map((rule) => rule.condition.requestDomains[0]);
+    });
+    const target = domains[0];
+    const page = await context.newPage();
+    await page.goto(`http://${target}/`).catch(() => {});
+    await page.waitForURL(/chrome-extension:\/\/.*\/pages\/blocked\.html/, { timeout: 8000 });
+    // The page must actually render its content (intro Begin button), proving
+    // Chrome allowed loading the web-accessible extension page.
+    await page.locator("#beginBtn").waitFor({ state: "visible", timeout: 6000 });
+    await page.close();
+    return `${target} redirected and blocked.html rendered`;
+  },
+
   // Progressive block page: the breathing animation runs (phase word changes),
   // then the trigger stage records an anonymous tally and advances to the
   // action stage (which shows the "why"), and an action advances to "done".
