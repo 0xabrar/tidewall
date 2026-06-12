@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildRules } from "../scripts/build-rules.mjs";
+import { buildRules, buildHostPatterns } from "../scripts/build-rules.mjs";
 
 test("builds one redirect rule per domain with unique ids in curated range", () => {
   const rules = buildRules(["a.com", "b.com"]);
@@ -15,4 +15,9 @@ test("rule redirects to the local blocked page via extensionPath", () => {
   assert.equal(rule.action.redirect.extensionPath, "/pages/blocked.html");
   assert.equal(rule.condition.requestDomains[0], "a.com");
   assert.deepEqual(rule.condition.resourceTypes, ["main_frame"]);
+});
+test("host patterns narrow access to apex + subdomains of each blocked domain (never <all_urls>)", () => {
+  const patterns = buildHostPatterns(["a.com", "b.com"]);
+  assert.deepEqual(patterns, ["*://a.com/*", "*://*.a.com/*", "*://b.com/*", "*://*.b.com/*"]);
+  assert.ok(!patterns.includes("<all_urls>"));
 });

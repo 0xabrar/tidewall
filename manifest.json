@@ -3,13 +3,47 @@
   "name": "ClearHead",
   "version": "0.1.0",
   "description": "Blocks porn sites and redirects to a calm intervention page. Local-only.",
-  "permissions": ["declarativeNetRequest", "storage"],
-  "host_permissions": ["<all_urls>"],
-  "background": { "service_worker": "src/background.js", "type": "module" },
+  "permissions": [
+    "declarativeNetRequest",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://pornhub.com/*",
+    "*://*.pornhub.com/*",
+    "*://xvideos.com/*",
+    "*://*.xvideos.com/*",
+    "*://xnxx.com/*",
+    "*://*.xnxx.com/*",
+    "*://redtube.com/*",
+    "*://*.redtube.com/*",
+    "*://youporn.com/*",
+    "*://*.youporn.com/*",
+    "*://xhamster.com/*",
+    "*://*.xhamster.com/*",
+    "*://onlyfans.com/*",
+    "*://*.onlyfans.com/*",
+    "*://chaturbate.com/*",
+    "*://*.chaturbate.com/*",
+    "*://spankbang.com/*",
+    "*://*.spankbang.com/*",
+    "*://brazzers.com/*",
+    "*://*.brazzers.com/*"
+  ],
+  "optional_host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
   "options_page": "pages/options.html",
   "declarative_net_request": {
     "rule_resources": [
-      { "id": "curated", "enabled": true, "path": "rules/curated.json" }
+      {
+        "id": "curated",
+        "enabled": true,
+        "path": "rules/curated.json"
+      }
     ]
   }
 }

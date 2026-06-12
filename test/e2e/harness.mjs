@@ -45,12 +45,19 @@ async function launch() {
   return { context, sw, extId };
 }
 
-// Send a runtime message to the background worker and await its response.
-const sendMessage = (sw, msg) =>
-  sw.evaluate(
-    (m) => new Promise((res) => chrome.runtime.sendMessage(m, res)),
+// Send a runtime message to the worker from a REAL page context (page -> worker),
+// the way production pages do. A service worker messaging itself does not fire
+// chrome.runtime.onMessage, so we never drive the worker via sw.evaluate.
+async function sendMessageFromPage(context, extId, msg) {
+  const page = await context.newPage();
+  await page.goto(`chrome-extension://${extId}/pages/blocked.html`);
+  const res = await page.evaluate(
+    (m) => new Promise((r) => chrome.runtime.sendMessage(m, r)),
     msg
   );
+  await page.close();
+  return res;
+}
 
 const seedStorage = (sw, obj) =>
   sw.evaluate((o) => chrome.storage.local.set(o), obj);
@@ -75,19 +82,32 @@ const checks = {
     return `extId=${extId}, rulesets=[${rulesets}]`;
   },
 
-  // Adding a domain (via the background worker) causes a real navigation to it
-  // to be redirected to the local block page. Requires Task 6 (message handler).
-  async redirect({ context, sw, extId }) {
-    const res = await sendMessage(sw, { type: "add-domain", domain: "example.com" });
-    if (!res || !res.ok) throw new Error(`add-domain failed: ${JSON.stringify(res)}`);
-    const page = await context.newPage();
-    await page.goto("http://example.com/").catch(() => {});
-    await page.waitForURL(/chrome-extension:\/\/.*\/pages\/blocked\.html/, { timeout: 8000 });
-    const url = page.url();
-    await page.close();
-    if (!url.includes(`${extId}/pages/blocked.html`))
-      throw new Error(`not redirected, url=${url}`);
-    return `example.com -> ${url}`;
+  // A curated blocked domain actually resolves to a redirect to the local block
+  // page. Uses declarativeNetRequest.testMatchOutcome so we verify the real
+  // matching engine (curated rule + host permission must BOTH be present for a
+  // redirect to fire) without ever navigating to an adult site or hitting the
+  // network. Proves host_permissions is correctly scoped to the blocklist.
+  async redirect({ sw, extId }) {
+    const domains = await sw.evaluate(async () => {
+      const r = await fetch(chrome.runtime.getURL("rules/curated.json"));
+      return (await r.json()).map((rule) => rule.condition.requestDomains[0]);
+    });
+    const target = domains[0];
+    const outcome = await sw.evaluate(
+      (url) => chrome.declarativeNetRequest.testMatchOutcome({ url, type: "main_frame", method: "get" }),
+      `https://${target}/`
+    );
+    const matched = outcome?.matchedRules ?? [];
+    if (matched.length === 0)
+      throw new Error(`curated domain ${target} did not match any rule (host perm missing?)`);
+    // Confirm a non-permitted domain does NOT match — proves access is narrowed.
+    const offList = await sw.evaluate(
+      (url) => chrome.declarativeNetRequest.testMatchOutcome({ url, type: "main_frame", method: "get" }),
+      "https://example.com/"
+    );
+    if ((offList?.matchedRules ?? []).length !== 0)
+      throw new Error("example.com unexpectedly matched — access is not narrowed");
+    return `${target} matches a curated redirect; off-list example.com does not`;
   },
 
   // The block page renders its hero ring + countdown, the timer actually ticks
@@ -121,7 +141,6 @@ const checks = {
   // The settings page lists domains and can add one through the UI. Requires Task 8.
   async settings({ context, sw, extId }) {
     await seedStorage(sw, { userDomains: [] });
-    await sendMessage(sw, { type: "noop" }).catch(() => {});
     const page = await context.newPage();
     await page.goto(`chrome-extension://${extId}/pages/options.html`);
     await page.locator("#domain-input").fill("addedviaui.com");

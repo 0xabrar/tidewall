@@ -70,27 +70,3 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   handleMessage(msg).then(sendResponse, () => sendResponse({ ok: false, error: "exception" }));
   return true; // keep the message channel open for async sendResponse
 });
-
-// Same-realm message shim. chrome.runtime.onMessage does NOT fire for a message
-// a context sends to itself (Chrome excludes the sender's frame), so a call to
-// chrome.runtime.sendMessage from inside this service worker would otherwise fail
-// with "Receiving end does not exist". Wrap sendMessage so self-dispatched
-// messages are handled in-process. Cross-context messaging (pages -> worker) is
-// untouched: those callers run in their own realm with the native API.
-chrome.runtime.sendMessage = function (...args) {
-  // Normalize (extensionId?, message, options?, callback?) signature.
-  let message, callback;
-  if (typeof args[0] === "string") {
-    message = args[1];
-    callback = typeof args[args.length - 1] === "function" ? args[args.length - 1] : undefined;
-  } else {
-    message = args[0];
-    callback = typeof args[args.length - 1] === "function" ? args[args.length - 1] : undefined;
-  }
-  const promise = handleMessage(message);
-  if (callback) {
-    promise.then(callback, () => callback(undefined));
-    return undefined;
-  }
-  return promise;
-};
