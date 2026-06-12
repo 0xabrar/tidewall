@@ -26,10 +26,9 @@ async function reconcile() {
 chrome.runtime.onInstalled.addListener(reconcile);
 chrome.runtime.onStartup.addListener(reconcile);
 
-// Single source of truth for handling a runtime message. Returns the response
-// object. Shared by the onMessage listener (messages from pages/options) and by
-// the same-realm sendMessage shim below (messages dispatched from within the SW
-// itself — Chrome's onMessage never fires for a context messaging itself).
+// Handles a runtime message from an extension page (block page / options) and
+// returns the response object. Pages run in their own realm, so their
+// chrome.runtime.sendMessage reaches this onMessage listener natively.
 async function handleMessage(msg) {
   switch (msg?.type) {
     case "encounter":

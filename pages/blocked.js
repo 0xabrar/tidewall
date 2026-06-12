@@ -7,6 +7,7 @@ import { makeStore } from "../src/lib/storage.js";
 const FALLBACK_SECONDS = 90;
 
 const els = {
+  ring: document.getElementById("ring"),
   time: document.getElementById("time"),
   breath: document.getElementById("breath"),
   why: document.getElementById("why"),
@@ -14,6 +15,28 @@ const els = {
   next: document.getElementById("next"),
   foot: document.getElementById("foot"),
 };
+
+// Breathing patterns: [phase label, seconds]. The block-page ring pulse is timed
+// to one full cycle, and the cue word walks the phases so the page actually
+// guides the chosen pattern (the toggle in Settings drives this).
+const BREATH_PATTERNS = {
+  box: [["Breathe in", 4], ["Hold", 4], ["Breathe out", 4], ["Hold", 4]],
+  "478": [["Breathe in", 4], ["Hold", 7], ["Breathe out", 8]],
+};
+
+function startBreathing(pattern) {
+  const phases = BREATH_PATTERNS[pattern] || BREATH_PATTERNS.box;
+  const total = phases.reduce((sum, [, secs]) => sum + secs, 0);
+  els.ring?.style.setProperty("--breath-duration", `${total}s`);
+  let i = 0;
+  const step = () => {
+    const [label, secs] = phases[i % phases.length];
+    els.breath.textContent = label;
+    i += 1;
+    setTimeout(step, secs * 1000);
+  };
+  step();
+}
 
 // Best-effort message send; the page must never crash if the worker is asleep
 // or messaging rejects.
@@ -38,16 +61,20 @@ async function init() {
 
   const store = makeStore();
 
-  // 2. Settings: why statement + countdown length (with safe fallbacks).
+  // 2. Settings: why statement + countdown length + breathing pattern (safe fallbacks).
   let surfSeconds = FALLBACK_SECONDS;
+  let breathPattern = "box";
   try {
     const settings = await store.getSettings();
     els.why.textContent = settings?.whyStatement || "";
     const n = Number(settings?.surfSeconds);
     if (Number.isFinite(n) && n > 0) surfSeconds = n;
+    if (settings?.breathPattern) breathPattern = settings.breathPattern;
   } catch {
     els.why.textContent = "";
   }
+
+  startBreathing(breathPattern);
 
   // 3. Footer stat line.
   try {
