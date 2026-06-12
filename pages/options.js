@@ -44,6 +44,10 @@ const els = {
 
   overlay: document.getElementById("friction-overlay"),
   panel: document.getElementById("friction-panel"),
+  fTitle: document.getElementById("friction-title"),
+  fBody: document.querySelector("#friction-panel .friction-body"),
+  fCountdown: document.querySelector("#friction-panel .friction-countdown"),
+  fPhraseHint: document.querySelector("#friction-panel .friction-phrase-hint"),
   fDomain: document.getElementById("friction-domain"),
   fTimer: document.getElementById("friction-timer"),
   fPhrase: document.getElementById("friction-phrase"),
@@ -129,7 +133,16 @@ async function renderDomains() {
     remove.className = "remove-btn";
     remove.textContent = "Remove";
     remove.setAttribute("data-remove", domain);
-    remove.addEventListener("click", () => openFriction(domain));
+    remove.addEventListener("click", () =>
+      openCooldownModal({
+        title: `Remove ${domain}?`,
+        requestType: "request-remove",
+        requestPayload: { domain },
+        confirmType: "confirm-remove",
+        confirmLabel: "Remove",
+        onDone: renderDomains,
+      })
+    );
     row.append(remove);
 
     els.domainList.append(row);
@@ -159,63 +172,84 @@ async function onAdd() {
   await renderDomains();
 }
 
-// ---------- Friction removal ----------
+// ---------- Friction modal ----------
+// Two modes share one overlay:
+//   • cooldown mode — turning protection OFF (remove a domain, disable the
+//     extended tier): a 5-minute wait + type-to-confirm. Deliberately hard.
+//   • confirm mode — turning the extended tier ON: a single deliberate yes/no.
 
-let friction = { domain: null, pending: null, timer: null };
+const FRICTION_BODY =
+  "Removing protection has a 5 minute cooldown. This pause is on purpose. It gives your future self a chance to weigh in.";
+
+let modal = { pending: null, timer: null, confirmType: null, onDone: null, cooldown: true };
 
 function updateConfirmEnabled() {
-  const unlocked = isUnlocked(friction.pending, Date.now());
+  const unlocked = isUnlocked(modal.pending, Date.now());
   const phraseOk = confirmPhraseMatches(els.fConfirm.value);
-  // The text input stays disabled until the cooldown elapses; the confirm
-  // button additionally requires the exact phrase.
   els.fConfirm.disabled = !unlocked;
   els.fConfirmBtn.disabled = !(unlocked && phraseOk);
 }
 
-function tickFriction() {
-  if (!friction.pending) return;
-  const remainingMs = friction.pending.unlockAt - Date.now();
+function tickModal() {
+  if (!modal.pending) return;
+  const remainingMs = modal.pending.unlockAt - Date.now();
   els.fTimer.textContent = formatTime(Math.ceil(Math.max(0, remainingMs) / 1000));
   updateConfirmEnabled();
 }
 
-async function openFriction(domain) {
-  // Start (or restart) the cooldown via the worker; it returns unlockAt.
-  const res = await send({ type: "request-remove", domain });
+function setCooldownUiVisible(visible) {
+  els.fCountdown.hidden = !visible;
+  els.fPhraseHint.hidden = !visible;
+  els.fConfirm.hidden = !visible;
+}
+
+async function openCooldownModal({ title, requestType, requestPayload = {}, confirmType, confirmLabel = "Remove", onDone }) {
+  const res = await send({ type: requestType, ...requestPayload });
   const unlockAt = res && res.ok ? res.unlockAt : Date.now() + 5 * 60 * 1000;
+  modal = { pending: { unlockAt }, timer: null, confirmType, onDone, cooldown: true };
 
-  friction.domain = domain;
-  friction.pending = { type: "remove", payload: domain, unlockAt };
-
-  els.fDomain.textContent = domain;
+  els.fTitle.textContent = title;
+  els.fBody.textContent = FRICTION_BODY;
+  els.fConfirmBtn.textContent = confirmLabel;
   els.fPhrase.textContent = CONFIRM_PHRASE;
   els.fConfirm.placeholder = CONFIRM_PHRASE;
   els.fConfirm.value = "";
   els.fConfirm.disabled = true;
   els.fConfirmBtn.disabled = true;
-
+  setCooldownUiVisible(true);
   els.overlay.hidden = false;
-  tickFriction();
-
-  if (friction.timer) clearInterval(friction.timer);
-  friction.timer = setInterval(tickFriction, 1000);
+  tickModal();
+  modal.timer = setInterval(tickModal, 1000);
 }
 
-function closeFriction() {
-  if (friction.timer) clearInterval(friction.timer);
-  friction = { domain: null, pending: null, timer: null };
+function openConfirmModal({ title, body, confirmLabel, onDone }) {
+  modal = { pending: null, timer: null, confirmType: null, onDone, cooldown: false };
+  els.fTitle.textContent = title;
+  els.fBody.textContent = body;
+  els.fConfirmBtn.textContent = confirmLabel;
+  setCooldownUiVisible(false);
+  els.fConfirmBtn.disabled = false;
+  els.overlay.hidden = false;
+}
+
+function closeModal() {
+  if (modal.timer) clearInterval(modal.timer);
+  modal = { pending: null, timer: null, confirmType: null, onDone: null, cooldown: true };
+  els.fBody.textContent = FRICTION_BODY;
   els.overlay.hidden = true;
 }
 
-async function onConfirmRemove() {
-  const res = await send({ type: "confirm-remove", phrase: els.fConfirm.value });
-  if (res && res.ok) {
-    closeFriction();
-    await renderDomains();
-  } else {
-    // Cooldown not elapsed or phrase mismatch — keep the gate up.
-    updateConfirmEnabled();
+async function onConfirm() {
+  if (modal.cooldown) {
+    const res = await send({ type: modal.confirmType, phrase: els.fConfirm.value });
+    if (!(res && res.ok)) {
+      updateConfirmEnabled(); // cooldown not elapsed or phrase mismatch — keep the gate up
+      return;
+    }
   }
+  const done = modal.onDone;
+  closeModal();
+  if (done) await done();
 }
 
 // ---------- Your Why ----------
@@ -319,12 +353,28 @@ async function onToggleExtended() {
   const currentlyOn = !!res?.enabled;
 
   if (currentlyOn) {
-    await send({ type: "set-extended", enabled: false });
-    paintExtended(false);
-    return;
+    // Turning OFF is gated behind the cooldown friction — protection shouldn't
+    // come off with a casual flick of the switch.
+    openCooldownModal({
+      title: "Turn off the extended blocklist?",
+      requestType: "request-disable-extended",
+      confirmType: "confirm-disable-extended",
+      confirmLabel: "Turn it off",
+      onDone: renderExtended,
+    });
+  } else {
+    // Turning ON is a deliberate yes/no, then the host-permission grant.
+    openConfirmModal({
+      title: "Turn on the extended blocklist?",
+      body: "This blocks 313 more sites and asks Chrome for access to them. Once on, it takes a 5 minute cooldown to turn back off.",
+      confirmLabel: "Turn it on",
+      onDone: enableExtended,
+    });
   }
+}
 
-  // Turning ON: needs host access to the extended domains (one prompt).
+async function enableExtended() {
+  // Called from the confirm-button gesture, so chrome.permissions.request is allowed.
   const domains = await loadExtendedDomains();
   const origins = domains.flatMap(originsFor);
   let granted = true;
@@ -432,11 +482,18 @@ async function init() {
   els.whySaveBtn.addEventListener("click", saveWhy);
   els.whyCancelBtn.addEventListener("click", cancelWhy);
 
+  let surfSavedTimer = null;
   els.surfRange.addEventListener("input", () => {
     reflectSurf(Number(els.surfRange.value));
+    els.surfValue.classList.add("dragging");      // live value lights up while dragging
+    els.surfValue.classList.remove("saved");
   });
   els.surfRange.addEventListener("change", async () => {
     await store.setSettings({ surfSeconds: Number(els.surfRange.value) });
+    els.surfValue.classList.remove("dragging");
+    els.surfValue.classList.add("saved");          // confirm it persisted on release
+    if (surfSavedTimer) clearTimeout(surfSavedTimer);
+    surfSavedTimer = setTimeout(() => els.surfValue.classList.remove("saved"), 1400);
   });
 
   els.breathToggle.addEventListener("click", async (e) => {
@@ -450,11 +507,13 @@ async function init() {
   els.extendedToggle.addEventListener("click", onToggleExtended);
 
   els.fConfirm.addEventListener("input", updateConfirmEnabled);
-  els.fConfirmBtn.addEventListener("click", onConfirmRemove);
-  els.fCancel.addEventListener("click", closeFriction);
+  els.fConfirmBtn.addEventListener("click", onConfirm);
+  els.fCancel.addEventListener("click", closeModal);
   els.overlay.addEventListener("click", (e) => {
-    if (e.target === els.overlay) closeFriction();
+    if (e.target === els.overlay) closeModal();
   });
+
+  loadExtendedDomains(); // preload so the enable gesture isn't broken by a fetch
 }
 
 init();

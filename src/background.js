@@ -76,12 +76,29 @@ async function handleMessage(msg) {
     }
     case "confirm-remove": {
       const pending = await store.getPendingUnlock();
-      if (!pending || !isUnlocked(pending, Date.now()) || !confirmPhraseMatches(msg.phrase)) {
+      if (pending?.type !== "remove" || !isUnlocked(pending, Date.now()) || !confirmPhraseMatches(msg.phrase)) {
         return { ok: false };
       }
       await store.removeDomain(pending.payload);
       await store.setPendingUnlock(null);
       await reconcile();
+      return { ok: true };
+    }
+    // Disabling the extended tier is gated behind the same friction as removing
+    // a domain (cooldown + type-to-confirm) — turning protection OFF should be
+    // deliberate, never a quick toggle.
+    case "request-disable-extended": {
+      const pending = startCooldown({ type: "disable-extended" }, Date.now());
+      await store.setPendingUnlock(pending);
+      return { ok: true, unlockAt: pending.unlockAt };
+    }
+    case "confirm-disable-extended": {
+      const pending = await store.getPendingUnlock();
+      if (pending?.type !== "disable-extended" || !isUnlocked(pending, Date.now()) || !confirmPhraseMatches(msg.phrase)) {
+        return { ok: false };
+      }
+      await setExtended(false);
+      await store.setPendingUnlock(null);
       return { ok: true };
     }
     case "set-extended": {

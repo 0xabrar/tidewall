@@ -521,6 +521,15 @@ body {
   font-weight: 600;
   color: var(--ink);
   font-variant-numeric: tabular-nums;
+  transition: color 160ms ease;
+}
+/* While dragging, the live value lights up teal; on release it flashes "saved". */
+.control-value.dragging { color: var(--teal); }
+.control-value.saved::after {
+  content: " ✓ saved";
+  color: var(--teal);
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .range {
@@ -541,6 +550,12 @@ body {
   background: var(--teal);
   border: 2px solid #fff;
   box-shadow: 0 1px 3px rgba(16, 24, 40, 0.2);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+/* Grow + halo the thumb while grabbing, so the drag clearly registers. */
+.range:active::-webkit-slider-thumb {
+  transform: scale(1.35);
+  box-shadow: 0 0 0 6px rgba(15, 143, 134, 0.16), 0 1px 3px rgba(16, 24, 40, 0.25);
 }
 .range::-moz-range-thumb {
   width: 18px;
@@ -549,6 +564,11 @@ body {
   background: var(--teal);
   border: 2px solid #fff;
   box-shadow: 0 1px 3px rgba(16, 24, 40, 0.2);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.range:active::-moz-range-thumb {
+  transform: scale(1.35);
+  box-shadow: 0 0 0 6px rgba(15, 143, 134, 0.16), 0 1px 3px rgba(16, 24, 40, 0.25);
 }
 .range:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
 
