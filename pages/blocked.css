@@ -112,23 +112,21 @@ body {
 .begin-btn {
   font-family: inherit;
   font-size: 16px;
-  font-weight: 600;
-  color: #05221f;
-  background: linear-gradient(180deg, #8fe9e3, #66d7cf);
-  border: none;
+  font-weight: 500;
+  color: var(--hero);
+  background: rgba(127, 227, 223, 0.1);
+  border: 1px solid rgba(var(--teal), 0.32);
   border-radius: 999px;
-  padding: 15px 42px;
+  padding: 14px 40px;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(var(--teal), 0.22);
-  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+  transition: background-color 200ms ease, border-color 200ms ease, transform 160ms ease;
 }
 .begin-btn:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.05);
-  box-shadow: 0 10px 26px rgba(var(--teal), 0.3);
+  background: rgba(127, 227, 223, 0.17);
+  border-color: rgba(var(--teal), 0.5);
 }
-.begin-btn:active { transform: translateY(0) scale(0.98); }
-.begin-btn:focus-visible { outline: 2px solid rgba(var(--teal), 0.9); outline-offset: 3px; }
+.begin-btn:active { transform: scale(0.98); }
+.begin-btn:focus-visible { outline: 2px solid rgba(var(--teal), 0.7); outline-offset: 3px; }
 
 /* ---------- Breathing ---------- */
 

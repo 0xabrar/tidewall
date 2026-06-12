@@ -177,21 +177,28 @@ emergency-mode breathing UX.)
    the session timer runs *implicitly* (it just paces how long the breathing lasts) so
    there's no clock to create finish-line anxiety. Subtext: "The urge is a wave. Let it
    pass."
-2. **What's going on?** — trigger chips (anxious / bored / stressed / lonely / tired / just
-   habit). Selecting one records an **anonymous tally only** and advances.
+2. **"How were you feeling beforehand?"** — trigger chips (anxious / bored / stressed /
+   lonely / tired / just habit). **Past tense, deliberately:** affect-labeling research
+   (Lieberman 2007; 2025 cue-labeling fMRI) shows naming the *antecedent* emotion
+   downregulates the amygdala and is what builds trigger pattern-recognition over time;
+   present tense after breathing would label the already-calmer state. Selecting one
+   records an **anonymous tally only** and advances. Brief labeling ≠ rumination/cue
+   exposure, so there's no reactivation risk.
 3. **Do one thing instead** — a short checklist of healthy replacement actions (step
    outside / water / 10 push-ups / text a friend / start your next task) plus an optional
    free-text "…or name your own". **Nothing here is stored.** Shows the user's "why".
 4. **Done** — a gentle acknowledgement ("The wave passed. Go do it.") with a drawn-in
-   check glyph, a relapse-prevention line ("Every urge you surf weakens the loop") and the
-   urges-surfed count. No bypass control anywhere — advancing only ever goes deeper into
-   the flow.
+   check glyph and the urges-surfed count, plus a **soft, no-input reflection** ("Notice how
+   you feel now. There's no right answer."). Research note: a *required* "how do you feel
+   now?" step is deliberately avoided — if the person doesn't feel better it creates a
+   negative self-comparison that undercuts self-efficacy; the reflection is framed as
+   optional noticing instead. No bypass control anywhere.
 
 **Evidence-based mapping (each state is a validated component, not decoration):**
 | State | CBT/ACT component |
 |---|---|
 | Breathing | mindfulness / emotion regulation; cue/urge management (urges crest and fall) |
-| What's going on? | affect labeling / cognitive (the one thing worth tracking) |
+| How were you feeling beforehand? | affect labeling, past-tense (the one thing worth tracking) |
 | Do one thing instead | replacement routine (habit-loop substitution) |
 | Your why | ACT values / commitment |
 | Done acknowledgement | relapse-prevention framing |

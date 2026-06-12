@@ -95,23 +95,21 @@ body {
 .cta {
   font-family: inherit;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--hero);
   background: rgba(127, 227, 223, 0.1);
-  border: 1.5px solid rgba(var(--teal), 0.55);
+  border: 1px solid rgba(var(--teal), 0.32);
   border-radius: 999px;
   padding: 14px 40px;
   cursor: pointer;
-  box-shadow: 0 0 30px rgba(var(--teal), 0.12);
-  transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  transition: background-color 200ms ease, border-color 200ms ease, transform 160ms ease;
 }
 .cta:hover {
-  background: rgba(127, 227, 223, 0.18);
-  border-color: rgba(var(--teal), 0.8);
-  box-shadow: 0 0 44px rgba(var(--teal), 0.24);
+  background: rgba(127, 227, 223, 0.17);
+  border-color: rgba(var(--teal), 0.5);
 }
-.cta:active { transform: scale(0.97); }
-.cta:focus-visible { outline: 2px solid rgba(var(--teal), 0.8); outline-offset: 3px; }
+.cta:active { transform: scale(0.98); }
+.cta:focus-visible { outline: 2px solid rgba(var(--teal), 0.7); outline-offset: 3px; }
 
 .foot-note {
   margin: 26px auto 0;
