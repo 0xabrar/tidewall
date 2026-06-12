@@ -1,6 +1,9 @@
 import { normalizeDomain } from "./domains.js";
 
-export const DEFAULT_SETTINGS = { surfSeconds: 90, breathPattern: "box", whyStatement: "" };
+// Default to 4-7-8: the extended exhale drives a stronger parasympathetic /
+// vagal response than equal-phase box breathing, so it's the better default for
+// an acute urge moment. (Box stays available as the gentler option.)
+export const DEFAULT_SETTINGS = { surfSeconds: 90, breathPattern: "478", whyStatement: "" };
 const DEFAULT_STATS = { encounters: 0, surfsCompleted: 0, triggers: {} };
 
 export function makeStore(chromeStorage = globalThis.chrome?.storage) {

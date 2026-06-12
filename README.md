@@ -3,8 +3,6 @@
 A **local-only** Chrome extension that blocks pornography sites and redirects to a calm,
 CBT-based intervention page (breathing + urge-surfing) instead of a generic error.
 
-![Block page](docs/assets/block-page.png)
-
 ## Why local / unpacked?
 
 ClearHead is loaded as an **unpacked extension** — never published to the Chrome Web

@@ -129,7 +129,7 @@ async function init() {
 
   const store = makeStore();
   let surfSeconds = FALLBACK_SECONDS;
-  let breathPattern = "box";
+  let breathPattern = "478";
   let whyStatement = "";
   let surfed = 0;
   try {

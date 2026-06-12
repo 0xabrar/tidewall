@@ -406,7 +406,7 @@ async function init() {
   const surf = Number(settings.surfSeconds) || 90;
   els.surfRange.value = String(surf);
   reflectSurf(surf);
-  reflectBreath(settings.breathPattern || "box");
+  reflectBreath(settings.breathPattern || "478");
 
   // Stats
   renderStats(await store.getStats());

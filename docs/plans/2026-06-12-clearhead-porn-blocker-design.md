@@ -89,12 +89,6 @@ and with **no network access and no remote code**, nothing leaves the machine re
 The honest claim is "access scoped to the blocklist; auditably exfiltrates nothing,"
 not "structurally cannot see any URL." No `tabs`, no network, no auto-update, no telemetry.
 
-> Note: the architecture infographic (`docs/assets/architecture.png`) predates this finding
-> and still shows a "no host access" badge; the narrow-host-permission model above
-> supersedes it.
-
-![Architecture](../assets/architecture.png)
-
 ### Flow, end to end
 1. User navigates to a blocked domain.
 2. Chrome's DNR engine matches a rule and **redirects that tab** to the local
@@ -212,8 +206,6 @@ else (the chosen action, the free text, any per-event log) is **not** stored.
 
 Clean, light, **single centered column** (no sidebar), lots of whitespace, one teal accent
 reserved for primary actions.
-
-![Settings page](../assets/settings-page.png)
 
 **Sections:**
 - **Blocklist** — add a domain (friction-free); list of blocked domains each with Remove.
@@ -347,13 +339,7 @@ clearhead/
 
 ---
 
-## 13. Approved mockups
-
-- `docs/assets/architecture.png` — end-to-end architecture infographic
-- `docs/assets/block-page.png` — intervention page (final)
-- `docs/assets/settings-page.png` — settings page (final)
-
-## 14. Evidence base (references)
+## 13. Evidence base (references)
 
 - CBT for compulsive sexual behavior / problematic porn use — systematic review protocol:
   https://pmc.ncbi.nlm.nih.gov/articles/PMC8340575/
