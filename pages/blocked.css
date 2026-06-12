@@ -246,6 +246,18 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* The user's "why", kept gently in view through the breathing. */
+.breath-why {
+  margin: 16px 0 0;
+  max-width: 360px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--hero);
+  opacity: 0.78;
+}
+.breath-why:empty { display: none; }
+
 /* ---------- Questioning / action stages ---------- */
 
 .prompt {

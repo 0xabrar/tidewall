@@ -199,6 +199,7 @@
     "service_worker": "src/background.js",
     "type": "module"
   },
+  "incognito": "split",
   "options_page": "pages/options.html",
   "web_accessible_resources": [
     {

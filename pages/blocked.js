@@ -21,6 +21,7 @@ const els = {
   actions: document.getElementById("actions"),
   next: document.getElementById("next"),
   why: document.getElementById("why"),
+  breathWhy: document.getElementById("breathWhy"),
   doneAction: document.getElementById("doneAction"),
   doneStatNum: document.getElementById("doneStatNum"),
 };
@@ -162,7 +163,12 @@ async function init() {
     surfed = Number((await store.getStats())?.surfsCompleted) || 0;
   } catch {}
 
-  if (whyStatement) els.why.textContent = `Remember: ${whyStatement}`;
+  // Surface the user's "why" during the breathing (the long contemplative phase)
+  // as well as on the action step. It's their reason — keep it in view.
+  if (whyStatement) {
+    els.why.textContent = `Remember: ${whyStatement}`;
+    if (els.breathWhy) els.breathWhy.textContent = whyStatement;
+  }
 
   // Stage 0 -> 1: the person eases in and taps Begin to start the breathing.
   // (Breathing never auto-starts — starting it is their first small choice.)
