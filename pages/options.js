@@ -95,7 +95,7 @@ async function renderDomains() {
   if (domains.length === 0) {
     const empty = document.createElement("li");
     empty.className = "empty-note";
-    empty.textContent = "No custom domains yet — the built-in list is always on.";
+    empty.textContent = "No custom domains yet. The built-in list is always on.";
     els.domainList.append(empty);
     return;
   }
@@ -266,7 +266,7 @@ function reflectSurf(seconds) {
 
 const BREATH_HELP = {
   box: "Equal 4-4-4-4. Steady and grounding.",
-  478: "In 4, hold 7, out 8 — the long exhale calms fastest.",
+  478: "In 4, hold 7, out 8. The long exhale calms fastest.",
 };
 
 function reflectBreath(pattern) {

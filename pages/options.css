@@ -128,12 +128,12 @@ body {
   border: 1px solid var(--hairline);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 22px 24px 24px;
+  padding: 26px 28px 28px;
   scroll-margin-top: 24px;
 }
 
 .section-label {
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.10em;
@@ -270,7 +270,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 11px 2px;
+  padding: 14px 2px;
   border-top: 1px solid var(--hairline);
 }
 
@@ -326,8 +326,8 @@ body {
 }
 
 .list-label {
-  margin: 18px 2px 8px;
-  font-size: 12.5px;
+  margin: 24px 2px 6px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--slate);
 }
@@ -338,20 +338,20 @@ body {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 16px;
-  padding-top: 14px;
+  margin-top: 22px;
+  padding-top: 18px;
   border-top: 1px solid var(--hairline);
 }
 
 .builtin-summary {
   margin: 0;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 500;
   color: var(--slate);
 }
 
 .builtin-link {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 500;
   color: var(--teal);
   text-decoration: none;
@@ -407,11 +407,24 @@ body {
 .switch.on .switch-knob { transform: translateX(18px); }
 
 .ext-state {
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: none;
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   color: var(--muted);
+  background: #eef0f4;
 }
+.ext-state.on {
+  color: #fff;
+  background: var(--teal);
+}
+
+/* When the extended tier is off, dim its (inactive) list on the review page. */
+#extended-card.inactive .builtin-grid { opacity: 0.5; }
 
 /* ---------- Your Why (display <-> edit) ---------- */
 
@@ -477,11 +490,11 @@ body {
 /* Always-visible muted guidance under a control. Shared rhythm: label ->
    control -> help line, with the help line slightly smaller and quieter. */
 .help-line {
-  margin: 6px 2px 0;
-  font-size: 12.5px;
+  margin: 10px 2px 0;
+  font-size: 13.5px;
   font-weight: 400;
-  line-height: 1.5;
-  color: var(--muted);
+  line-height: 1.55;
+  color: var(--slate);
 }
 
 /* Inside a flex control-row the row's gap provides the spacing. */
@@ -586,8 +599,8 @@ body {
 }
 
 .stat-caption {
-  margin-top: 6px;
-  font-size: 12.5px;
+  margin-top: 7px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--muted);
 }

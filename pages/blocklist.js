@@ -49,10 +49,11 @@ function renderList(ul, domains) {
   }
 }
 
-function subtitleText(builtinCount, customCount) {
-  const builtin = `${builtinCount} built-in site${builtinCount === 1 ? "" : "s"}`;
-  if (customCount === 0) return builtin;
-  return `${builtin} + ${customCount} of your own`;
+function subtitleText({ builtin, extended, custom }) {
+  const parts = [`${builtin} built-in`];
+  if (extended) parts.push(`${extended} extended`);
+  if (custom) parts.push(`${custom} of your own`);
+  return parts.join(" + ") + ". Each one redirects to a calm pause.";
 }
 
 async function init() {
@@ -63,7 +64,11 @@ async function init() {
     extendedEnabled(),
   ]);
 
-  els.subtitle.textContent = subtitleText(curated.length, custom.length);
+  els.subtitle.textContent = subtitleText({
+    builtin: curated.length,
+    extended: extOn ? extended.length : 0,
+    custom: custom.length,
+  });
 
   if (custom.length > 0) {
     renderList(els.customList, [...custom].sort((a, b) => a.localeCompare(b)));
@@ -72,7 +77,11 @@ async function init() {
 
   renderList(els.builtinList, curated);
   renderList(els.extendedList, extended);
-  els.extendedState.textContent = extOn ? `— on (${extended.length})` : `— off (${extended.length})`;
+
+  els.extendedState.textContent = extOn ? "on" : "off";
+  els.extendedState.classList.toggle("on", extOn);
+  // When on, these are live — show them at full strength, not dimmed.
+  document.getElementById("extended-card").classList.toggle("inactive", !extOn);
 }
 
 init();
