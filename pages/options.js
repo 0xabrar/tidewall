@@ -24,6 +24,9 @@ const els = {
   surfValue: document.getElementById("surf-value"),
   breathToggle: document.getElementById("breath-toggle"),
 
+  breathHelp: document.getElementById("breath-help"),
+  builtinCount: document.getElementById("builtin-count"),
+
   statSurfs: document.getElementById("stat-surfs"),
   statEncounters: document.getElementById("stat-encounters"),
   triggerChart: document.getElementById("trigger-chart"),
@@ -81,7 +84,7 @@ async function renderDomains() {
   if (domains.length === 0) {
     const empty = document.createElement("li");
     empty.className = "empty-note";
-    empty.textContent = "No custom domains yet. Curated sites are always blocked.";
+    empty.textContent = "No custom domains yet — the built-in list is always on.";
     els.domainList.append(empty);
     return;
   }
@@ -216,9 +219,27 @@ function reflectSurf(seconds) {
   els.surfValue.textContent = `${seconds}s`;
 }
 
+const BREATH_HELP = {
+  box: "Four equal 4-second phases. Steady and grounding — good anytime.",
+  478: "In for 4, hold for 7, out for 8. The long exhale slows your heart rate — the strongest calming effect.",
+};
+
 function reflectBreath(pattern) {
   for (const btn of els.breathToggle.querySelectorAll(".seg")) {
     btn.classList.toggle("active", btn.dataset.pattern === pattern);
+  }
+  els.breathHelp.textContent = BREATH_HELP[pattern] || "";
+}
+
+// ---------- Built-in blocklist summary ----------
+
+async function renderBuiltinCount() {
+  try {
+    const res = await fetch(chrome.runtime.getURL("rules/curated.json"));
+    const rules = await res.json();
+    els.builtinCount.textContent = String(rules.length);
+  } catch {
+    els.builtinCount.textContent = "—";
   }
 }
 
@@ -274,6 +295,7 @@ async function init() {
 
   // Domains
   await renderDomains();
+  renderBuiltinCount();
 
   // ----- Wiring -----
   els.addBtn.addEventListener("click", onAdd);

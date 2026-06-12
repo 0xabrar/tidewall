@@ -217,7 +217,7 @@ body {
 
 .domain-list {
   list-style: none;
-  margin: 16px 0 0;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -271,10 +271,60 @@ body {
 .remove-btn:hover { background: #faf0ef; color: var(--danger); }
 
 .empty-note {
-  margin: 14px 2px 0;
+  margin: 2px 2px 0;
   font-size: 13px;
   color: var(--muted);
 }
+
+.list-label {
+  margin: 18px 2px 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+.builtin-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline);
+}
+
+.builtin-summary {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.builtin-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--teal);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.builtin-link:hover { color: var(--teal-strong); text-decoration: underline; }
+.builtin-link:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
+
+/* ---------- Help lines ---------- */
+
+/* Always-visible muted guidance under a control. Shared rhythm: label ->
+   control -> help line, with the help line slightly smaller and quieter. */
+.help-line {
+  margin: 8px 2px 0;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* Inside a flex control-row the row's gap provides the spacing. */
+.control-row .help-line { margin: 0 2px; }
 
 /* ---------- Intervention ---------- */
 

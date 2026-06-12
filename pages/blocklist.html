@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClearHead — Everything blocked</title>
+  <link rel="stylesheet" href="options.css" />
+  <link rel="stylesheet" href="blocklist.css" />
+</head>
+<body>
+  <main class="page" data-clearhead="blocklist">
+    <header class="page-header">
+      <a class="back-link" href="options.html">&larr; Settings</a>
+      <h1 class="page-title">Everything blocked</h1>
+      <p id="counts-subtitle" class="page-subtitle">Loading…</p>
+    </header>
+
+    <div class="column">
+      <!-- Your additions (shown only when custom domains exist) -->
+      <section class="card" id="custom-card" hidden>
+        <p class="section-label">Your additions</p>
+        <ul id="custom-list" class="readonly-list"></ul>
+        <p class="help-line">Manage these in Settings.</p>
+      </section>
+
+      <!-- Built-in curated list -->
+      <section class="card" id="builtin-card">
+        <p class="section-label">Built-in</p>
+        <ul id="builtin-list" class="builtin-grid"></ul>
+        <p class="help-line">The built-in list can't be edited from here — that's
+          deliberate. A blocker you can talk your way past isn't a blocker.</p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="blocklist.js"></script>
+</body>
+</html>

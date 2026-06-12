@@ -23,7 +23,12 @@
           <button id="add-btn" class="btn btn-primary" type="button">Add</button>
         </div>
         <p id="add-error" class="field-error" hidden>That doesn't look like a valid domain.</p>
+        <p class="list-label">Your additions</p>
         <ul id="domain-list" class="domain-list"></ul>
+        <div class="builtin-row">
+          <p class="builtin-summary">Built-in blocklist — <span id="builtin-count">…</span> sites, always on</p>
+          <a class="builtin-link" href="blocklist.html">Review everything →</a>
+        </div>
       </section>
 
       <!-- Your Why -->
@@ -31,6 +36,7 @@
         <p class="section-label">Your Why</p>
         <textarea id="why-input" class="textarea" rows="3"
                   placeholder="I choose focus so I can be present, finish meaningful work, and protect my energy for people I care about."></textarea>
+        <p class="help-line">You'll see this mid-intervention. Make it personal.</p>
       </section>
 
       <!-- Intervention -->
@@ -39,9 +45,12 @@
 
         <div class="control-row">
           <label class="control-label" for="surf-range">
-            Urge-surf timer — <span id="surf-value" class="control-value">90s</span>
+            Breathing session — <span id="surf-value" class="control-value">90s</span>
           </label>
           <input id="surf-range" class="range" type="range" min="30" max="180" step="5" value="90" />
+          <p class="help-line">How long the guided breathing lasts before the check-in.
+            Urges crest and pass like a wave — usually within a few minutes.
+            The session keeps you riding it instead of acting on it.</p>
         </div>
 
         <div class="control-row">
@@ -50,6 +59,7 @@
             <button type="button" class="seg" data-pattern="box">Box 4-4-4-4</button>
             <button type="button" class="seg" data-pattern="478">4-7-8</button>
           </div>
+          <p class="help-line" id="breath-help"></p>
         </div>
       </section>
 
@@ -69,6 +79,7 @@
         <div class="stats-chart">
           <p class="stat-chart-label">by trigger</p>
           <div id="trigger-chart" class="chart"></div>
+          <p class="help-line">Tallies are anonymous and never leave this device.</p>
         </div>
       </section>
     </div>
