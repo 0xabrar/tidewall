@@ -1,8 +1,37 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8" /><title>ClearHead</title></head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClearHead</title>
+  <link rel="stylesheet" href="blocked.css" />
+</head>
 <body>
-  <!-- Placeholder block page — replaced in Task 7. -->
-  <main id="placeholder" data-clearhead="blocked">ClearHead</main>
+  <main class="wrap" data-clearhead="blocked">
+    <div class="ring" id="ring" aria-hidden="true">
+      <div class="ring-core">
+        <span class="breath" id="breath">Breathe</span>
+        <span class="time" id="time">1:30</span>
+      </div>
+    </div>
+
+    <p class="reframe">The urge is a wave. Let it pass.</p>
+
+    <section class="reflect">
+      <p class="label">what's going on?</p>
+      <div class="chips" id="chips">
+        <button type="button">anxious</button><button type="button">bored</button><button type="button">stressed</button><button type="button">lonely</button><button type="button">tired</button>
+      </div>
+
+      <p class="why" id="why"></p>
+
+      <input class="next" id="next" type="text" autocomplete="off"
+             placeholder="What were you about to do instead?" />
+    </section>
+
+    <p class="foot" id="foot"></p>
+  </main>
+
+  <script type="module" src="blocked.js"></script>
 </body>
 </html>
