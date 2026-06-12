@@ -1,8 +1,112 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8" /><title>ClearHead Settings</title></head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClearHead Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
 <body>
-  <!-- Placeholder settings page — replaced in Task 8. -->
-  <main id="placeholder" data-clearhead="options">ClearHead Settings</main>
+  <div class="shell" data-clearhead="options">
+    <aside class="sidebar">
+      <div class="brand">ClearHead</div>
+      <nav class="nav">
+        <a class="nav-item" href="#blocklist">Blocklist</a>
+        <a class="nav-item" href="#why">Your Why</a>
+        <a class="nav-item" href="#intervention">Intervention</a>
+        <a class="nav-item" href="#stats">Stats</a>
+      </nav>
+      <div class="sidebar-foot">Settings</div>
+    </aside>
+
+    <main class="content">
+      <!-- Blocklist -->
+      <section class="card" id="blocklist">
+        <p class="section-label">Blocklist</p>
+        <div class="add-row">
+          <input id="domain-input" class="text-input" type="text" autocomplete="off"
+                 spellcheck="false" placeholder="Add a domain" />
+          <button id="add-btn" class="btn btn-primary" type="button">Add</button>
+        </div>
+        <p id="add-error" class="field-error" hidden>That doesn't look like a valid domain.</p>
+        <ul id="domain-list" class="domain-list"></ul>
+      </section>
+
+      <!-- Your Why -->
+      <section class="card" id="why">
+        <p class="section-label">Your Why</p>
+        <textarea id="why-input" class="textarea" rows="3"
+                  placeholder="I choose focus so I can be present, finish meaningful work, and protect my energy for people I care about."></textarea>
+      </section>
+
+      <!-- Intervention -->
+      <section class="card" id="intervention">
+        <p class="section-label">Intervention</p>
+
+        <div class="control-row">
+          <label class="control-label" for="surf-range">
+            Urge-surf timer — <span id="surf-value" class="control-value">90s</span>
+          </label>
+          <input id="surf-range" class="range" type="range" min="30" max="180" step="5" value="90" />
+        </div>
+
+        <div class="control-row">
+          <span class="control-label">Breathing pattern</span>
+          <div class="segmented" id="breath-toggle" role="group" aria-label="Breathing pattern">
+            <button type="button" class="seg" data-pattern="box">Box 4-4-4-4</button>
+            <button type="button" class="seg" data-pattern="478">4-7-8</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="card" id="stats">
+        <p class="section-label">Stats</p>
+        <div class="stats-grid">
+          <div class="stat">
+            <div id="stat-surfs" class="stat-number">0</div>
+            <div class="stat-caption">urges surfed</div>
+          </div>
+          <div class="stat">
+            <div id="stat-encounters" class="stat-number">0</div>
+            <div class="stat-caption">encounters</div>
+          </div>
+          <div class="stat stat-chart">
+            <div class="stat-caption stat-chart-label">by trigger</div>
+            <div id="trigger-chart" class="chart"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Friction removal panel (hidden until a Remove is requested) -->
+  <div id="friction-overlay" class="overlay" hidden>
+    <div id="friction-panel" class="friction-panel" role="dialog" aria-modal="true"
+         aria-labelledby="friction-title">
+      <p id="friction-title" class="friction-title">Remove <span id="friction-domain"></span>?</p>
+      <p class="friction-body">
+        Removing protection has a 5 minute cooldown. This pause is on purpose — it
+        gives your future self a chance to weigh in.
+      </p>
+      <div class="friction-countdown">
+        Unlocks in <span id="friction-timer" class="friction-timer">5:00</span>
+      </div>
+      <p class="friction-phrase-hint">
+        Then type this phrase to confirm:
+        <span id="friction-phrase" class="friction-phrase"></span>
+      </p>
+      <input id="friction-confirm" class="text-input friction-input" type="text"
+             autocomplete="off" spellcheck="false" disabled />
+      <div class="friction-actions">
+        <button id="friction-cancel" class="btn btn-ghost" type="button">Cancel</button>
+        <button id="friction-confirm-btn" class="btn btn-danger" type="button" disabled>
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="options.js"></script>
 </body>
 </html>
