@@ -42,7 +42,6 @@ calm-moment decision, never an impulsive one.
 - **Source of truth:** `chrome.storage.local` holds your domains/settings/stats; DNR dynamic
   rules are a derived projection, rebuilt on install/startup/change. Curated domains are
   static, shipped as `rules/curated.json`.
-- See the design doc: [`docs/plans/2026-06-12-tidewall-porn-blocker-design.md`](docs/plans/2026-06-12-tidewall-porn-blocker-design.md)
 
 ## Develop
 
