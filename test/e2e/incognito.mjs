@@ -1,4 +1,4 @@
-// ClearHead — incognito end-to-end check.
+// Tidewall — incognito end-to-end check.
 //
 // Verifies the calm page actually RENDERS in Incognito after a DNR redirect
 // (not ERR_BLOCKED_BY_CLIENT). This requires "incognito":"split" in the
@@ -19,7 +19,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const EXT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const userDir = mkdtempSync(join(tmpdir(), "clearhead-incognito-"));
+const userDir = mkdtempSync(join(tmpdir(), "tidewall-incognito-"));
 const baseArgs = [`--disable-extensions-except=${EXT}`, `--load-extension=${EXT}`, "--no-sandbox"];
 
 function fail(msg) {

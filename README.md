@@ -1,11 +1,11 @@
-# ClearHead
+# Tidewall
 
 A **local-only** Chrome extension that blocks pornography sites and redirects to a calm,
 CBT-based intervention page (breathing + urge-surfing) instead of a generic error.
 
 ## Why local / unpacked?
 
-ClearHead is loaded as an **unpacked extension** — never published to the Chrome Web
+Tidewall is loaded as an **unpacked extension** — never published to the Chrome Web
 Store. Extension supply-chain attacks (ownership changes, malicious auto-updates,
 over-broad permissions) are a real risk. A self-authored extension with **no auto-update**,
 **no remote code**, **no network calls**, and **no telemetry** sidesteps all of it. The
@@ -20,7 +20,7 @@ optional_host_permissions: ["*://*/*"]   (requested per-domain, only when YOU ad
 ```
 
 Chrome requires host access to *redirect* a request — that's how the calm intervention
-page replaces the blocked site (a plain block can't show a custom page). ClearHead narrows
+page replaces the blocked site (a plain block can't show a custom page). Tidewall narrows
 that access to **exactly the sites on your blocklist** and nothing else:
 
 - **Curated blocklist** → host access is baked in (generated from `data/curated-domains.js`),
@@ -28,7 +28,7 @@ that access to **exactly the sites on your blocklist** and nothing else:
 - **Domains you add** → Chrome shows a one-time permission prompt *for that specific domain*
   when you add it. Allow once, it's permanent.
 
-So ClearHead can only ever touch the sites it blocks — **not your general browsing** — and
+So Tidewall can only ever touch the sites it blocks — **not your general browsing** — and
 since there is no network code, nothing leaves your machine regardless.
 
 There is **no bypass button**. The only way to reach a blocked site is to remove its domain
@@ -42,7 +42,7 @@ calm-moment decision, never an impulsive one.
 - **Source of truth:** `chrome.storage.local` holds your domains/settings/stats; DNR dynamic
   rules are a derived projection, rebuilt on install/startup/change. Curated domains are
   static, shipped as `rules/curated.json`.
-- See the design doc: [`docs/plans/2026-06-12-clearhead-porn-blocker-design.md`](docs/plans/2026-06-12-clearhead-porn-blocker-design.md)
+- See the design doc: [`docs/plans/2026-06-12-tidewall-porn-blocker-design.md`](docs/plans/2026-06-12-tidewall-porn-blocker-design.md)
 
 ## Develop
 
@@ -78,9 +78,9 @@ People often use Incognito for this, but **Chrome keeps every extension off in I
 you explicitly allow it** — there is no manifest setting that can turn this on automatically
 (it's a deliberate Chrome security rule). To stay protected in Incognito:
 
-- `chrome://extensions` → **Details** on ClearHead → enable **Allow in Incognito**.
+- `chrome://extensions` → **Details** on Tidewall → enable **Allow in Incognito**.
 
 If a blocked site shows `ERR_BLOCKED_BY_CLIENT` instead of the calm page, another content
-blocker (e.g. Adblock Plus) is cancelling the redirected page. With ClearHead alone the redirect
+blocker (e.g. Adblock Plus) is cancelling the redirected page. With Tidewall alone the redirect
 renders correctly (covered by the `liveredirect` e2e check); disable other blockers in Incognito
 to confirm.

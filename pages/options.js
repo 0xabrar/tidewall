@@ -1,4 +1,4 @@
-// ClearHead — settings / options page behavior.
+// Tidewall — settings / options page behavior.
 //
 // Runs in a normal extension-page realm, so chrome.runtime.sendMessage to the
 // background service worker fires onMessage natively (cross-realm). The worker

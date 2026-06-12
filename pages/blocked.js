@@ -1,4 +1,4 @@
-// ClearHead — block / intervention page.
+// Tidewall — block / intervention page.
 // Progressive disclosure state machine: breathe -> trigger -> action -> done.
 // Only anonymous trigger tallies are stored (CBT self-monitoring); the chosen
 // action and free text are NOT stored. Runs in an extension-page realm, so
@@ -220,7 +220,7 @@ async function init() {
 
   // Minimal namespaced handle so the e2e harness can drive states without
   // waiting out a full real-time breathing session. Inert in normal use.
-  window.__clearhead = { go: goState, begin };
+  window.__tidewall = { go: goState, begin };
 }
 
 init();

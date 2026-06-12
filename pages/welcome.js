@@ -1,4 +1,4 @@
-// ClearHead — welcome page. Opens settings; nothing is stored here.
+// Tidewall — welcome page. Opens settings; nothing is stored here.
 document.getElementById("openSettings").addEventListener("click", () => {
   if (chrome.runtime?.openOptionsPage) {
     chrome.runtime.openOptionsPage();

@@ -1,4 +1,4 @@
-# ClearHead Implementation Plan
+# Tidewall Implementation Plan
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers-extended-cc:executing-plans to implement this plan task-by-task.
 
@@ -23,7 +23,7 @@
 
 ```json
 {
-  "name": "clearhead",
+  "name": "tidewall",
   "version": "0.1.0",
   "description": "Local-only Chrome extension: blocks porn sites and redirects to a calm CBT intervention page.",
   "type": "module",
@@ -39,7 +39,7 @@
 
 Run:
 ```bash
-cd ~/code/clearhead
+cd ~/code/tidewall
 mkdir -p rules data src/lib pages scripts test assets/fonts
 ```
 
@@ -52,7 +52,7 @@ Expected: a Node 18+ version and a chrome path.
 
 ```bash
 git add package.json
-git commit -m "chore: scaffold ClearHead project structure"
+git commit -m "chore: scaffold Tidewall project structure"
 ```
 
 ---
@@ -455,7 +455,7 @@ git commit -m "feat: chrome.storage.local wrapper as single source of truth"
 ```json
 {
   "manifest_version": 3,
-  "name": "ClearHead",
+  "name": "Tidewall",
   "version": "0.1.0",
   "description": "Blocks porn sites and redirects to a calm intervention page. Local-only.",
   "permissions": ["declarativeNetRequest", "storage"],
@@ -471,8 +471,8 @@ git commit -m "feat: chrome.storage.local wrapper as single source of truth"
 
 **Step 2: Verify it loads**
 
-Run: `chrome://extensions` → Developer mode ON → Load unpacked → select `~/code/clearhead`.
-Expected: ClearHead loads with no manifest errors. (No host/tabs permission prompt — confirm the permissions list shows only "declarativeNetRequest" essentially silently.)
+Run: `chrome://extensions` → Developer mode ON → Load unpacked → select `~/code/tidewall`.
+Expected: Tidewall loads with no manifest errors. (No host/tabs permission prompt — confirm the permissions list shows only "declarativeNetRequest" essentially silently.)
 
 **Step 3: Smoke-test blocking**
 
@@ -562,7 +562,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
 **Step 2: Reload and verify reconciliation**
 
-Reload the unpacked extension. Open the service worker console (chrome://extensions → ClearHead → "service worker"). Run there:
+Reload the unpacked extension. Open the service worker console (chrome://extensions → Tidewall → "service worker"). Run there:
 ```js
 chrome.runtime.sendMessage({ type: "add-domain", domain: "example.com" }, console.log);
 ```
@@ -744,7 +744,7 @@ async function confirmRemove(phrase) {
 
 **Step 4: Manual verification**
 
-Open the options page (chrome://extensions → ClearHead → Details → Extension options).
+Open the options page (chrome://extensions → Tidewall → Details → Extension options).
 Expected:
 - Add a domain → appears in list → that domain now redirects.
 - Click Remove → friction panel shows a 5-min countdown; confirm is disabled until the
@@ -800,5 +800,5 @@ git commit -m "docs: build/test/run instructions and acceptance checklist"
   and testable).
 - **Regenerate `rules/curated.json`** with `npm run build:rules` whenever
   `data/curated-domains.js` changes; commit the generated file.
-- **Reference:** design doc at `docs/plans/2026-06-12-clearhead-porn-blocker-design.md`;
+- **Reference:** design doc at `docs/plans/2026-06-12-tidewall-porn-blocker-design.md`;
   mockups in `docs/assets/`.

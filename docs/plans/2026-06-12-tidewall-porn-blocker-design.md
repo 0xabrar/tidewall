@@ -1,4 +1,4 @@
-# ClearHead — Design Document
+# Tidewall — Design Document
 
 **Date:** 2026-06-12
 **Status:** Approved design, pre-implementation
@@ -8,7 +8,7 @@
 
 ## 1. Purpose
 
-ClearHead is a **local-only Chrome extension** that blocks pornography sites and,
+Tidewall is a **local-only Chrome extension** that blocks pornography sites and,
 instead of showing a generic "can't reach this page" error, redirects the tab to a
 calm **intervention page** built on evidence-based CBT/ACT techniques (breathing,
 urge-surfing, affect labeling, values, relapse-prevention framing).
@@ -84,7 +84,7 @@ taking `<all_urls>`:
 - **User-added domains** → granted at runtime via `optional_host_permissions`; Chrome
   prompts once per domain at add-time (from the Settings "Add" gesture).
 
-So ClearHead can only ever touch the sites on its blocklist — **not general browsing** —
+So Tidewall can only ever touch the sites on its blocklist — **not general browsing** —
 and with **no network access and no remote code**, nothing leaves the machine regardless.
 The honest claim is "access scoped to the blocklist; auditably exfiltrates nothing,"
 not "structurally cannot see any URL." No `tabs`, no network, no auto-update, no telemetry.
@@ -246,7 +246,7 @@ friction) in Settings only.
 ## 7. Components / file structure
 
 ```
-clearhead/
+tidewall/
   manifest.json                 # MV3; permissions: declarativeNetRequest, storage
   rules/
     curated.json                # static DNR redirect ruleset (generated)

@@ -1,10 +1,10 @@
-/* ClearHead — blocklist review page.
+/* Tidewall — blocklist review page.
    Page-specific layout only; shared primitives (fonts, cards, buttons, help
    lines) come from options.css. Read-only, calm, no italics anywhere. */
 
 /* The review page's help lines are quiet explanatory captions, not the
    actionable settings guidance — keep them small and muted. */
-[data-clearhead="blocklist"] .help-line {
+[data-tidewall="blocklist"] .help-line {
   font-size: 12.5px;
   color: var(--muted);
 }

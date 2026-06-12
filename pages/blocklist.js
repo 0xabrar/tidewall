@@ -1,4 +1,4 @@
-// ClearHead — blocklist review page.
+// Tidewall — blocklist review page.
 //
 // Read-only view of everything the extension blocks: the curated built-in
 // ruleset (loaded from the packaged rules/curated.json) plus any user-added

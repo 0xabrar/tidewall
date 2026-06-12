@@ -1,4 +1,4 @@
-// ClearHead end-to-end harness.
+// Tidewall end-to-end harness.
 //
 // Loads the REAL unpacked extension into headless Chromium (new headless mode,
 // required for MV3 extensions), resolves the extension ID from the live service
@@ -29,7 +29,7 @@ function log(ok, name, detail = "") {
 }
 
 async function launch() {
-  const userDir = mkdtempSync(join(tmpdir(), "clearhead-e2e-"));
+  const userDir = mkdtempSync(join(tmpdir(), "tidewall-e2e-"));
   const context = await chromium.launchPersistentContext(userDir, {
     headless: false,
     args: [
@@ -156,7 +156,7 @@ const checks = {
     if (w1 === w2) throw new Error(`breath phase did not advance: ${w1} == ${w2}`);
 
     // Skip to the trigger stage; record a trigger; expect it to advance + tally.
-    await page.evaluate(() => window.__clearhead.go("trigger"));
+    await page.evaluate(() => window.__tidewall.go("trigger"));
     await page.locator('[data-stage="trigger"] .chips button').first().click();
     await page.waitForTimeout(400);
     const { stats } = await getStorage(sw, ["stats"]);
