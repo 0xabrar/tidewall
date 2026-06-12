@@ -7,19 +7,13 @@
   <link rel="stylesheet" href="options.css" />
 </head>
 <body>
-  <div class="shell" data-clearhead="options">
-    <aside class="sidebar">
-      <div class="brand">ClearHead</div>
-      <nav class="nav">
-        <a class="nav-item" href="#blocklist">Blocklist</a>
-        <a class="nav-item" href="#why">Your Why</a>
-        <a class="nav-item" href="#intervention">Intervention</a>
-        <a class="nav-item" href="#stats">Stats</a>
-      </nav>
-      <div class="sidebar-foot">Settings</div>
-    </aside>
+  <main class="page" data-clearhead="options">
+    <header class="page-header">
+      <div class="wordmark">ClearHead</div>
+      <p class="page-subtitle">Settings</p>
+    </header>
 
-    <main class="content">
+    <div class="column">
       <!-- Blocklist -->
       <section class="card" id="blocklist">
         <p class="section-label">Blocklist</p>
@@ -62,7 +56,7 @@
       <!-- Stats -->
       <section class="card" id="stats">
         <p class="section-label">Stats</p>
-        <div class="stats-grid">
+        <div class="stats-numbers">
           <div class="stat">
             <div id="stat-surfs" class="stat-number">0</div>
             <div class="stat-caption">urges surfed</div>
@@ -71,14 +65,14 @@
             <div id="stat-encounters" class="stat-number">0</div>
             <div class="stat-caption">encounters</div>
           </div>
-          <div class="stat stat-chart">
-            <div class="stat-caption stat-chart-label">by trigger</div>
-            <div id="trigger-chart" class="chart"></div>
-          </div>
+        </div>
+        <div class="stats-chart">
+          <p class="stat-chart-label">by trigger</p>
+          <div id="trigger-chart" class="chart"></div>
         </div>
       </section>
-    </main>
-  </div>
+    </div>
+  </main>
 
   <!-- Friction removal panel (hidden until a Remove is requested) -->
   <div id="friction-overlay" class="overlay" hidden>
