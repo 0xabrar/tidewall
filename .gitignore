@@ -3,3 +3,7 @@ node_modules/
 .DS_Store
 output/
 _metadata/
+
+# local dev scratch
+_*.mjs
+_*.png
