@@ -415,7 +415,7 @@ function renderStats(stats) {
     nm.textContent = name;
     const value = document.createElement("span");
     value.className = "chart-count";
-    value.textContent = ` · ${count}`;
+    value.textContent = `· ${count}`;
     label.append(nm, value);
 
     col.append(bar, label);
