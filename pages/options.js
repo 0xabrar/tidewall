@@ -408,7 +408,11 @@ function renderStats(stats) {
     const bar = document.createElement("div");
     bar.className = "chart-bar";
     bar.style.height = `${Math.round((count / max) * 64) + 3}px`;
-    bar.title = `${name}: ${count}`;
+
+    const value = document.createElement("span");
+    value.className = "chart-count";
+    value.textContent = String(count);
+    bar.append(value);
 
     const label = document.createElement("div");
     label.className = "chart-name";
