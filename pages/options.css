@@ -118,7 +118,7 @@ body {
 .column {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 30px;
 }
 
 /* ---------- Cards ---------- */
@@ -128,12 +128,12 @@ body {
   border: 1px solid var(--hairline);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 26px 28px 28px;
+  padding: 30px 32px 32px;
   scroll-margin-top: 24px;
 }
 
 .section-label {
-  margin: 0 0 18px;
+  margin: 0 0 22px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.10em;
@@ -366,8 +366,8 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 14px;
-  padding-top: 14px;
+  margin-top: 20px;
+  padding-top: 18px;
   border-top: 1px solid var(--hairline);
 }
 .extended-text { min-width: 0; }
@@ -497,7 +497,7 @@ body {
 /* Always-visible muted guidance under a control. Shared rhythm: label ->
    control -> help line, with the help line slightly smaller and quieter. */
 .help-line {
-  margin: 10px 2px 0;
+  margin: 14px 2px 0;
   font-size: 13.5px;
   font-weight: 400;
   line-height: 1.55;
