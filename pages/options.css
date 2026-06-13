@@ -840,16 +840,6 @@ body {
 [data-theme="dark"] .friction-countdown { color: #d8b878; }
 [data-theme="dark"] .friction-timer     { color: #cdac6a; }
 
-/* Dark-mode toggle: a quiet slim row at the very bottom — low priority, no card. */
-.appearance-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 8px;
-  padding: 4px 6px 0;
-}
-.appearance-bar-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--muted);
-}
+/* Theme picker: reuses the segmented control, with a sun/moon icon per option. */
+#theme-seg .seg { display: inline-flex; align-items: center; gap: 7px; }
+#theme-seg svg { width: 15px; height: 15px; }

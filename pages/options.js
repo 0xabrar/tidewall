@@ -37,7 +37,7 @@ const els = {
   extendedHelp: document.getElementById("extended-help"),
 
   breatheNow: document.getElementById("breathe-now"),
-  themeToggle: document.getElementById("theme-toggle"),
+  themeSeg: document.getElementById("theme-seg"),
 
   statSurfs: document.getElementById("stat-surfs"),
   statEncounters: document.getElementById("stat-encounters"),
@@ -442,8 +442,11 @@ function openBreathing() {
 function applyTheme(theme) {
   const dark = theme === "dark";
   document.documentElement.dataset.theme = dark ? "dark" : "light";
-  els.themeToggle.classList.toggle("on", dark);
-  els.themeToggle.setAttribute("aria-checked", dark ? "true" : "false");
+  for (const btn of els.themeSeg.querySelectorAll(".seg")) {
+    const on = btn.dataset.themeChoice === (dark ? "dark" : "light");
+    btn.classList.toggle("active", on);
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+  }
 }
 
 async function init() {
@@ -508,10 +511,12 @@ async function init() {
 
   els.extendedToggle.addEventListener("click", onToggleExtended);
 
-  els.themeToggle.addEventListener("click", async () => {
-    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-    await store.setTheme(next);
-    applyTheme(next);
+  els.themeSeg.addEventListener("click", async (e) => {
+    const btn = e.target.closest(".seg");
+    if (!btn) return;
+    const choice = btn.dataset.themeChoice;
+    await store.setTheme(choice);
+    applyTheme(choice);
   });
 
   els.fConfirm.addEventListener("input", updateConfirmEnabled);
