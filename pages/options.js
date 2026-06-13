@@ -37,6 +37,7 @@ const els = {
   extendedHelp: document.getElementById("extended-help"),
 
   breatheNow: document.getElementById("breathe-now"),
+  themeToggle: document.getElementById("theme-toggle"),
 
   statSurfs: document.getElementById("stat-surfs"),
   statEncounters: document.getElementById("stat-encounters"),
@@ -438,7 +439,17 @@ function openBreathing() {
 
 // ---------- Init ----------
 
+function applyTheme(theme) {
+  const dark = theme === "dark";
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
+  els.themeToggle.classList.toggle("on", dark);
+  els.themeToggle.setAttribute("aria-checked", dark ? "true" : "false");
+}
+
 async function init() {
+  // Apply the saved theme first so the page paints in the right mode (light is default).
+  applyTheme(await store.getTheme());
+
   // Settings
   const settings = await store.getSettings();
   whyValue = settings.whyStatement || "";
@@ -496,6 +507,12 @@ async function init() {
   });
 
   els.extendedToggle.addEventListener("click", onToggleExtended);
+
+  els.themeToggle.addEventListener("click", async () => {
+    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    await store.setTheme(next);
+    applyTheme(next);
+  });
 
   els.fConfirm.addEventListener("input", updateConfirmEnabled);
   els.fConfirmBtn.addEventListener("click", onConfirm);

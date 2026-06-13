@@ -44,5 +44,9 @@ export function makeStore(chromeStorage = globalThis.chrome?.storage) {
     },
     async getPendingUnlock() { return await get("pendingUnlock", null); },
     async setPendingUnlock(p) { await local.set({ pendingUnlock: p }); },
+    // Theme is its own top-level key (not inside settings) so the toggle never
+    // races the settings object. "light" (default) or "dark".
+    async getTheme() { return await get("theme", "light"); },
+    async setTheme(t) { await local.set({ theme: t === "dark" ? "dark" : "light" }); },
   };
 }

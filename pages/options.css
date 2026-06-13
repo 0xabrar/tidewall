@@ -792,3 +792,51 @@ body {
   .builtin-row { gap: 6px; }
   .chart { gap: 8px; }
 }
+
+/* ───────────────────────────── Dark mode ─────────────────────────────
+   Opt-in via the Appearance toggle, which sets data-theme="dark" on <html>.
+   Borrows the calm dark-teal world of the breathing screen so Settings and
+   the blocklist review page feel like one app. Deliberately NOT an invert:
+   slate surfaces (never pure black), off-white text, a slightly brighter,
+   desaturated teal, and elevation shown by lighter surfaces over shadows. */
+[data-theme="dark"] {
+  --bg: #0e1820;
+  --card: #16242c;
+  --hairline: #2a3a44;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.32), 0 6px 22px rgba(0, 0, 0, 0.30);
+
+  --ink: #e9eef0;
+  --slate: #a7b4bd;
+  --muted: #7c8a94;
+  --faint: #5d6a73;
+
+  --teal: #1faa9e;
+  --teal-strong: #38c4b8;
+  --teal-soft: rgba(31, 170, 158, 0.16);
+
+  --danger: #e0796d;
+  --warn-soft: #241f14;
+  --warn-border: #44391f;
+}
+
+/* The handful of hardcoded (non-token) colors need explicit dark values. */
+[data-theme="dark"] .text-input,
+[data-theme="dark"] .textarea         { background: #14222a; }
+[data-theme="dark"] .btn-ghost        { background: transparent; }
+[data-theme="dark"] .btn-ghost:hover  { background: #1e2d35; color: var(--ink); }
+[data-theme="dark"] .btn-danger:hover { background: #cf6256; }
+[data-theme="dark"] .switch           { background: #3a4750; }
+[data-theme="dark"] .switch:hover     { background: #46535d; }
+[data-theme="dark"] .switch.on:hover  { background: var(--teal-strong); }
+[data-theme="dark"] .grant-badge      { background: #243038; }
+[data-theme="dark"] .grant-badge:hover{ background: #2a3741; color: var(--ink); }
+[data-theme="dark"] .segmented        { background: #1a2832; }
+[data-theme="dark"] .seg.active,
+[data-theme="dark"] .seg.active:hover { background: #27363f; }
+[data-theme="dark"] .overlay          { background: rgba(0, 0, 0, 0.55); }
+[data-theme="dark"] .friction-countdown { color: #d8b878; }
+[data-theme="dark"] .friction-timer     { color: #cdac6a; }
+
+/* Appearance row (Dark mode toggle) — same layout as the extended-list row. */
+.appearance-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.appearance-title { margin: 0 0 3px; font-weight: 600; color: var(--ink); }

@@ -57,6 +57,9 @@ function subtitleText({ builtin, extended, custom }) {
 }
 
 async function init() {
+  // Match the theme chosen in Settings (shares options.css; light is default).
+  document.documentElement.dataset.theme = (await store.getTheme()) === "dark" ? "dark" : "light";
+
   const [curated, extended, custom, extOn] = await Promise.all([
     loadRuleset("rules/curated.json"),
     loadRuleset("rules/extended.json"),
