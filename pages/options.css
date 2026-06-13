@@ -133,7 +133,7 @@ body {
 }
 
 .section-label {
-  margin: 0 0 22px;
+  margin: 0 0 16px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.10em;
@@ -497,7 +497,7 @@ body {
 /* Always-visible muted guidance under a control. Shared rhythm: label ->
    control -> help line, with the help line slightly smaller and quieter. */
 .help-line {
-  margin: 14px 2px 0;
+  margin: 12px 2px 0;
   font-size: 13.5px;
   font-weight: 400;
   line-height: 1.55;
