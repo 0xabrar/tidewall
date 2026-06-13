@@ -26,17 +26,18 @@ const els = {
   doneStatNum: document.getElementById("doneStatNum"),
 };
 
-// Count a number up from 0 to `to` (easeOutCubic) — the done-screen reward.
-// Starts after the stage has eased in, so the count reads cleanly on its own
-// instead of running underneath the entrance animation.
-function animateCount(el, to, ms = 900) {
+// Count a number up from 0 to `to` (easeInOutCubic — a slow build that
+// accelerates through the middle, then eases into the final value) — the
+// done-screen reward. Starts after the stage has eased in, so the count reads
+// cleanly on its own instead of running underneath the entrance animation.
+function animateCount(el, to, ms = 1100) {
   if (!el) return;
   el.textContent = "0";
   setTimeout(() => {
     const start = performance.now();
     const step = (now) => {
       const t = Math.min(1, (now - start) / ms);
-      const eased = 1 - Math.pow(1 - t, 3);
+      const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
       el.textContent = String(Math.round(to * eased));
       if (t < 1) requestAnimationFrame(step);
     };
