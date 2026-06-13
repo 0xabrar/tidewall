@@ -392,6 +392,10 @@ body {
   transition: background-color 180ms ease;
 }
 .switch.on { background: var(--teal); }
+/* Subtle hover so the toggle feels as responsive as every other control
+   (animates via the existing 180ms background-color transition above). */
+.switch:hover { background: #c4c9d4; }
+.switch.on:hover { background: #0d7e76; }
 .switch:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .switch-knob {
   position: absolute;
@@ -552,6 +556,12 @@ body {
   box-shadow: 0 1px 3px rgba(16, 24, 40, 0.2);
   transition: transform 120ms ease, box-shadow 120ms ease;
 }
+/* Hover affordance: a gentle lift so the grabbable thumb responds on mouse-over,
+   short of the firmer grow + halo it gets while actually dragging (:active). */
+.range:hover::-webkit-slider-thumb {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(15, 143, 134, 0.1), 0 1px 3px rgba(16, 24, 40, 0.22);
+}
 /* Grow + halo the thumb while grabbing, so the drag clearly registers. */
 .range:active::-webkit-slider-thumb {
   transform: scale(1.2);
@@ -565,6 +575,10 @@ body {
   border: 2px solid #fff;
   box-shadow: 0 1px 3px rgba(16, 24, 40, 0.2);
   transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.range:hover::-moz-range-thumb {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(15, 143, 134, 0.1), 0 1px 3px rgba(16, 24, 40, 0.22);
 }
 .range:active::-moz-range-thumb {
   transform: scale(1.2);

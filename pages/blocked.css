@@ -401,10 +401,14 @@ body {
   text-transform: uppercase;
 }
 
+/* The closing interoceptive check-in — the gentlest beat of the urge-surf, not a
+   footnote. Give it the same presence as the action line (and a readable tone)
+   so it reads as a deliberate invitation, while staying below the title and the
+   reward number in the hierarchy. */
 .done-reflect {
   margin: 40px 0 0;
-  font-size: 14.5px;
-  color: var(--ink-3);
+  font-size: 17px;
+  color: var(--ink-2);
 }
 
 @media (prefers-reduced-motion: reduce) {
