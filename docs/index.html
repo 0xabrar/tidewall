@@ -5,41 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tidewall — a calmer porn blocker</title>
   <meta name="description" content="Tidewall blocks adult sites and redirects them to a calm breathing exercise. Local-only, private, no tracking." />
+  <link rel="icon" href="icon-128.png" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    :root { --ink-1:#11202a; --ink-2:#44525c; --ink-3:#6b7780; --teal:#0f8f86; --bg:#f7f8fa; }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; background: var(--bg); color: var(--ink-2);
-      font: 400 18px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 24px;
-    }
-    .wrap { max-width: 560px; }
-    .dot {
-      width: 64px; height: 64px; border-radius: 16px; margin: 0 auto 28px;
-      background: radial-gradient(closest-side, rgba(127,227,223,0.9), rgba(15,143,134,0.85));
-      box-shadow: 0 0 44px rgba(15,143,134,0.4);
-    }
-    h1 { font-size: 34px; line-height: 1.15; color: var(--ink-1); letter-spacing: -0.02em; margin: 0 0 14px; }
-    p { margin: 0 auto 28px; max-width: 460px; }
-    .links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    a.btn {
-      display: inline-block; padding: 11px 20px; border-radius: 10px; font-weight: 600; text-decoration: none;
-      background: var(--teal); color: #fff;
-    }
-    a.btn.ghost { background: transparent; color: var(--teal); box-shadow: inset 0 0 0 1px rgba(15,143,134,0.4); }
-    a.btn:hover { filter: brightness(1.05); }
+    body { min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 32px; }
+    .wrap { max-width: 540px; }
+    .hero-mark { width: 76px; height: 76px; border-radius: 19px; margin: 0 auto 30px; display: block; box-shadow: 0 10px 40px rgba(15, 143, 134, 0.35); }
+    h1 { font-size: 38px; margin: 0 0 16px; }
+    p.lead { font-size: 19px; margin: 0 auto 32px; max-width: 460px; color: var(--ink-2); }
+    .links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 12px 22px; border-radius: 11px; font-weight: 600; font-size: 16px; }
+    .btn.solid { background: var(--teal); color: #fff; }
+    .btn.solid:hover { background: #0c7d75; text-decoration: none; }
+    .btn.ghost { color: var(--teal); box-shadow: inset 0 0 0 1px rgba(15, 143, 134, 0.35); }
+    .btn.ghost:hover { background: rgba(15, 143, 134, 0.06); text-decoration: none; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="dot" aria-hidden="true"></div>
+    <img class="hero-mark" src="icon-128.png" alt="Tidewall" />
     <h1>A calmer way to block porn.</h1>
-    <p>Tidewall redirects adult sites to a guided breathing exercise instead of a blank error
-      page. It runs entirely on your device — no accounts, no tracking, nothing leaves your machine.</p>
+    <p class="lead">Tidewall redirects adult sites to a guided breathing exercise instead of a blank
+      error page. It runs entirely on your device. No accounts, no tracking, nothing leaves your machine.</p>
     <div class="links">
-      <a class="btn" href="https://github.com/0xabrar/tidewall">View on GitHub</a>
-      <a class="btn ghost" href="privacy.html">Privacy Policy</a>
+      <a class="btn solid" href="https://github.com/0xabrar/tidewall">View on GitHub</a>
+      <a class="btn ghost" href="privacy/">Privacy Policy</a>
     </div>
   </div>
 </body>

@@ -60,8 +60,8 @@ English
 | Asset | Dimensions | Status | Filename |
 |-------|-----------|--------|----------|
 | Store Icon [REQUIRED] | 128×128 PNG | ✅ Ready | `icons/icon-128.png` |
-| Screenshot 1 [REQUIRED] | 1280×800 | ✅ Ready | `store-assets/screenshot-1-block.png` |
-| Screenshot 2 [RECOMMENDED] | 1280×800 | ✅ Ready | `store-assets/screenshot-2-settings.png` |
+| Screenshot 1 [REQUIRED] | 1280×800 | ✅ Ready | `store-assets/screenshot-1-block-framed.png` |
+| Screenshot 2 [RECOMMENDED] | 1280×800 | ✅ Ready | `store-assets/screenshot-2-settings-framed.png` |
 | Small Promo Tile [RECOMMENDED] | 440×280 | ⬜ Not created | |
 
 ### Screenshot Notes
@@ -92,9 +92,9 @@ storage and never transmitted. No network calls, no analytics, no third parties.
 ## Privacy Policy
 
 **Privacy Policy URL** [REQUIRED]
-`https://0xabrar.github.io/tidewall/privacy.html`
-<!-- Hosted via GitHub Pages (main branch /docs). The plain repo copy at
-     github.com/0xabrar/tidewall/blob/main/PRIVACY.md also works as a fallback. -->
+`https://0xabrar.github.io/tidewall/privacy`
+<!-- Hosted via GitHub Pages (main branch /docs/privacy/index.html). The repo
+     copy at github.com/0xabrar/tidewall/blob/main/PRIVACY.md mirrors it. -->
 
 **Homepage / landing**: `https://0xabrar.github.io/tidewall/`
 

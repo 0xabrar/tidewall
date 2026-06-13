@@ -1,0 +1,43 @@
+/* Self-hosted Hanken Grotesk — the same typeface the extension uses, so the
+   site and the product read as one brand. No third-party font request. */
+@font-face { font-family: "Hanken Grotesk"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/hanken-400.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-weight: 500; font-style: normal; font-display: swap; src: url("fonts/hanken-500.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-weight: 600; font-style: normal; font-display: swap; src: url("fonts/hanken-600.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/hanken-700.woff2") format("woff2"); }
+
+:root {
+  --ink-1: #11202a;
+  --ink-2: #45535c;
+  --ink-3: #7a868e;
+  --teal: #0f8f86;
+  --bg: #f5f8f8;
+  --hairline: #e5eaea;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--teal); text-decoration: none; }
+a:hover { text-decoration: underline; }
+strong { color: var(--ink-1); font-weight: 600; }
+
+h1, h2 { color: var(--ink-1); text-wrap: balance; }
+h1 { font-weight: 700; letter-spacing: -0.022em; line-height: 1.14; }
+h2 { font-weight: 600; letter-spacing: -0.01em; }
+
+/* Brand lockup: the real Tidewall icon + wordmark. */
+.brand { display: flex; align-items: center; gap: 11px; }
+.brand img { width: 30px; height: 30px; border-radius: 8px; display: block; box-shadow: 0 2px 12px rgba(15, 143, 134, 0.28); }
+.brand span { font-weight: 600; font-size: 18px; color: var(--ink-1); letter-spacing: -0.01em; }

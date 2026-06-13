@@ -1,25 +1,52 @@
 # Privacy Policy for Tidewall
 
-_Last updated: 2026-06-12_
+_Effective June 12, 2026_
 
-Tidewall does not collect, store, or transmit any personal data or browsing
-information.
+**Tidewall does not collect, transmit, sell, or share any of your data.** It is a
+local-only browser extension with no servers, no accounts, and no network
+connections of any kind. Everything it does happens on your own device.
 
-Everything Tidewall saves — your blocklist, your breathing settings, and a
-simple local count of urges surfed — is stored **only on your own device** using
-Chrome's local extension storage. None of it ever leaves your machine.
+## What Tidewall stores on your device
 
-Tidewall makes **no network connections of any kind**. It has no accounts, no
-analytics, no telemetry, no tracking, and no third-party services. It does not
-read the content of the pages you visit; it only redirects the specific adult
-sites on your blocklist to a calm breathing-exercise page that is bundled inside
-the extension itself.
+To do its job, Tidewall saves a small amount of information using Chrome's local
+extension storage. This data never leaves your device:
 
-**Your controls.** You can review or clear everything Tidewall stores at any time
-from its Settings page. Removing the extension deletes all of its local data.
+- **Your blocklist** — the built-in list plus any sites you add yourself.
+- **Your settings** — the breathing pattern and session length.
+- **A local tally** — anonymous counts of how often the breathing screen appeared
+  and how many sessions you completed, used only to show your progress.
 
-**Changes.** If Tidewall's data practices ever change, this policy will be updated
-here.
+## What Tidewall does not do
 
-**Contact.** Questions about privacy? Email **hello@getansel.app** or open an
-issue at <https://github.com/0xabrar/tidewall>.
+- It does **not** collect personal information, your identity, or your location.
+- It does **not** read, record, or transmit the content of the pages you visit or
+  your browsing history.
+- It does **not** use analytics, telemetry, cookies, or any third-party services.
+- It does **not** sell, share, or transfer any data to anyone, for any purpose.
+
+## How the stored data is used
+
+The information above is used only to provide Tidewall's features to you — blocking
+sites, running the breathing exercise, and showing your own progress. It is never
+used for any other purpose.
+
+## Security
+
+Because nothing is ever sent off your device, your information is never exposed in
+transit and is never held on any server.
+
+## Your controls
+
+You are always in control of your data. You can review or clear it any time from
+Tidewall's Settings page, and removing the extension permanently deletes everything
+it stored.
+
+## Changes to this policy
+
+If Tidewall's data practices ever change, this document will be updated and the
+effective date above revised.
+
+## Contact
+
+Questions about privacy? Email **hello@getansel.app** or open an issue at
+<https://github.com/0xabrar/tidewall>.
