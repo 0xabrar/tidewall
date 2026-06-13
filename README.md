@@ -25,8 +25,11 @@ that access to **exactly the sites on your blocklist** and nothing else:
 
 - **Curated blocklist** → host access is baked in (generated from `data/curated-domains.js`),
   so the built-in list works out of the box.
+- **Extended blocklist** → ~327 more sites (`data/curated-domains-extended.js`), also baked in
+  and **on by default**, so the wider net works immediately. You can turn it off in Settings —
+  gated by the same cooldown + type-to-confirm friction as removing a domain.
 - **Domains you add** → Chrome shows a one-time permission prompt *for that specific domain*
-  when you add it. Allow once, it's permanent.
+  when you add it (via `optional_host_permissions`). Allow once, it's permanent.
 
 So Tidewall can only ever touch the sites it blocks — **not your general browsing** — and
 since there is no network code, nothing leaves your machine regardless.

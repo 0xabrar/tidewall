@@ -209,27 +209,50 @@ const checks = {
     return "cooldown gate shown, confirm disabled";
   },
 
-  // The opt-in "extended" static ruleset can be toggled on and off via the
-  // worker (host-permission grant happens in the options UI; here we drive the
-  // ruleset flip directly). Verifies it starts off, enables, and disables.
+  // The "extended" static ruleset ships ON by default. It can be turned off and
+  // back on via the worker, and each choice is persisted to storage — that
+  // persisted flag is what restoreExtended re-applies after an extension update
+  // (the update event itself can't be simulated in this harness).
   async extended({ context, sw, extId }) {
     const before = await sw.evaluate(() =>
       chrome.declarativeNetRequest.getEnabledRulesets()
     );
-    if (before.includes("extended"))
-      throw new Error("extended ruleset should be OFF by default");
+    if (!before.includes("extended"))
+      throw new Error("extended ruleset should be ON by default");
 
+    // A domain that's ONLY on the extended list actually redirects by default —
+    // proves the default-on ruleset has the manifest host access it needs to fire
+    // (default-on is pointless if the redirect can't actually happen).
+    const extDomain = await sw.evaluate(async () => {
+      const r = await fetch(chrome.runtime.getURL("rules/extended.json"));
+      return (await r.json())[0].condition.requestDomains[0];
+    });
+    const extOutcome = await sw.evaluate(
+      (url) => chrome.declarativeNetRequest.testMatchOutcome({ url, type: "main_frame", method: "get" }),
+      `https://${extDomain}/`
+    );
+    if ((extOutcome?.matchedRules ?? []).length === 0)
+      throw new Error(`extended domain ${extDomain} did not redirect by default (host perm missing?)`);
+
+    // Turn it OFF — ruleset disables and the choice persists as false.
+    const off = await sendMessageFromPage(context, extId, { type: "set-extended", enabled: false });
+    if (off?.enabled) throw new Error(`disable failed: ${JSON.stringify(off)}`);
+    const mid = await sw.evaluate(() => chrome.declarativeNetRequest.getEnabledRulesets());
+    if (mid.includes("extended")) throw new Error("extended ruleset still enabled after off");
+    const s1 = await getStorage(sw, ["settings"]);
+    if (s1.settings?.extendedEnabled !== false)
+      throw new Error(`off choice not persisted: ${JSON.stringify(s1.settings)}`);
+
+    // Turn it back ON — ruleset enables and the choice persists as true.
     const on = await sendMessageFromPage(context, extId, { type: "set-extended", enabled: true });
     if (!on?.enabled) throw new Error(`enable failed: ${JSON.stringify(on)}`);
-    const mid = await sw.evaluate(() => chrome.declarativeNetRequest.getEnabledRulesets());
-    if (!mid.includes("extended")) throw new Error("extended ruleset not enabled after toggle");
-
-    const off = await sendMessageFromPage(context, extId, { type: "set-extended", enabled: false });
-    if (off?.enabled) throw new Error("disable failed");
     const after = await sw.evaluate(() => chrome.declarativeNetRequest.getEnabledRulesets());
-    if (after.includes("extended")) throw new Error("extended ruleset still enabled after off");
+    if (!after.includes("extended")) throw new Error("extended ruleset not enabled after on");
+    const s2 = await getStorage(sw, ["settings"]);
+    if (s2.settings?.extendedEnabled !== true)
+      throw new Error(`on choice not persisted: ${JSON.stringify(s2.settings)}`);
 
-    return "extended off -> on -> off";
+    return "extended on(default) -> off(persisted) -> on(persisted)";
   },
 };
 

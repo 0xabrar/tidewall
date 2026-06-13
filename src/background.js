@@ -47,6 +47,9 @@ chrome.runtime.onInstalled.addListener((details) => {
   // First install → show the calm onboarding / privacy welcome page.
   if (details?.reason === "install") {
     chrome.tabs?.create({ url: chrome.runtime.getURL("pages/welcome.html") });
+  } else if (details?.reason === "update") {
+    // Re-apply the user's Extended choice (Chrome reset it to the manifest default).
+    restoreExtended().catch((e) => console.error("Tidewall: extended restore failed", e));
   }
 });
 chrome.runtime.onStartup.addListener(queueReconcile);
@@ -61,13 +64,27 @@ async function setExtended(enabled) {
   await chrome.declarativeNetRequest.updateEnabledRulesets(
     enabled ? { enableRulesetIds: ["extended"] } : { disableRulesetIds: ["extended"] }
   );
-  // No need to persist the choice: DNR remembers enabled rulesets across restarts,
-  // and isExtendedEnabled() reads that back as the single source of truth.
+  // Persist the choice so it can be restored after an extension update — Chrome
+  // resets enabled rulesets to the manifest defaults on update (see restoreExtended).
+  // isExtendedEnabled() stays the live source of truth for the current state.
+  await store.setSettings({ extendedEnabled: !!enabled });
 }
 
 async function isExtendedEnabled() {
   const ids = await chrome.declarativeNetRequest.getEnabledRulesets();
   return ids.includes("extended");
+}
+
+// On an extension UPDATE, Chrome resets enabled static rulesets to the manifest
+// defaults. Extended now ships enabled:true, so an update would silently flip it
+// back ON even for someone who deliberately turned it off. Re-apply the user's
+// persisted choice in EITHER direction. If they never changed it (no stored
+// flag) we leave the manifest default (on) in place. (Plain browser restarts
+// preserve ruleset state, so this only matters on update.)
+async function restoreExtended() {
+  const stored = (await store.getSettings()).extendedEnabled;
+  if (stored === undefined) return; // never toggled — keep the manifest default
+  if (stored !== (await isExtendedEnabled())) await setExtended(stored);
 }
 
 // Handles a runtime message from an extension page (block page / options) and

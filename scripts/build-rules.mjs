@@ -25,9 +25,9 @@ export function buildRules(domains, idBase = 0) {
 
 // Host-permission match patterns for a blocklist. DNR `redirect` actions only
 // fire for request URLs the extension has host access to. We narrow access to
-// EXACTLY the blocklist (apex + subdomains) — never <all_urls>. NOTE: only the
-// built-in patterns go in the manifest; extended domains are granted at runtime
-// via optional permissions when the user turns the Extended tier on.
+// EXACTLY the blocklist (apex + subdomains) — never <all_urls>. Both the built-in
+// AND extended domains go in the manifest, because the Extended tier ships ON by
+// default and a default-on ruleset can't redirect without host access up front.
 export function buildHostPatterns(domains) {
   return domains.flatMap((d) => [`*://${d}/*`, `*://*.${d}/*`]);
 }
@@ -50,17 +50,20 @@ if (isMain) {
     JSON.stringify(buildRules(ext, EXTENDED_ID_BASE), null, 2) + "\n"
   );
 
-  // Keep manifest host_permissions in sync with the BUILT-IN list only (single
-  // source of truth = data/curated-domains.js). Extended host access is granted
-  // at runtime when the user enables the Extended tier.
+  // Keep manifest host_permissions in sync with BOTH lists (single source of
+  // truth = data/curated-domains.js + data/curated-domains-extended.js). The
+  // Extended tier is enabled by default, so its host access must be present at
+  // install time for the redirects to fire. (optional_host_permissions stays
+  // "*://*/*", requested per-domain only for sites the user adds themselves.)
   const manifestPath = join(here, "..", "manifest.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-  manifest.host_permissions = buildHostPatterns(CURATED_DOMAINS);
+  manifest.host_permissions = buildHostPatterns([...CURATED_DOMAINS, ...ext]);
   await writeFile(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 
   console.log(
     `Wrote ${curatedOut} (${CURATED_DOMAINS.length} built-in rules), ` +
       `${extendedOut} (${ext.length} extended rules), and synced manifest ` +
-      `host_permissions (${manifest.host_permissions.length} patterns).`
+      `host_permissions (${manifest.host_permissions.length} patterns for ` +
+      `${CURATED_DOMAINS.length + ext.length} domains).`
   );
 }
