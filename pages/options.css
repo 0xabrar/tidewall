@@ -84,7 +84,6 @@ body {
 
 .page-header {
   margin-bottom: 32px;
-  position: relative;
 }
 
 .brand {
@@ -103,9 +102,9 @@ body {
 }
 
 .wordmark {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--ink);
 }
 
@@ -440,6 +439,9 @@ body {
   justify-content: space-between;
   gap: 16px;
 }
+/* display:flex overrides the [hidden] attribute, so guard it explicitly —
+   otherwise the display line stays visible underneath the editor in edit mode. */
+.why-display[hidden] { display: none; }
 
 .why-text {
   margin: 0;
@@ -838,26 +840,16 @@ body {
 [data-theme="dark"] .friction-countdown { color: #d8b878; }
 [data-theme="dark"] .friction-timer     { color: #cdac6a; }
 
-/* Dark-mode toggle: a small icon button tucked in the top-right of the header. */
-.icon-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--hairline);
-  border-radius: 9px;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  transition: color 140ms ease, background-color 140ms ease, border-color 140ms ease;
+/* Dark-mode toggle: a quiet slim row at the very bottom — low priority, no card. */
+.appearance-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 4px 6px 0;
 }
-.icon-btn:hover { color: var(--ink); background: var(--teal-soft); border-color: transparent; }
-.icon-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-.icon-btn svg { width: 18px; height: 18px; }
-/* Show the moon in light mode (tap for dark), the sun in dark mode (tap for light). */
-.icon-btn .i-sun { display: none; }
-[data-theme="dark"] .icon-btn .i-moon { display: none; }
-[data-theme="dark"] .icon-btn .i-sun { display: block; }
+.appearance-bar-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
