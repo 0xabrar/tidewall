@@ -141,6 +141,10 @@ async function renderDomains() {
         confirmType: "confirm-remove",
         confirmLabel: "Remove",
         onDone: renderDomains,
+        onError: () => {
+          els.addError.textContent = "Couldn't start the cooldown. Please try again.";
+          els.addError.hidden = false;
+        },
       })
     );
     row.append(remove);
@@ -156,6 +160,7 @@ async function onAdd() {
   // 1. Ask the worker to store + rebuild DNR. It normalizes the input.
   const res = await send({ type: "add-domain", domain: raw });
   if (!res || !res.ok) {
+    els.addError.textContent = "That doesn't look like a valid domain.";
     els.addError.hidden = false;
     return;
   }
@@ -195,13 +200,14 @@ function tickModal() {
   updateConfirmEnabled();
 }
 
-async function openCooldownModal({ title, requestType, requestPayload = {}, confirmType, confirmLabel = "Remove", onDone }) {
+async function openCooldownModal({ title, requestType, requestPayload = {}, confirmType, confirmLabel = "Remove", onDone, onError }) {
   const res = await send({ type: requestType, ...requestPayload });
   if (!res || !res.ok) {
     // The worker never stored a pending unlock, so a countdown here could never
     // be confirmed. Don't open a dead-end modal that strands the user for five
-    // minutes on a button that can't work — report it and let them retry.
-    if (els.extendedHelp) els.extendedHelp.textContent = "Couldn't start the cooldown. Please try again.";
+    // minutes on a button that can't work — report it (in the caller's own
+    // section) and let them retry.
+    onError?.();
     return;
   }
   const unlockAt = res.unlockAt;
@@ -346,6 +352,9 @@ async function onToggleExtended() {
       confirmType: "confirm-disable-extended",
       confirmLabel: "Turn it off",
       onDone: renderExtended,
+      onError: () => {
+        els.extendedHelp.textContent = "Couldn't start the cooldown. Please try again.";
+      },
     });
   } else {
     // Turning ON goes straight to Chrome's permission prompt for the extended

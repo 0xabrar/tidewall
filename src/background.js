@@ -23,18 +23,23 @@ async function reconcile() {
   await chrome.declarativeNetRequest.updateDynamicRules({ removeRuleIds, addRules });
 }
 
-// Serialize reconciles for this service-worker lifetime. Two near-simultaneous
-// triggers (onStartup racing a split-incognito sibling, or back-to-back
-// add-domain messages) would otherwise interleave getDynamicRules/updateDynamicRules
-// and collide on rule IDs. Chaining also gives one place to swallow + log a
-// failure instead of leaking an unhandled rejection.
+// Serialize reconciles within this service worker. Back-to-back triggers (an
+// add-domain message landing while onStartup's reconcile is mid-flight, or two
+// quick add-domains) would otherwise interleave getDynamicRules/updateDynamicRules
+// and collide on rule IDs. This only covers a single worker — it can't serialize
+// against a split-incognito sibling worker, but those lifecycle events don't
+// realistically overlap.
 let reconcileChain = Promise.resolve();
 function queueReconcile() {
-  reconcileChain = reconcileChain
-    .catch(() => {})
-    .then(reconcile)
-    .catch((e) => console.error("Tidewall: reconcile failed", e));
-  return reconcileChain;
+  // Run after the previous reconcile; a prior failure must not block this one.
+  const run = reconcileChain.catch(() => {}).then(reconcile);
+  // Keep the internal chain non-rejecting so the next queued run always proceeds
+  // and a failure is logged exactly once. `run` keeps that handler attached, so
+  // ignoring the return never leaks an unhandled rejection — yet callers that
+  // await it still see the rejection (add-domain must not answer {ok:true} when
+  // the rule wasn't actually created).
+  reconcileChain = run.catch((e) => console.error("Tidewall: reconcile failed", e));
+  return run;
 }
 
 chrome.runtime.onInstalled.addListener((details) => {

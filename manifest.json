@@ -3,6 +3,7 @@
   "name": "Tidewall: Porn Blocker & Adult Site Filter",
   "short_name": "Tidewall",
   "version": "0.1.0",
+  "minimum_chrome_version": "102",
   "description": "Porn blocker that redirects adult sites to a calm breathing exercise. Block porn and 18+ sites. Private and local.",
   "icons": {
     "16": "icons/icon-16.png",
