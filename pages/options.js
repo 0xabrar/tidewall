@@ -442,8 +442,8 @@ function openBreathing() {
 function applyTheme(theme) {
   const dark = theme === "dark";
   document.documentElement.dataset.theme = dark ? "dark" : "light";
-  els.themeToggle.classList.toggle("on", dark);
-  els.themeToggle.setAttribute("aria-checked", dark ? "true" : "false");
+  // The sun/moon icon swap is CSS-driven by [data-theme]; just reflect state for a11y.
+  els.themeToggle.setAttribute("aria-pressed", dark ? "true" : "false");
 }
 
 async function init() {
