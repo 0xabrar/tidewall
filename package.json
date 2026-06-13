@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "build:rules": "node scripts/build-rules.mjs",
+    "package": "node scripts/package.mjs",
     "test": "node --test test/*.test.js",
     "e2e": "node test/e2e/harness.mjs",
     "e2e:incognito": "node test/e2e/incognito.mjs"
