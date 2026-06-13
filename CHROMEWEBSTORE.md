@@ -92,9 +92,11 @@ storage and never transmitted. No network calls, no analytics, no third parties.
 ## Privacy Policy
 
 **Privacy Policy URL** [REQUIRED]
-`https://github.com/0xabrar/tidewall/blob/main/PRIVACY.md`
-<!-- Live immediately once PRIVACY.md is pushed. For a cleaner URL you can later
-     enable GitHub Pages, or host it at getansel.app/tidewall/privacy. -->
+`https://0xabrar.github.io/tidewall/privacy.html`
+<!-- Hosted via GitHub Pages (main branch /docs). The plain repo copy at
+     github.com/0xabrar/tidewall/blob/main/PRIVACY.md also works as a fallback. -->
+
+**Homepage / landing**: `https://0xabrar.github.io/tidewall/`
 
 ## Distribution
 
