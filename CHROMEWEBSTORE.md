@@ -15,18 +15,18 @@ Porn blocker that redirects adult sites to a calm breathing exercise. Block porn
 **Detailed Description** [REQUIRED]
 
 ```
-Tidewall blocks pornography and adult websites — but instead of a blank error page, it gently takes you to a calm breathing exercise to help the urge pass.
+Tidewall blocks pornography and adult websites. Instead of a blank error page, it gently opens a calm breathing exercise to help the urge pass.
 
 FEATURES
-• Blocks a large built-in list of adult sites (400+), on by default — tubes, cam sites, hentai, and international sites included.
+• Blocks a large built-in list of adult sites (400+), on by default, including tubes, cam sites, hentai, and international sites.
 • Replaces the blocked page with a quiet, guided breathing exercise (4-7-8 or box breathing) so you can ride out the urge instead of hitting a dead error screen.
 • A short, optional check-in afterward helps you notice how you were feeling and choose something else to do.
 • Add your own sites to block, any time.
-• Turning protection off has a deliberate cooldown and a type-to-confirm step — so it's always a calm, intentional decision, never an impulsive one.
+• Turning protection off has a deliberate cooldown and a type-to-confirm step, so it's always a calm, intentional decision, never an impulsive one.
 • Works in Incognito once you allow it (see below).
 
 HOW TO USE
-1. Install Tidewall — the built-in blocklist is active right away.
+1. Install Tidewall. The built-in blocklist is active right away.
 2. When you open a blocked site, you'll land on a calm breathing screen instead.
 3. Breathe, check in, and pick something else to do.
 4. Click the Tidewall toolbar icon to open Settings, where you can add your own sites or change how long the breathing runs.
@@ -37,13 +37,13 @@ PRIVACY
 Tidewall collects nothing and sends nothing anywhere. Your blocklist, settings, and a local tally of urges surfed are stored only on your device. No accounts, no analytics, no tracking, and no network connections of any kind.
 
 PERMISSIONS
-• "Read and change your data on" the blocklisted sites — used only to redirect those specific adult sites to the calm breathing page. Tidewall can only ever touch the sites on its blocklist, never your general browsing.
-• Storage — saves your blocklist, settings, and local stats on your device.
+• "Read and change your data on" the blocklisted sites: used only to redirect those specific adult sites to the calm breathing page. Tidewall can only ever touch the sites on its blocklist, never your general browsing.
+• Storage: saves your blocklist, settings, and local stats on your device.
 
 SUPPORT
 Questions or suggestions? Email hello@getansel.app or open an issue at https://github.com/0xabrar/tidewall
 
-Version 0.1.0 — Initial release.
+Version 0.1.0. Initial release.
 ```
 
 **Category** [REQUIRED]

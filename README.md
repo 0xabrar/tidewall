@@ -3,13 +3,14 @@
 A **local-only** Chrome extension that blocks pornography sites and redirects to a calm,
 CBT-based intervention page (breathing + urge-surfing) instead of a generic error.
 
-## Why local / unpacked?
+## Why local-only?
 
-Tidewall is loaded as an **unpacked extension** — never published to the Chrome Web
-Store. Extension supply-chain attacks (ownership changes, malicious auto-updates,
-over-broad permissions) are a real risk. A self-authored extension with **no auto-update**,
-**no remote code**, **no network calls**, and **no telemetry** sidesteps all of it. The
-whole thing is ~a few hundred lines you can audit.
+Tidewall does its work **entirely on your device**: no network calls, no remote code, no
+accounts, no telemetry. Nothing you do in it ever leaves your machine, and the whole thing
+is a few hundred lines of plain HTML, CSS, and JavaScript you can read in one sitting.
+
+You can load it as an unpacked extension today (see [Install](#install)); a Chrome Web Store
+listing is in the works.
 
 ## Permissions (honest version)
 
@@ -31,11 +32,11 @@ that access to **exactly the sites on your blocklist** and nothing else:
 - **Domains you add** → Chrome shows a one-time permission prompt *for that specific domain*
   when you add it (via `optional_host_permissions`). Allow once, it's permanent.
 
-So Tidewall can only ever touch the sites it blocks — **not your general browsing** — and
+So Tidewall can only ever touch the sites it blocks (**not your general browsing**), and
 since there is no network code, nothing leaves your machine regardless.
 
 There is **no bypass button**. The only way to reach a blocked site is to remove its domain
-in Settings, which is gated behind a 5-minute cooldown + type-to-confirm — a deliberate,
+in Settings, which is gated behind a 5-minute cooldown + type-to-confirm: a deliberate,
 calm-moment decision, never an impulsive one.
 
 ## Architecture

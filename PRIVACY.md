@@ -11,9 +11,9 @@ connections of any kind. Everything it does happens on your own device.
 To do its job, Tidewall saves a small amount of information using Chrome's local
 extension storage. This data never leaves your device:
 
-- **Your blocklist** — the built-in list plus any sites you add yourself.
-- **Your settings** — the breathing pattern and session length.
-- **A local tally** — anonymous counts of how often the breathing screen appeared
+- **Your blocklist:** the built-in list plus any sites you add yourself.
+- **Your settings:** the breathing pattern and session length.
+- **A local tally:** anonymous counts of how often the breathing screen appeared
   and how many sessions you completed, used only to show your progress.
 
 ## What Tidewall does not do
@@ -26,7 +26,7 @@ extension storage. This data never leaves your device:
 
 ## How the stored data is used
 
-The information above is used only to provide Tidewall's features to you — blocking
+The information above is used only to provide Tidewall's features to you: blocking
 sites, running the breathing exercise, and showing your own progress. It is never
 used for any other purpose.
 
