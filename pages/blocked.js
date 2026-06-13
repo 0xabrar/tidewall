@@ -178,6 +178,11 @@ async function init() {
     if (begun) return;
     begun = true;
     goState("breathe");
+    // The breathe stage was display:none until now. Force the contracted circle
+    // to lay out before the first inhale — otherwise the reveal and the first
+    // "expanded" collapse into one frame and the first "Breathe in" snaps to full
+    // size instead of growing from small like every later breath.
+    void els.breath.offsetWidth;
     startBreathing(breathPattern, surfSeconds, () => {
       send({ type: "surf-complete" });
       surfed += 1;
