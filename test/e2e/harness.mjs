@@ -217,9 +217,36 @@ const checks = {
     await settings.waitForFunction(() => document.querySelector("#domain-page-info")?.textContent === "1-8 of 17");
     let info = await settings.locator("#domain-page-info").textContent();
     if (info !== "1-8 of 17") throw new Error(`settings pager first page wrong: ${info}`);
-    const buttonBg = await settings.locator("#domain-next").evaluate((el) => getComputedStyle(el).backgroundColor);
-    if (buttonBg === "rgb(255, 255, 255)" || buttonBg === "rgba(0, 0, 0, 0)")
-      throw new Error(`settings pager button ignores dark mode: ${buttonBg}`);
+    const contrast = await settings.locator("#domain-next").evaluate((el) => {
+      const parseRgb = (rgb) => rgb.match(/\d+(\.\d+)?/g).slice(0, 3).map(Number);
+      const luminance = (rgb) => {
+        const [r, g, b] = parseRgb(rgb).map((v) => {
+          const c = v / 255;
+          return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+        });
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      };
+      const ratio = (a, b) => {
+        const [lighter, darker] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+        return (lighter + 0.05) / (darker + 0.05);
+      };
+      const stylesForTheme = (theme) => {
+        document.documentElement.dataset.theme = theme;
+        const button = getComputedStyle(el);
+        const card = getComputedStyle(document.querySelector("#blocklist"));
+        return {
+          theme,
+          text: ratio(button.color, button.backgroundColor),
+          shape: ratio(button.backgroundColor, card.backgroundColor),
+        };
+      };
+      return [stylesForTheme("dark"), stylesForTheme("light")];
+    });
+    for (const result of contrast) {
+      if (result.text < 4.5 || result.shape < 3)
+        throw new Error(`settings pager contrast fails in ${result.theme}: ${JSON.stringify(result)}`);
+    }
+    await settings.evaluate(() => { document.documentElement.dataset.theme = "dark"; });
     await settings.evaluate(() => {
       const list = document.querySelector("#domain-list");
       window.__tidewallEmptyListSeen = false;

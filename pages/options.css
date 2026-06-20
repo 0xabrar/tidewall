@@ -340,18 +340,19 @@ body {
   font-family: inherit;
   font-size: 13px;
   font-weight: 500;
-  color: var(--slate);
-  background: #fff;
-  border: 1px solid var(--hairline);
+  color: #fff;
+  background: #0c7a72;
+  border: 1px solid #0c7a72;
   border-radius: 8px;
-  padding: 6px 10px;
+  padding: 7px 12px;
   cursor: pointer;
-  transition: background-color 140ms ease, color 140ms ease;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
 }
 
 .pager-btn:hover:not(:disabled) {
-  background: #f3f4f7;
-  color: var(--ink);
+  background: #09665f;
+  border-color: #09665f;
+  color: #fff;
 }
 
 .pager-btn:focus-visible {
@@ -360,7 +361,10 @@ body {
 }
 
 .pager-btn:disabled {
-  opacity: 0.45;
+  color: var(--muted);
+  background: transparent;
+  border-color: var(--hairline);
+  opacity: 1;
   cursor: not-allowed;
 }
 
@@ -895,9 +899,7 @@ body {
 [data-theme="dark"] .switch.on:hover  { background: var(--teal-strong); }
 [data-theme="dark"] .grant-badge      { background: #243038; }
 [data-theme="dark"] .grant-badge:hover{ background: #2a3741; color: var(--ink); }
-[data-theme="dark"] .pager-btn        { background: #1a2832; border-color: #334650; color: var(--slate); }
-[data-theme="dark"] .pager-btn:hover:not(:disabled) { background: #22343e; color: var(--ink); }
-[data-theme="dark"] .pager-btn:disabled { background: #16242c; color: #657681; }
+[data-theme="dark"] .pager-btn:disabled { background: transparent; color: #7f919c; }
 [data-theme="dark"] .segmented        { background: #1a2832; }
 [data-theme="dark"] .seg.active,
 [data-theme="dark"] .seg.active:hover { background: #27363f; }
