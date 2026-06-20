@@ -50,13 +50,18 @@
         <p class="section-label">Blocklist</p>
         <div class="add-row">
           <input id="domain-input" class="text-input" type="text" autocomplete="off"
-                 spellcheck="false" placeholder="Add a domain" />
+                 spellcheck="false" placeholder="Add a site or URL" />
           <button id="add-btn" class="btn btn-primary" type="button">Add</button>
         </div>
-        <p id="add-error" class="field-error" hidden>That doesn't look like a valid domain.</p>
+        <p id="add-error" class="field-error" hidden>That doesn't look like a valid domain or site URL.</p>
         <p class="help-line">When you add a site, Chrome asks permission for just that site. Tidewall only ever reads the sites on your blocklist, nothing else you browse.</p>
         <p class="list-label">Your additions</p>
         <ul id="domain-list" class="domain-list"></ul>
+        <nav id="domain-pager" class="pager" aria-label="Your additions pages" hidden>
+          <button id="domain-prev" class="pager-btn" type="button">Previous</button>
+          <span id="domain-page-info" class="pager-info"></span>
+          <button id="domain-next" class="pager-btn" type="button">Next</button>
+        </nav>
         <div class="builtin-row">
           <p class="builtin-summary">Built-in blocklist, <span id="builtin-count">…</span> sites, always on</p>
           <a class="builtin-link" href="blocklist.html">Review everything →</a>

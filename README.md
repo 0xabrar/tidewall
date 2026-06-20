@@ -30,7 +30,8 @@ that access to **exactly the sites on your blocklist** and nothing else:
   and **on by default**, so the wider net works immediately. You can turn it off in Settings —
   gated by the same cooldown + type-to-confirm friction as removing a domain.
 - **Domains you add** → Chrome shows a one-time permission prompt *for that specific domain*
-  when you add it (via `optional_host_permissions`). Allow once, it's permanent.
+  when you add it (via `optional_host_permissions`). You can paste a full URL; Tidewall
+  blocks the whole site the same way the built-in list does. Allow once, it's permanent.
 
 So Tidewall can only ever touch the sites it blocks (**not your general browsing**), and
 since there is no network code, nothing leaves your machine regardless.
@@ -46,6 +47,8 @@ calm-moment decision, never an impulsive one.
 - **Source of truth:** `chrome.storage.local` holds your domains/settings/stats; DNR dynamic
   rules are a derived projection, rebuilt on install/startup/change. Curated domains are
   static, shipped as `rules/curated.json`.
+- **Rule shape:** built-in, extended, and user-added domains all use the same shared
+  redirect-rule and host-permission helpers in `src/lib/rules.js`.
 
 ## Develop
 

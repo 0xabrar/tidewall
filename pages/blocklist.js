@@ -13,10 +13,18 @@ const els = {
   subtitle: document.getElementById("counts-subtitle"),
   customCard: document.getElementById("custom-card"),
   customList: document.getElementById("custom-list"),
+  customPager: document.getElementById("custom-pager"),
+  customPrev: document.getElementById("custom-prev"),
+  customNext: document.getElementById("custom-next"),
+  customPageInfo: document.getElementById("custom-page-info"),
   builtinList: document.getElementById("builtin-list"),
   extendedList: document.getElementById("extended-list"),
   extendedState: document.getElementById("extended-state"),
 };
+
+const CUSTOM_PAGE_SIZE = 16;
+let customPage = 0;
+let customDomains = [];
 
 async function loadRuleset(path) {
   try {
@@ -49,6 +57,26 @@ function renderList(ul, domains) {
   }
 }
 
+function renderCustomList() {
+  els.customList.replaceChildren();
+  if (customDomains.length === 0) {
+    els.customPager.hidden = true;
+    return;
+  }
+
+  const totalPages = Math.ceil(customDomains.length / CUSTOM_PAGE_SIZE);
+  customPage = Math.min(Math.max(customPage, 0), totalPages - 1);
+  const start = customPage * CUSTOM_PAGE_SIZE;
+  const visibleDomains = customDomains.slice(start, start + CUSTOM_PAGE_SIZE);
+
+  renderList(els.customList, visibleDomains);
+
+  els.customPager.hidden = totalPages <= 1;
+  els.customPrev.disabled = customPage === 0;
+  els.customNext.disabled = customPage >= totalPages - 1;
+  els.customPageInfo.textContent = `${start + 1}-${start + visibleDomains.length} of ${customDomains.length}`;
+}
+
 function subtitleText({ builtin, extended, custom }) {
   const parts = [`${builtin} built-in`];
   if (extended) parts.push(`${extended} extended`);
@@ -74,7 +102,8 @@ async function init() {
   });
 
   if (custom.length > 0) {
-    renderList(els.customList, [...custom].sort((a, b) => a.localeCompare(b)));
+    customDomains = [...custom].sort((a, b) => a.localeCompare(b));
+    renderCustomList();
     els.customCard.hidden = false;
   }
 
@@ -85,6 +114,15 @@ async function init() {
   els.extendedState.classList.toggle("on", extOn);
   // When on, these are live — show them at full strength, not dimmed.
   document.getElementById("extended-card").classList.toggle("inactive", !extOn);
+
+  els.customPrev.addEventListener("click", () => {
+    customPage -= 1;
+    renderCustomList();
+  });
+  els.customNext.addEventListener("click", () => {
+    customPage += 1;
+    renderCustomList();
+  });
 }
 
 init();

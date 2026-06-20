@@ -93,13 +93,21 @@ const checks = {
       return (await r.json()).map((rule) => rule.condition.requestDomains[0]);
     });
     const target = domains[0];
-    const outcome = await sw.evaluate(
-      (url) => chrome.declarativeNetRequest.testMatchOutcome({ url, type: "main_frame", method: "get" }),
-      `https://${target}/`
-    );
-    const matched = outcome?.matchedRules ?? [];
-    if (matched.length === 0)
-      throw new Error(`curated domain ${target} did not match any rule (host perm missing?)`);
+    const blockedUrls = [
+      `https://${target}/`,
+      `https://${target}/nested/path/`,
+      `https://www.${target}/`,
+      `https://www.${target}/nested/path/`,
+    ];
+    for (const url of blockedUrls) {
+      const outcome = await sw.evaluate(
+        (u) => chrome.declarativeNetRequest.testMatchOutcome({ url: u, type: "main_frame", method: "get" }),
+        url
+      );
+      const matched = outcome?.matchedRules ?? [];
+      if (matched.length === 0)
+        throw new Error(`curated domain ${target} did not match ${url} (host perm missing?)`);
+    }
     // Confirm a non-permitted domain does NOT match — proves access is narrowed.
     const offList = await sw.evaluate(
       (url) => chrome.declarativeNetRequest.testMatchOutcome({ url, type: "main_frame", method: "get" }),
@@ -107,7 +115,7 @@ const checks = {
     );
     if ((offList?.matchedRules ?? []).length !== 0)
       throw new Error("example.com unexpectedly matched — access is not narrowed");
-    return `${target} matches a curated redirect; off-list example.com does not`;
+    return `${target} root/www/deep URLs match; off-list example.com does not`;
   },
 
   // End-to-end render check: an actual navigation to a curated domain must
@@ -180,16 +188,55 @@ const checks = {
   // The settings page lists domains and can add one through the UI. Requires Task 8.
   async settings({ context, sw, extId }) {
     await seedStorage(sw, { userDomains: [] });
+    const target = await sw.evaluate(async () => {
+      const r = await fetch(chrome.runtime.getURL("rules/curated.json"));
+      return (await r.json())[0].condition.requestDomains[0];
+    });
     const page = await context.newPage();
     await page.goto(`chrome-extension://${extId}/pages/options.html`);
-    await page.locator("#domain-input").fill("addedviaui.com");
+    await page.locator("#domain-input").fill(target);
     await page.locator("#add-btn").click();
     await page.waitForTimeout(400);
     const listed = await page.locator("#domain-list").textContent();
-    if (!listed?.includes("addedviaui.com"))
+    if (!listed?.includes(target))
       throw new Error(`domain not listed after add: "${listed}"`);
     await page.close();
     return "added domain shows in list";
+  },
+
+  // Long custom lists paginate in both Settings and the read-only blocklist
+  // review page instead of rendering one unbounded column.
+  async pagination({ context, sw, extId }) {
+    const domains = Array.from({ length: 17 }, (_, i) => `custom-${String(i + 1).padStart(2, "0")}.com`);
+    await seedStorage(sw, { userDomains: domains });
+
+    const settings = await context.newPage();
+    await settings.goto(`chrome-extension://${extId}/pages/options.html`);
+    const settingsPager = settings.locator("#domain-pager");
+    await settingsPager.waitFor({ state: "visible", timeout: 4000 });
+    await settings.waitForFunction(() => document.querySelector("#domain-page-info")?.textContent === "1-8 of 17");
+    let info = await settings.locator("#domain-page-info").textContent();
+    if (info !== "1-8 of 17") throw new Error(`settings pager first page wrong: ${info}`);
+    await settings.locator("#domain-next").click();
+    await settings.waitForFunction(() => document.querySelector("#domain-page-info")?.textContent === "9-16 of 17");
+    info = await settings.locator("#domain-page-info").textContent();
+    if (info !== "9-16 of 17") throw new Error(`settings pager second page wrong: ${info}`);
+    await settings.close();
+
+    const review = await context.newPage();
+    await review.goto(`chrome-extension://${extId}/pages/blocklist.html`);
+    const reviewPager = review.locator("#custom-pager");
+    await reviewPager.waitFor({ state: "visible", timeout: 4000 });
+    await review.waitForFunction(() => document.querySelector("#custom-page-info")?.textContent === "1-16 of 17");
+    info = await review.locator("#custom-page-info").textContent();
+    if (info !== "1-16 of 17") throw new Error(`review pager first page wrong: ${info}`);
+    await review.locator("#custom-next").click();
+    await review.waitForFunction(() => document.querySelector("#custom-page-info")?.textContent === "17-17 of 17");
+    info = await review.locator("#custom-page-info").textContent();
+    if (info !== "17-17 of 17") throw new Error(`review pager second page wrong: ${info}`);
+    await review.close();
+
+    return "settings and review custom lists paginate";
   },
 
   // Removing a domain is gated: a cooldown panel appears and confirm is disabled

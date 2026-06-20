@@ -51,10 +51,15 @@
 }
 .readonly-list li:first-child { border-top: none; padding-top: 0; }
 
-.readonly-list + .help-line {
+.readonly-list + .help-line,
+.pager[hidden] + .help-line {
   margin-top: 12px;
   padding-top: 12px;
   border-top: 1px solid var(--hairline);
+}
+
+.pager:not([hidden]) + .help-line {
+  margin-top: 10px;
 }
 
 /* Built-in — compact multi-column scan layout for ~85 domains. */

@@ -325,6 +325,53 @@ body {
   color: var(--muted);
 }
 
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline);
+}
+
+.pager-btn {
+  flex: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--slate);
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.pager-btn:hover:not(:disabled) {
+  background: #f3f4f7;
+  color: var(--ink);
+}
+
+.pager-btn:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.pager-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pager-info {
+  min-width: 0;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--muted);
+  text-align: center;
+}
+
 .list-label {
   margin: 24px 2px 6px;
   font-size: 13px;

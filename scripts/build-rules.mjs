@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { CURATED_DOMAINS } from "../data/curated-domains.js";
 import { EXTENDED_DOMAINS } from "../data/curated-domains-extended.js";
+import { buildDomainRules, buildHostPatterns } from "../src/lib/rules.js";
 
 // Domains pruned from the extended list: they host substantial NON-adult
 // content, so wildcard-blocking them would over-block legitimate sites.
@@ -15,22 +16,9 @@ const EXTENDED_ID_BASE = 200000;
 
 // DNR redirect rules for a blocklist (static ruleset).
 export function buildRules(domains, idBase = 0) {
-  return domains.map((domain, i) => ({
-    id: idBase + i + 1,
-    priority: 1,
-    action: { type: "redirect", redirect: { extensionPath: "/pages/blocked.html" } },
-    condition: { requestDomains: [domain], resourceTypes: ["main_frame"] },
-  }));
+  return buildDomainRules(domains, idBase);
 }
-
-// Host-permission match patterns for a blocklist. DNR `redirect` actions only
-// fire for request URLs the extension has host access to. We narrow access to
-// EXACTLY the blocklist (apex + subdomains) — never <all_urls>. Both the built-in
-// AND extended domains go in the manifest, because the Extended tier ships ON by
-// default and a default-on ruleset can't redirect without host access up front.
-export function buildHostPatterns(domains) {
-  return domains.flatMap((d) => [`*://${d}/*`, `*://*.${d}/*`]);
-}
+export { buildHostPatterns };
 
 export function extendedDomains() {
   return EXTENDED_DOMAINS.filter((d) => !EXTENDED_EXCLUDE.has(d));

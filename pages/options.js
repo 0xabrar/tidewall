@@ -9,6 +9,8 @@
 
 import { makeStore } from "../src/lib/storage.js";
 import { CONFIRM_PHRASE, isUnlocked, confirmPhraseMatches } from "../src/lib/friction.js";
+import { normalizeDomain } from "../src/lib/domains.js";
+import { buildHostPatterns } from "../src/lib/rules.js";
 
 const store = makeStore();
 
@@ -17,6 +19,10 @@ const els = {
   addBtn: document.getElementById("add-btn"),
   addError: document.getElementById("add-error"),
   domainList: document.getElementById("domain-list"),
+  domainPager: document.getElementById("domain-pager"),
+  domainPrev: document.getElementById("domain-prev"),
+  domainNext: document.getElementById("domain-next"),
+  domainPageInfo: document.getElementById("domain-page-info"),
 
   whyInput: document.getElementById("why-input"),
   whyDisplay: document.getElementById("why-display"),
@@ -66,7 +72,7 @@ function send(msg) {
   }
 }
 
-const originsFor = (host) => [`*://${host}/*`, `*://*.${host}/*`];
+const originsFor = (host) => buildHostPatterns([host]);
 
 async function hasPermission(host) {
   try {
@@ -86,6 +92,9 @@ async function requestPermission(host) {
 
 // ---------- Blocklist ----------
 
+const DOMAIN_PAGE_SIZE = 8;
+let domainPage = 0;
+
 function formatTime(totalSeconds) {
   const s = Math.max(0, Math.floor(totalSeconds));
   const m = Math.floor(s / 60);
@@ -102,10 +111,16 @@ async function renderDomains() {
     empty.className = "empty-note";
     empty.textContent = "No custom domains yet. The built-in list is always on.";
     els.domainList.append(empty);
+    els.domainPager.hidden = true;
     return;
   }
 
-  for (const domain of domains) {
+  const totalPages = Math.ceil(domains.length / DOMAIN_PAGE_SIZE);
+  domainPage = Math.min(Math.max(domainPage, 0), totalPages - 1);
+  const start = domainPage * DOMAIN_PAGE_SIZE;
+  const visibleDomains = domains.slice(start, start + DOMAIN_PAGE_SIZE);
+
+  for (const domain of visibleDomains) {
     const row = document.createElement("li");
     row.className = "domain-row";
 
@@ -152,29 +167,43 @@ async function renderDomains() {
 
     els.domainList.append(row);
   }
+
+  els.domainPager.hidden = totalPages <= 1;
+  els.domainPrev.disabled = domainPage === 0;
+  els.domainNext.disabled = domainPage >= totalPages - 1;
+  els.domainPageInfo.textContent = `${start + 1}-${start + visibleDomains.length} of ${domains.length}`;
 }
 
 async function onAdd() {
   const raw = els.domainInput.value;
   els.addError.hidden = true;
 
-  // 1. Ask the worker to store + rebuild DNR. It normalizes the input.
-  const res = await send({ type: "add-domain", domain: raw });
-  if (!res || !res.ok) {
-    els.addError.textContent = "That doesn't look like a valid domain.";
+  const host = normalizeDomain(raw);
+  if (!host) {
+    els.addError.textContent = "That doesn't look like a valid domain or site URL.";
     els.addError.hidden = false;
     return;
   }
 
-  // 2. Re-render immediately — the list must update independently of the
-  //    permission grant below (which may be denied or unavailable in headless).
+  // Chrome requires the optional host permission before a redirect rule can
+  // fire. Request it immediately while this click/Enter event still has a user
+  // gesture; if the user declines, we still save the row and show the grant
+  // affordance so they can enable blocking later.
+  await requestPermission(host);
+
+  // Store + rebuild DNR through the worker. The worker re-normalizes the input
+  // so storage, static rules, and dynamic rules stay on the same domain model.
+  const res = await send({ type: "add-domain", domain: host });
+  if (!res || !res.ok) {
+    els.addError.textContent = "That doesn't look like a valid domain or site URL.";
+    els.addError.hidden = false;
+    return;
+  }
+
+  // Re-render immediately — the list must update even when the permission grant
+  // was denied or unavailable in headless.
   els.domainInput.value = "";
-  await renderDomains();
-
-  // 3. THEN request the optional host permission from this user gesture.
-  await requestPermission(res.host);
-
-  // 4. Reflect any change to permission state on the row.
+  domainPage = Number.MAX_SAFE_INTEGER;
   await renderDomains();
 }
 
@@ -483,6 +512,14 @@ async function init() {
     if (e.key === "Enter") { e.preventDefault(); onAdd(); }
   });
   els.domainInput.addEventListener("input", () => { els.addError.hidden = true; });
+  els.domainPrev.addEventListener("click", async () => {
+    domainPage -= 1;
+    await renderDomains();
+  });
+  els.domainNext.addEventListener("click", async () => {
+    domainPage += 1;
+    await renderDomains();
+  });
 
   els.whyEditBtn.addEventListener("click", enterWhyEdit);
   els.whyText.addEventListener("click", () => {

@@ -1,6 +1,6 @@
 # Chrome Web Store Listing — Tidewall
 
-> Last Updated: 2026-06-12
+> Last Updated: 2026-06-20
 > This file is a copy-paste source for the Chrome Web Store dashboard. It is NOT
 > shipped in the extension package (excluded by `npm run package`).
 
@@ -21,7 +21,7 @@ FEATURES
 • Blocks a large built-in list of adult sites (400+), on by default, including tubes, cam sites, hentai, and international sites.
 • Replaces the blocked page with a quiet, guided breathing exercise (4-7-8 or box breathing) so you can ride out the urge instead of hitting a dead error screen.
 • A short, optional check-in afterward helps you notice how you were feeling and choose something else to do.
-• Add your own sites to block, any time.
+• Add your own sites or URLs to block, any time.
 • Turning protection off has a deliberate cooldown and a type-to-confirm step, so it's always a calm, intentional decision, never an impulsive one.
 • Works in Incognito once you allow it (see below).
 
@@ -114,7 +114,7 @@ storage and never transmitted. No network calls, no analytics, no third parties.
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
-| 0.1.0 | 2026-06-12 | Initial release. | Draft |
+| 0.1.0 | 2026-06-20 | Draft update: custom additions paginate, and custom blocking now uses the same redirect-rule builder and host permission patterns as the built-in blocklist. | Draft |
 
 ## Review Notes
 

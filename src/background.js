@@ -1,25 +1,17 @@
 // src/background.js
 import { makeStore } from "./lib/storage.js";
 import { startCooldown, isUnlocked, confirmPhraseMatches } from "./lib/friction.js";
+import { blockRuleForDomain } from "./lib/rules.js";
 
 const store = makeStore();
 const DYNAMIC_BASE_ID = 100000; // user rules never collide with curated (1..99999)
-
-function ruleForDomain(domain, id) {
-  return {
-    id,
-    priority: 1,
-    action: { type: "redirect", redirect: { extensionPath: "/pages/blocked.html" } },
-    condition: { requestDomains: [domain], resourceTypes: ["main_frame"] },
-  };
-}
 
 // Rebuild ALL dynamic rules to match storage. Idempotent.
 async function reconcile() {
   const domains = await store.getDomains();
   const existing = await chrome.declarativeNetRequest.getDynamicRules();
   const removeRuleIds = existing.map((r) => r.id);
-  const addRules = domains.map((d, i) => ruleForDomain(d, DYNAMIC_BASE_ID + i));
+  const addRules = domains.map((d, i) => blockRuleForDomain(d, DYNAMIC_BASE_ID + i));
   await chrome.declarativeNetRequest.updateDynamicRules({ removeRuleIds, addRules });
 }
 
