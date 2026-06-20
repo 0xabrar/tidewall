@@ -895,6 +895,9 @@ body {
 [data-theme="dark"] .switch.on:hover  { background: var(--teal-strong); }
 [data-theme="dark"] .grant-badge      { background: #243038; }
 [data-theme="dark"] .grant-badge:hover{ background: #2a3741; color: var(--ink); }
+[data-theme="dark"] .pager-btn        { background: #1a2832; border-color: #334650; color: var(--slate); }
+[data-theme="dark"] .pager-btn:hover:not(:disabled) { background: #22343e; color: var(--ink); }
+[data-theme="dark"] .pager-btn:disabled { background: #16242c; color: #657681; }
 [data-theme="dark"] .segmented        { background: #1a2832; }
 [data-theme="dark"] .seg.active,
 [data-theme="dark"] .seg.active:hover { background: #27363f; }

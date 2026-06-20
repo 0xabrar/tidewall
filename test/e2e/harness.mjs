@@ -208,7 +208,7 @@ const checks = {
   // review page instead of rendering one unbounded column.
   async pagination({ context, sw, extId }) {
     const domains = Array.from({ length: 17 }, (_, i) => `custom-${String(i + 1).padStart(2, "0")}.com`);
-    await seedStorage(sw, { userDomains: domains });
+    await seedStorage(sw, { userDomains: domains, theme: "dark" });
 
     const settings = await context.newPage();
     await settings.goto(`chrome-extension://${extId}/pages/options.html`);
@@ -217,8 +217,21 @@ const checks = {
     await settings.waitForFunction(() => document.querySelector("#domain-page-info")?.textContent === "1-8 of 17");
     let info = await settings.locator("#domain-page-info").textContent();
     if (info !== "1-8 of 17") throw new Error(`settings pager first page wrong: ${info}`);
+    const buttonBg = await settings.locator("#domain-next").evaluate((el) => getComputedStyle(el).backgroundColor);
+    if (buttonBg === "rgb(255, 255, 255)" || buttonBg === "rgba(0, 0, 0, 0)")
+      throw new Error(`settings pager button ignores dark mode: ${buttonBg}`);
+    await settings.evaluate(() => {
+      const list = document.querySelector("#domain-list");
+      window.__tidewallEmptyListSeen = false;
+      window.__tidewallListObserver = new MutationObserver(() => {
+        if (list && list.children.length === 0) window.__tidewallEmptyListSeen = true;
+      });
+      window.__tidewallListObserver.observe(list, { childList: true });
+    });
     await settings.locator("#domain-next").click();
     await settings.waitForFunction(() => document.querySelector("#domain-page-info")?.textContent === "9-16 of 17");
+    const emptyListSeen = await settings.evaluate(() => window.__tidewallEmptyListSeen);
+    if (emptyListSeen) throw new Error("settings list became empty during pagination");
     info = await settings.locator("#domain-page-info").textContent();
     if (info !== "9-16 of 17") throw new Error(`settings pager second page wrong: ${info}`);
     await settings.close();

@@ -114,7 +114,7 @@ storage and never transmitted. No network calls, no analytics, no third parties.
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
-| 0.1.0 | 2026-06-20 | Draft update: custom additions paginate, and custom blocking now uses the same redirect-rule builder and host permission patterns as the built-in blocklist. | Draft |
+| 0.1.0 | 2026-06-20 | Draft update: custom additions paginate cleanly, including dark-mode controls, and custom blocking now uses the same redirect-rule builder and host permission patterns as the built-in blocklist. | Draft |
 
 ## Review Notes
 

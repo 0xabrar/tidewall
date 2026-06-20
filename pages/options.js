@@ -104,13 +104,12 @@ function formatTime(totalSeconds) {
 
 async function renderDomains() {
   const domains = await store.getDomains();
-  els.domainList.replaceChildren();
 
   if (domains.length === 0) {
     const empty = document.createElement("li");
     empty.className = "empty-note";
     empty.textContent = "No custom domains yet. The built-in list is always on.";
-    els.domainList.append(empty);
+    els.domainList.replaceChildren(empty);
     els.domainPager.hidden = true;
     return;
   }
@@ -119,8 +118,12 @@ async function renderDomains() {
   domainPage = Math.min(Math.max(domainPage, 0), totalPages - 1);
   const start = domainPage * DOMAIN_PAGE_SIZE;
   const visibleDomains = domains.slice(start, start + DOMAIN_PAGE_SIZE);
+  const rows = await Promise.all(
+    visibleDomains.map(async (domain) => ({ domain, hasAccess: await hasPermission(domain) }))
+  );
+  const fragment = document.createDocumentFragment();
 
-  for (const domain of visibleDomains) {
+  for (const { domain, hasAccess } of rows) {
     const row = document.createElement("li");
     row.className = "domain-row";
 
@@ -132,14 +135,14 @@ async function renderDomains() {
     // Per-row permission affordance: only shown when access is NOT granted.
     // Curated/static domains always have permission, so this only appears on
     // user-added rows lacking the optional grant.
-    if (!(await hasPermission(domain))) {
+    if (!hasAccess) {
       const grant = document.createElement("button");
       grant.type = "button";
       grant.className = "grant-badge";
       grant.textContent = "Grant access to block this";
       grant.addEventListener("click", async () => {
         await requestPermission(domain);
-        renderDomains();
+        await renderDomains();
       });
       row.append(grant);
     }
@@ -165,9 +168,10 @@ async function renderDomains() {
     );
     row.append(remove);
 
-    els.domainList.append(row);
+    fragment.append(row);
   }
 
+  els.domainList.replaceChildren(fragment);
   els.domainPager.hidden = totalPages <= 1;
   els.domainPrev.disabled = domainPage === 0;
   els.domainNext.disabled = domainPage >= totalPages - 1;
